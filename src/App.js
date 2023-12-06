@@ -30,7 +30,7 @@ function App() {
               <Route path="/service/:slug" element={<ServiceDetail />} />
               <Route path="/schedule-demo" element={<ScheduleDemo />} />
               <Route path="/become-partner" element={<BecomePartner />} />
-              <Route path="/company/our-people/" element={<OurPeople />} />
+              <Route path="/company/our-people" element={<OurPeople />} />
               <Route path="/company/get-in-touch" element={<GetinTouch />} />
               <Route path="/privacy-policy" element={<PrivacyPolicy />} />
               <Route path="/terms-condition" element={<TermsConditions />} />

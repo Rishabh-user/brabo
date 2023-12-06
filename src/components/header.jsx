@@ -9,7 +9,7 @@ const[data, setData] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`${BASE_URL}/menu`);
+        const response = await fetch(`${BASE_URL}/primary_menu`);
         const data = await response.json();
         console.log('API Data:', data);
         setData(data);
@@ -72,8 +72,7 @@ const[data, setData] = useState([]);
                 </li>
               </ul> */}
               <ul className="main-navigation">
-                {data.filter(menu => menu.post_parent === 0)
-                .map( (menu, index) => (
+                {data.filter(menu => menu.post_parent === 0).map( (menu, index) => (
                   <li key={index}>
                     <Link to={menu.url}>{menu.title}</Link>
                     <ul className="subMenu gradient-border">
