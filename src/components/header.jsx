@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
+import LogoDark from '../assets/images/logo_dark.png';
 import LogoLight from '../assets/images/logo.png';
 import { BASE_URL } from '../api';
 
@@ -28,49 +29,10 @@ const[data, setData] = useState([]);
         <div className="container">
           <nav className="navigation">
             <div className="logo">
-               <Link to="/"><img src={LogoLight} alt="Brabo Logo" width={42} height={32} /></Link>
+               <Link to="/"><img className='logo-dark' src={LogoDark} alt="Brabo Logo" width={180} height={35} /></Link>
+               <Link to="/"><img className='logo-light' src={LogoLight} alt="Brabo Logo" width={42} height={32} /></Link>
             </div>
             <div className="nav-link">
-              {/* <ul className="main-navigation">
-                <li>
-                  <Link>Brabo App</Link>
-                  <ul className="subMenu gradient-border">
-                    <li><Link to="/brabo-app/sustainabity-app">Sustainability App</Link></li>
-                    <li><Link to="#">Remote ManOps App</Link></li>
-                    <li><Link to="#">Yield Optimisation App</Link></li>
-                    <li><Link to="#">Assets Analytics App</Link></li>
-                    <li><Link to="#">Process Analytics</Link></li>
-                    <li><Link to="#">Predictive Maintenance App</Link></li>
-                  </ul>
-                </li>
-                <li>
-                  <Link>Company</Link>
-                  <ul className="subMenu gradient-border">
-                    <li><Link to="/about">About us</Link></li>
-                    <li><Link to="/our-people">Our People</Link></li>
-                    <li><Link to="#">Careers</Link></li>
-                    <li><Link to="#">Contact us</Link></li>
-                  </ul>
-                </li>
-                <li>
-                  <Link>Platform</Link>
-                  <ul className="subMenu gradient-border">
-                    <li><Link to="#">The Platform</Link></li>
-                    <li><Link to="#">The Edge</Link></li>
-                  </ul>
-                </li>
-                <li>
-                  <Link>Resources</Link>
-                  <ul className="subMenu gradient-border">
-                    <li><Link to="#">Blog</Link></li>
-                    <li><Link to="#">Case Studies</Link></li>
-                    <li><Link to="#">Press Release</Link></li>
-                    <li><Link to="#">Events & Webinar</Link></li>
-                    <li><Link to="#">Section-A</Link></li>
-                    <li><Link to="#">Section-B</Link></li>
-                  </ul>
-                </li>
-              </ul> */}
               <ul className="main-navigation">
                 {data.filter(menu => menu.post_parent === 0).map( (menu, index) => (
                   <li key={index}>

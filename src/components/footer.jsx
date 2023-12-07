@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from "react";
+import BraboLogoDark from '../assets/images/logo_dark.png';
 import BraboLogoLight from '../assets/images/logo_light.png';
 import { Link } from "react-router-dom";
 import { BASE_URL } from "../api";
@@ -11,6 +12,12 @@ function Footer() {
   //const[footerFive, setFooterFive] = useState([]);
 
   useEffect(() => {
+
+    // Load the HubSpot form script
+    const script = document.createElement('script');
+    script.src = 'https://js.hsforms.net/forms/v2.js';
+    document.body.appendChild(script);
+
     const fetchData = async () => {
       try {
         const response_footer1 = await fetch(`${BASE_URL}/footer_braboappmenu`);
@@ -41,8 +48,24 @@ function Footer() {
         console.error('Error fetching data:', error);
       }
     };
+    
 
     fetchData();
+
+    script.addEventListener('load', () => {
+      if (window.hbspt) {
+        window.hbspt.forms.create({
+          portalId: '44600368',
+          formId: '74a10882-7607-4435-8eec-3f3065dc194f',
+          target: '#hubspot-form-container',
+        });
+      }
+    });
+    return () => {
+      // Cleanup on component unmount
+      document.body.removeChild(script);
+    };
+    
   }, []);
   return (
     <div>
@@ -53,10 +76,12 @@ function Footer() {
             <div className="col-md-3">
               <div className="footer-logo mb-4">
                 <Link to="#">
-                  <img className="img-fluid" src={BraboLogoLight} alt="Brabo logo" width="160" height="32" />
+                  <img className="img-fluid logo-dark" src={BraboLogoDark} alt="Brabo logo" width="160" height="32" />
+                  <img className="img-fluid logo-light" src={BraboLogoLight} alt="Brabo logo" width="160" height="32" />
                 </Link>
               </div>
               <p className="mb-4">Get In Touch</p>
+              {/* <div id="hubspot-form-container"></div> */}
               <div className="gradient-border mb-3">
                 <input type="phone number" name="Phone number" className="form-control" placeholder="Phone Number" />
               </div>

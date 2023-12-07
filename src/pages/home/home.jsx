@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react";
-import BraboLogo from '../../assets/images/logo_light.png';
+import BraboDark from '../../assets/images/logo_dark.png';
+import BraboLight from '../../assets/images/logo_light.png';
 //import Video from '../../assets/video/banner-video.mp4';
 import CaseStudy from '../../assets/images/case-study-img.png';
 import HowBrabo from '../../assets/images/how-brabo-img.png';
@@ -37,6 +38,18 @@ function Home() {
 			"<span class='custom-prev'><i class='fa-solid fa-angle-left'></i></span>",
 			"<span class='custom-next'><i class='fa-solid fa-angle-right'></i></span>"
 		  ],
+		responsiveClass:true,
+		responsive: {
+			  0: {
+				  items: 1,
+			  },
+			  767: {
+				  items: 2,
+			  },
+			  992: {
+				  items: 3,
+			  },
+		  },
 	  };
 	const options1 = {
 		items: 3,
@@ -46,17 +59,28 @@ function Home() {
 		center:true,
 		margin: 10,
 		dots:false,
-		nav: false,		
+		nav: false,
 	}; 
 	const options2 = {
 		items: 3,
 		autoplay: true,
 		autoplayTimeout: 3000,
 		loop: true,
-		center:true,
 		margin: 20,
 		dots:true,
-		nav: false,		
+		nav: false,
+		responsiveClass:true,
+		responsive: {
+			0: {
+				items: 1,
+			},
+			767: {
+				items: 2,
+			},
+			992: {
+				items: 3,
+			},
+		},	
 	}; 
 
 	const { slug } = useParams();
@@ -97,7 +121,8 @@ function Home() {
 				</div>
 				<div className="col-md-6">
 					<Link to="#" className="banner-logo">
-						<img className="img-fluid" src={BraboLogo} alt="Brabo logo" width="456" height="80" />
+						<img className="img-fluid className='logo-dark'" src={BraboDark} alt="Brabo logo" width="456" height="80" />
+						<img className="img-fluid className='logo-light'" src={BraboLight} alt="Brabo logo" width="456" height="80" />
 					</Link>
 					<br />
 
@@ -180,7 +205,7 @@ function Home() {
 	<section className="col-md-12 business-value text-center">
 		<div className="container">
 			<div className="row">
-				<div className="col-md-6 offset-md-3">
+				<div className="col-lg-6 offset-lg-3 col-md-12">
 					<h2>Unlocking <br /> Business Value</h2>
 					<p className="mb-5">From visibility to actionable insights across your manufacturing operations. Leverage  Brabo Apps to achieve unparalleled production efficiency,
 						shine production quality and surpass your sustainability targets.</p>
@@ -255,46 +280,56 @@ function Home() {
 					</svg>
 				</div>
 			</div>
-			<OwlCarousel className='owl-theme' {...options2}>
-			{Array.isArray(serviceData) &&
-        		serviceData.map((item) => (
-				<div className='item' key={item.id}>
-					<div className="">
-						<img className="img-fluid" src={item.featured_image} alt={item.title.rendered} width="423" height="242"/>
-					</div>
-					<div className="business-value-slider gradient-border">							
-						<div className="content">								
-							<div className="mt-3">
-								<h3>{item.title.rendered}</h3>
-								<p className="mb-5" dangerouslySetInnerHTML={{ __html: item.excerpt.rendered || '' }}></p>
-								<Link to="/service/:slug" className="btn btn-outline-primary btn-sm btn-orange">Learn More</Link>
-							</div>
-						</div>
-					</div>
-				</div>
-			))}
-			</OwlCarousel>
 		</div>
 	</section>
 	{/* <!-- Business Value --> */}
+
+	{/* Services */}
+	<section className="col-md-12 services">
+		<div className="container">
+			<div className="row">
+				<OwlCarousel className='owl-theme' {...options2}>
+				{Array.isArray(serviceData) &&
+					serviceData.map((item) => (
+					<div className='item' key={item.id}>
+						<div className="">
+							<img className="img-fluid" src={item.featured_image} alt={item.title.rendered} width="423" height="242"/>
+						</div>
+						<div className="business-value-slider gradient-border">							
+							<div className="content">								
+								<div className="mt-3">
+									<h3>{item.title.rendered}</h3>
+									<div dangerouslySetInnerHTML={{ __html: item.excerpt.rendered || '' }}></div>
+									<Link to="/service/:slug" className="btn btn-outline-primary btn-sm btn-orange">Learn More</Link>
+								</div>
+							</div>
+						</div>
+					</div>
+				))}
+				</OwlCarousel>
+			</div>
+		</div>
+	</section>
+	{/* Services */}
 
 	
   {/* <!-- Case Study --> */}
 	<section className="col-md-12 case-study">
 		<div className="container">
-			<div className="row flex-row-reverse align-items-center">
-				<div className="col-md-6">
-					<div className="case-study-img text-center">
-						<img className="img-fluid" src={CaseStudy} alt="case-study" width="529" height="400"/>
-					</div>
-				</div>
-				<div className="col-md-6">
+			<div className="row align-items-center">
+				<div className="col-lg-6">
 					<div className="contant">
 						<h2 className="mb-4">UPL Implementation Case Study</h2>
 						<p className="mb-5">With Use cases covered and business value delivered.</p>
 						<span>Praesent id sollicitudin diam, mattis dictum enim.</span>
 						<Link to="#" className="btn btn-primary">Read more</Link>
 					</div>
+				</div>
+				<div className="col-lg-6">
+					<div className="case-study-img text-center">
+						<img className="img-fluid" src={CaseStudy} alt="case-study" width="529" height="400"/>
+					</div>
+					<Link to="#" className="btn btn-primary hide-button mt-5">Read more</Link>
 				</div>
 			</div>
 		</div>
@@ -305,17 +340,18 @@ function Home() {
 	<section className="col-md-12 how-brabo">
 		<div className="container-fluid">
 			<div className="row flex-row-reverse align-items-center">				
-				<div className="col-md-5 offset-md-1">
+				<div className="col-lg-5 offset-lg-1 col-md-12">
 					<div className="contant">
 						<h2 className="mb-4">How Brabo is Leveraging the power of Hyperscalers like AWS ?</h2>
 						<span>Praesent id sollicitudin diam, mattis dictum enim. </span>
 						<Link to="#" className="btn btn-primary">Read more</Link>
 					</div>
 				</div>
-				<div className="col-md-6">
+				<div className="col-lg-6">
 					<div className="how-brabo-img text-center">
 						<img className="img-fluid" src={HowBrabo} alt="how brabo" width="537" height="371"/>
 					</div>
+					<Link to="#" className="btn btn-primary hide-button mt-5">Read more</Link>
 				</div>
 			</div>
 		</div>
@@ -325,19 +361,20 @@ function Home() {
 	{/* <!-- NOCIL Case Study --> */}
 	<section className="col-md-12 case-study">
 		<div className="container">
-			<div className="row flex-row-reverse align-items-center">
-				<div className="col-md-6">
-					<div className="case-study-img text-center">
-						<img className="img-fluid" src={CaseStudy} alt="case-study" width="529" height="400"/>
-					</div>
-				</div>
-				<div className="col-md-6">
+			<div className="row align-items-center">
+				<div className="col-lg-6">
 					<div className="contant">
 						<h2 className="mb-4">NOCIL Case Study</h2>
 						<p className="mb-5">With Use cases covered and business value delivered.</p>
 						<span>Praesent id sollicitudin diam, mattis dictum enim.</span>
 						<Link to="#" className="btn btn-primary">Read more</Link>
 					</div>
+				</div>
+				<div className="col-lg-6">
+					<div className="case-study-img text-center">
+						<img className="img-fluid" src={CaseStudy} alt="case-study" width="529" height="400"/>
+					</div>
+					<Link to="#" className="btn btn-primary hide-button mt-5">Read more</Link>
 				</div>
 			</div>
 		</div>
@@ -388,7 +425,7 @@ function Home() {
 	<section className="col-md-12 Platform-Affordability text-center">
 		<div className="container">
 			<div className="row">
-				<div className="col-md-6 offset-md-3">
+				<div className="col-lg-6 offset-lg-3 col-md-12">
 					<h2>Platform Affordability</h2>
 					<p className="mb-4">ROI first, Scale as you grow, NO CAPEX model, Business Value</p>
 					<p className="mb-5">At Solilever, we believe in the power of light to transform and elevate everyday experiences. With a commitment to innovation and sustainability, we have crafted a remarkable range of lighting solutions that bring brilliance into your life.</p>
@@ -471,7 +508,7 @@ function Home() {
 	<section className="col-md-12 help-us">
 		<div className="container">
 			<div className="row justify-content-center">
-				<div className="col-md-10 text-center">
+				<div className="col-lg-10 col-md-12 text-center">
 					<h2 className="mb-5">Help us solve data problems across industries</h2>
 					<div className="row">
 						<div className="col-md-4">
@@ -515,7 +552,7 @@ function Home() {
 	<section className="col-md-12 Stay-connected">
 		<div className="container">
 			<div className="row justify-content-center">
-				<div className="col-md-10">
+				<div className="col-lg-10 col-md-12">
 					<h2 className="mb-4 text-center">Stay Connected, Stay Informed, Stay Ahead!</h2>
 					<p className="text-center">ROI first, Scale as you grow, NO CAPEX </p>
 					<span className="mb-5 text-center d-block">Illuminate your world with Solilever. Light the way to a brighter, more sustainable future.</span>					
