@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from "react";
 import BraboDark from '../../assets/images/logo_dark.png';
 import BraboLight from '../../assets/images/logo_light.png';
-//import Video from '../../assets/video/banner-video.mp4';
 import CaseStudy from '../../assets/images/case-study-img.png';
 import HowBrabo from '../../assets/images/how-brabo-img.png';
 import DataUnlock from '../../assets/images/unlock-data-img.png';
@@ -10,12 +9,6 @@ import SunnyLandscape from '../../assets/images/sunny-landscape.png'
 import ThirdRendering from '../../assets/images/3d-rendering.png';
 import EngineerUse from '../../assets/images/engineer-use.png';
 import { Link } from "react-router-dom";
-// import Sustainability from '../../assets/images/Energy-Monitoring-Carousel-screen-2.png';
-// import RemoteManOps from '../../assets/images/Remote-ManOps-Carousel-screen-2.png';
-// import YieldOptimisation from '../../assets/images/Yield-optimisation-Carousel-screen-2.png';
-// import ProcessAnalytics from '../../assets/images/Process-Analytics.png';
-// import AssetAnalytics from '../../assets/images/Asset-Analytics.png';
-// import PredictiveMaintenance from '../../assets/images/Predictive-Maintenance.png'
 
 
 import OwlCarousel from 'react-owl-carousel';
@@ -108,7 +101,7 @@ function Home() {
   {/* Banner Start */}
 	<div className="col-md-12 main_banner">
 		<div className="container">
-			<div className="row flex-row-reverse align-items-end banner-gap">
+			<div className="row flex-row-reverse align-items-center banner-gap">
 				<div className="col-md-6">
 					<OwlCarousel className='owl-theme' {...options1}>
 					{Array.isArray(serviceData) &&
@@ -119,10 +112,10 @@ function Home() {
 					))}
 					</OwlCarousel>
 				</div>
-				<div className="col-md-6">
+				<div className="col-md-6 text-center text-md-start">
 					<Link to="#" className="banner-logo">
-						<img className="img-fluid className='logo-dark'" src={BraboDark} alt="Brabo logo" width="456" height="80" />
-						<img className="img-fluid className='logo-light'" src={BraboLight} alt="Brabo logo" width="456" height="80" />
+						<img className="img-fluid logo-dark" src={BraboDark} alt="Brabo logo" width="456" height="80" />
+						<img className="img-fluid logo-light" src={BraboLight} alt="Brabo logo" width="456" height="80" />
 					</Link>
 					<br />
 
@@ -292,15 +285,17 @@ function Home() {
 				{Array.isArray(serviceData) &&
 					serviceData.map((item) => (
 					<div className='item' key={item.id}>
-						<div className="">
-							<img className="img-fluid" src={item.featured_image} alt={item.title.rendered} width="423" height="242"/>
-						</div>
-						<div className="business-value-slider gradient-border">							
-							<div className="content">								
-								<div className="mt-3">
-									<h3>{item.title.rendered}</h3>
-									<div dangerouslySetInnerHTML={{ __html: item.excerpt.rendered || '' }}></div>
-									<Link to="/service/:slug" className="btn btn-outline-primary btn-sm btn-orange">Learn More</Link>
+						<div className="slider-item">
+							<div className="">
+								<img className="img-fluid" src={item.featured_image} alt={item.title.rendered} width="423" height="242"/>
+							</div>
+							<div className="business-value-slider gradient-border">							
+								<div className="content">								
+									<div className="mt-3">
+										<h3>{item.title.rendered}</h3>
+										<div dangerouslySetInnerHTML={{ __html: item.excerpt.rendered || '' }}></div>
+										<Link to="/service/:slug" className="btn btn-outline-primary btn-sm btn-orange">Learn More</Link>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -389,7 +384,7 @@ function Home() {
 					<h2>Unlock Your Data's Potential</h2>
 					<p className="mb-5"> The Ultimate Digital Technology Stack for Data- Driven Success</p>
 					<div className="unlock-data-img text-center">
-						<img className="img-fluid" src={DataUnlock} alt="how brabo" width="1777" height="951"/>
+						<img className="img-fluid" src={DataUnlock} alt="how brabo" width="1070" height="640"/>
 					</div>
 					<Link to="#" className="btn btn-primary">Learn about the Modern Tech Stack </Link>
 				</div>

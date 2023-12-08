@@ -23,6 +23,21 @@ const[data, setData] = useState([]);
     fetchData();
   }, []);
 
+  const [darkMode, setDarkMode] = useState(true);
+
+  useEffect(() => {
+    // Toggle body classes based on darkMode state
+    const body = document.querySelector('body');
+    if (darkMode) {
+      body.classList.add('dark'); // Replace 'dark-theme' with your dark mode class
+    } else {
+      body.classList.remove('dark'); // Replace 'dark-theme' with your dark mode class
+    }
+  }, [darkMode]);
+  const toggleMode = () => {
+    setDarkMode(prevMode => !prevMode);
+  };
+
   return (
     <div>
       <header>
@@ -52,6 +67,15 @@ const[data, setData] = useState([]);
             </div>
             <div className="nav-button">
               <Link to="/schedule-demo" className="btn btn-primary">Schedule a Demo</Link>
+              <div class="dark-light">
+                  <label class="switch btn-color-mode-switch">
+                      <input type="checkbox" name="color_mode" id="color_mode" value="1" checked={darkMode} onClick={toggleMode} />
+                      <label for="color_mode" class="btn-color-mode-switch-inner">
+                        <i class="fa-solid fa-moon"></i>  
+                        <i class="fa fa-sun"></i>                        
+                      </label>
+                  </label>
+              </div>
             </div>
           </nav>
         </div>

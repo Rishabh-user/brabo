@@ -9,7 +9,7 @@ import { BASE_URL } from "../../api";
 
 function OurPeople() {
   const [show, setShow] = useState(false);
-  const [setSelectedId] = useState(null);
+  const [selectedId, setSelectedId] = useState(null);
     const [selectedData, setSelectedData] = useState({});
    
   const handleShow = async (id) => {
@@ -102,7 +102,7 @@ const handleClose = () => {
                                         <i className="fa-brands fa-linkedin"></i>
                                     </Link>
                                     ) : (
-                                        <span>Loading</span>
+                                        <span></span>
                                     )}
                             </Modal.Body>
                         </Modal>

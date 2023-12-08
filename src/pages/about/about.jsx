@@ -102,7 +102,7 @@ function AboutUs() {
                 <div className="content">
                   <h2 className="mb-5">{aboutData.acf.heading3}</h2>
                   <p className="mb-5 sub-heading">{aboutData.acf.subheading3}</p>
-                  <p className="m-0 text-light">{aboutData.acf.description3}</p>
+                  <p className="m-0">{aboutData.acf.description3}</p>
                   <p className="orange-text mb-5">All you need to do is, Reach Out.</p>
                   <Link to="#" className="btn btn-primary">Contact Us</Link>
                 </div>

@@ -72,30 +72,14 @@ function Footer() {
       {/* <!-- footer --> */}
       <footer>
         <div className="container">
-          <div className="row">
-            <div className="col-md-3">
-              <div className="footer-logo mb-4">
-                <Link to="#">
-                  <img className="img-fluid logo-dark" src={BraboLogoDark} alt="Brabo logo" width="160" height="32" />
-                  <img className="img-fluid logo-light" src={BraboLogoLight} alt="Brabo logo" width="160" height="32" />
-                </Link>
-              </div>
-              <p className="mb-4">Get In Touch</p>
-              {/* <div id="hubspot-form-container"></div> */}
-              <div className="gradient-border mb-3">
-                <input type="phone number" name="Phone number" className="form-control" placeholder="Phone Number" />
-              </div>
-              <div className="gradient-border mb-3">		
-                <input type="email" name="email" className="form-control" placeholder="E-mail address" />
-              </div>
-              <div className="gradient-border mb-3">		
-                <input type="address" name="address" className="form-control" placeholder="Address" />				
-              </div>
-              <div className="footer-submit pt-5">
-                <button className="btn btn-primary">Submit</button>
-              </div>
-            </div>
-            <div className="col-md-7 offset-md-1">
+          <div className="footer-logo mb-4 mobile-logo">
+              <Link to="#">
+                <img className="img-fluid logo-dark" src={BraboLogoDark} alt="Brabo logo" width="160" height="32" />
+                <img className="img-fluid logo-light" src={BraboLogoLight} alt="Brabo logo" width="160" height="32" />
+              </Link>
+          </div>
+          <div className="row flex-row-reverse justify-content-between">            
+            <div className="col-lg-8 offset-md-1">
               <div className="links">
               
                 <ul>                  
@@ -140,6 +124,28 @@ function Footer() {
                        <Link to="/become-partner" >Become a Partner</Link>
                     </li>
                 </ul>
+              </div>
+            </div>
+            <div className="col-lg-3 mt-4 mt-md-0">
+              <div className="footer-logo mb-4 desktop-logo">
+                <Link to="#">
+                  <img className="img-fluid logo-dark" src={BraboLogoDark} alt="Brabo logo" width="160" height="32" />
+                  <img className="img-fluid logo-light" src={BraboLogoLight} alt="Brabo logo" width="160" height="32" />
+                </Link>
+              </div>
+              <p className="mb-4">Get In Touch</p>
+              {/* <div id="hubspot-form-container"></div> */}
+              <div className="gradient-border mb-3">
+                <input type="phone number" name="Phone number" className="form-control" placeholder="Phone Number" />
+              </div>
+              <div className="gradient-border mb-3">		
+                <input type="email" name="email" className="form-control" placeholder="E-mail address" />
+              </div>
+              <div className="gradient-border mb-3">		
+                <input type="address" name="address" className="form-control" placeholder="Address" />				
+              </div>
+              <div className="footer-submit pt-5">
+                <button className="btn btn-primary">Submit</button>
               </div>
             </div>
           </div>
