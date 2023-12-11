@@ -13,6 +13,7 @@ const GetinTouch = React.lazy(() => import('./pages/contact-us/get-in-touch'));
 const PrivacyPolicy = React.lazy(() => import('./pages/privacy-policy/privacy-policy'));
 const TermsConditions = React.lazy(() => import('./pages/terms-conditions/terms-conditions'));
 const Blog = React.lazy(() => import('./pages/resources/blog/blog'));
+const BlogDetail = React.lazy(() => import('./pages/resources/blog/blog-detail/blog-detail'));
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
               <Route path="/privacy-policy" element={<PrivacyPolicy />} />
               <Route path="/terms-condition" element={<TermsConditions />} />
               <Route path='/resources/blog' element={<Blog />}  />
+              <Route path='/resources/blog-detail' element={<BlogDetail />}  />
               <Route path="*" element={<NotFound />} />
             </Route>
           </Routes>

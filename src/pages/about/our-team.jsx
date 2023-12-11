@@ -1,55 +1,56 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useCallback} from "react";
 import { Link } from "react-router-dom";
-// import Profile1 from '../../assets/images/profile-1.png';
-// import Profile2 from '../../assets/images/profile-2.png';
-// import Profile3 from '../../assets/images/profile-3.png';
 
 import { Modal } from "react-bootstrap";
 import { BASE_URL } from "../../api";
 
 function OurPeople() {
   const [show, setShow] = useState(false);
-  const [selectedId, setSelectedId] = useState(null);
-    const [selectedData, setSelectedData] = useState({});
-   
+  const [selectedData, setSelectedData] = useState({});   
   const handleShow = async (id) => {
-    setSelectedId(id); // Set the selected ID
-    setShow(true); // Show the modal
-    
-    try {
-        const response = await fetch(`${BASE_URL}/teams/${id}`); // Fetch data based on the selected ID
-        const data = await response.json();
-        setSelectedData(data); // Set the fetched data in state
-    } catch (error) {
-        console.error('Error fetching data:', error);
-    }
-};
-const handleClose = () => {
-    setShow(false);
-    setSelectedId(null);
-    
-    setSelectedData({});
-};
-  const[data, setData] = useState([]);
-  //const[modalData, setModalDataById] = useState([]);
-    useEffect(() => {
-        const fetchData = async () => {
+        setShow(true); // Show the modal        
         try {
-            const response = await fetch(`${BASE_URL}/teams`);
-            const data = await response.json();           
-
-            console.log('API Data:', data);
-            setData(data);
-
-            
-            
+            const response = await fetch(`${BASE_URL}/teams/${id}`); // Fetch data based on the selected ID
+            const data = await response.json();
+            setSelectedData(data); 
         } catch (error) {
             console.error('Error fetching data:', error);
         }
-        };
-        fetchData();
-    }, []);
+    };
+    const handleClose = () => {
+        setShow(false);        
+        setSelectedData({});
+    };
+    const [teamData, setTeamData] = useState([]);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [loading, setLoading] = useState(false);
     
+    const fetchData = useCallback(async () => {
+        try {
+        setLoading(true);
+        const response = await fetch(`${BASE_URL}/teams?page=${currentPage}`);
+        if (response.ok) {
+            const data = await response.json();
+            setTeamData((prevData) => {
+                const filteredData = data.filter((item) => !prevData.some((existingItem) => existingItem.id === item.id));
+                return [...prevData, ...filteredData];
+            });
+        } else {
+            throw new Error('Failed to fetch data');
+        }
+        } catch (error) {
+        console.error('Error fetching data:', error);
+        } finally {
+        setLoading(false);
+        }
+    }, [currentPage]);
+    useEffect(() => {
+        fetchData();
+    }, [currentPage]);
+
+    const loadMore = () => {
+        setCurrentPage(currentPage + 1);
+    };
 
     return (
         <div>
@@ -61,7 +62,7 @@ const handleClose = () => {
                     <div className="row justify-content-center">
                     <div className="col-md-10">
                         <div className="row justify-content-center">
-                        {data.map( (teams, index) => (
+                        {teamData.map( (teams, index) => (
                             <div className="col-md-3 mb-5" key={index}> 
                                 <div className="gradient-border profile-box h-100"  onClick={() => handleShow(teams.id)}>
                                     <div className="content text-center">
@@ -109,12 +110,13 @@ const handleClose = () => {
                         </div> 
                     </div>
                     </div>
-                    <div className="text-center mt-5 mb-5">
-                        <Link to="#">Load More <br />
+                    <div className="text-center mt-5 mb-5"> 
+                        <button type="button" onClick={loadMore} className="load-more-btn">Load More <br />
                             <span className="gradient-border load-icon">
                                 <span className="content p-3"><i className="fa fa-angle-down ms-1"></i></span>
                             </span>
-                        </Link>
+                        </button>
+                      
                     </div>
                 </div>
             </section>

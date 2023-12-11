@@ -315,13 +315,13 @@ function Blog () {
                                     </div>
                                     <div className="form-check mb-3">
                                     <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
-                                    <label className="form-check-label" for="flexCheckChecked">
+                                    <label className="form-check-label" htmlFor="flexCheckChecked">
                                         By clicking on SUBMIT, you acknowledge having read our Privacy Policy and to receive communications with regards to Solulever's products and services. I agree to the data submitted being stored andused to send me email updates from Brabo*
                                     </label>
                                     </div>
                                     <div className="form-check">
                                     <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
-                                    <label className="form-check-label" for="flexCheckChecked">
+                                    <label className="form-check-label" htmlFor="flexCheckChecked">
                                         I agree to receive communications regarding Solulever's products, services, and events. I can unsubscribe at any time. View <Link to="#">privacy policy.</Link> *By clicking Submit below, you consent to allow Solulever to store and process the personal information submitted above to provide you with the content requested.
                                     </label>
                                     </div>

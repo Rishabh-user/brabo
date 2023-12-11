@@ -432,9 +432,10 @@ line-height: normal;letter-spacing: 17.2px;}
 .team-popup figure { flex: 0 280px; max-width: 280px;}
 .team-popup figcaption{flex: 1;}
 .team-popup figcaption h4{color: var(--orange);}
-.social-popup {  display: flex;justify-content: flex-end ;color: var(--bs-primary);  font-size: 30px;}
+.social-popup {  display: flex;justify-content: flex-end ;color: var(--bs-primary) !important;  font-size: 30px;}
 .dark .btn-close{filter: invert(1);opacity: 1;}
 .modal-backdrop{background-color: rgb(31 32 35 / 60%);}
+.load-more-btn{background-color: transparent;border: none;color: var(--primary);}
 /********************************************profiles page css******************************************/
 
 /* Privacy policy */
@@ -522,8 +523,8 @@ line-height: normal;letter-spacing: 17.2px;}
 .Blog-view .stay-Connected .Email-field .btn {z-index: 99; min-width:180px; font-size: 18px; }
 .Blog-view .stay-Connected .Email-field label { font-size: 16px; }
 .Blog-view .stay-Connected .form-check input { padding: 0; border: 1px solid #A7A7A7;}
-.Blog-view .stay-Connected .form-check label { color: #A7A7A7; font-size: 16px; font-weight: 400; line-height: 26px; }
-.Blog-view .stay-Connected .form-check label a {color: #A7A7A7; }
+.Blog-view .stay-Connected .form-check label { opacity: .7; font-size: 16px; font-weight: 400; line-height: 26px; }
+.Blog-view .stay-Connected .form-check label a {text-decoration: underline; }
 /*Blog view*/
 
 /*Blog links*/

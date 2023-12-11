@@ -67,12 +67,12 @@ const[data, setData] = useState([]);
             </div>
             <div className="nav-button">
               <Link to="/schedule-demo" className="btn btn-primary">Schedule a Demo</Link>
-              <div class="dark-light">
-                  <label class="switch btn-color-mode-switch">
-                      <input type="checkbox" name="color_mode" id="color_mode" value="1" checked={darkMode} onClick={toggleMode} />
-                      <label for="color_mode" class="btn-color-mode-switch-inner">
-                        <i class="fa-solid fa-moon"></i>  
-                        <i class="fa fa-sun"></i>                        
+              <div className="dark-light">
+                  <label className="switch btn-color-mode-switch">
+                      <input type="checkbox" name="color_mode" id="color_mode" value="1" defaultChecked={darkMode} onClick={toggleMode} />
+                      <label htmlFor="color_mode" className="btn-color-mode-switch-inner">
+                        <i className="fa-solid fa-moon"></i>  
+                        <i className="fa fa-sun"></i>                        
                       </label>
                   </label>
               </div>
