@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import LogoDark from '../assets/images/logo_dark.png';
 import LogoLight from '../assets/images/logo.png';
 import { BASE_URL } from '../api';
-
+import LogoLightMobile from '../assets/images/logo-mobile.png';
 
 function Header() {
 const[data, setData] = useState([]);
@@ -44,8 +44,15 @@ const[data, setData] = useState([]);
         <div className="container">
           <nav className="navigation">
             <div className="logo">
-               <Link to="/"><img className='logo-dark' src={LogoDark} alt="Brabo Logo" width={180} height={35} /></Link>
-               <Link to="/"><img className='logo-light' src={LogoLight} alt="Brabo Logo" width={42} height={32} /></Link>
+               <Link to="/">
+                <img className='logo-dark desktop-logo' src={LogoDark} alt="Brabo Logo" width={180} height={35} />
+                </Link>
+               <Link to="/">
+                  <img className='logo-light' src={LogoLight} alt="Brabo Logo" width={42} height={32} />                  
+                </Link>
+               <Link to="/">
+                  <img className='logo-dark mobile-logo' src={LogoLightMobile} alt="Brabo Logo" width={42} height={32} />
+                </Link>
             </div>
             <div className="nav-link">
               <ul className="main-navigation">
@@ -67,14 +74,25 @@ const[data, setData] = useState([]);
             </div>
             <div className="nav-button">
               <Link to="/schedule-demo" className="btn btn-primary">Schedule a Demo</Link>
-              <div className="dark-light">
-                  <label className="switch btn-color-mode-switch">
-                      <input type="checkbox" name="color_mode" id="color_mode" value="1" defaultChecked={darkMode} onClick={toggleMode} />
-                      <label htmlFor="color_mode" className="btn-color-mode-switch-inner">
-                        <i className="fa-solid fa-moon"></i>  
-                        <i className="fa fa-sun"></i>                        
+              <div className='text-end'>
+                  <div className="dark-light">
+                      <label className="switch btn-color-mode-switch">
+                          <input type="checkbox" name="color_mode" id="color_mode" value="1" defaultChecked={darkMode} onClick={toggleMode} />
+                          <label htmlFor="color_mode" className="btn-color-mode-switch-inner">
+                            <i className="fa-solid fa-moon"></i>  
+                            <i className="fa fa-sun"></i>                        
+                          </label>
                       </label>
-                  </label>
+                  </div>
+                  <div className='language-swichter'>
+                    <i className="fa-solid fa-globe me-2"></i>
+                    <select name="" id="">
+                      <option value="1">EN</option>
+                      <option value="2">SP</option>
+                      <option value="3">FR</option>
+                      <option value="4">GR</option>
+                    </select>
+                  </div>
               </div>
             </div>
           </nav>

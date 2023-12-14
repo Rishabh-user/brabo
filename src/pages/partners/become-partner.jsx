@@ -14,8 +14,8 @@ function BecomePartner () {
                             <div className="row justify-content-center">
                                 <div className="col-md-7">
                                     <div className="contant">						
-                                        <p className="mb-4 text-light">We believe in simplified integrations. That's why we strive to bridge knowledge and departments, software and solutions, technologies and organizations into one unified approach.</p>
-                                        <p className="mb-5 text-light">By partnering with us, you'll gain access to a powerful network of experts who can help you navigate the complexities of Industry 4.0.</p>
+                                        <p className="mb-4">We believe in simplified integrations. That's why we strive to bridge knowledge and departments, software and solutions, technologies and organizations into one unified approach.</p>
+                                        <p className="mb-5">By partnering with us, you'll gain access to a powerful network of experts who can help you navigate the complexities of Industry 4.0.</p>
                                     </div>
                                 </div>
                                 <div className="col-md-9">
@@ -32,7 +32,7 @@ function BecomePartner () {
             <section className="col-md-12 partners business-value">
                 <div className="container">
                     <div className="row justify-content-center">				
-                        <div className="col-md-4 mb-5">
+                        <div className="col-lg-4 col-md-6 mb-5">
                             <div className="gradient-border partners-box h-100">
                                 <div className="content text-center">
                                     <div className="box-img text-center mb-5">
@@ -43,7 +43,7 @@ function BecomePartner () {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-md-4 mb-5">
+                        <div className="col-lg-4 col-md-6 mb-5">
                             <div className="gradient-border partners-box h-100">
                                 <div className="content text-center">
                                     <div className="box-img text-center mb-5">
@@ -54,7 +54,7 @@ function BecomePartner () {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-md-4 mb-5">
+                        <div className="col-lg-4 col-md-6 mb-5">
                             <div className="gradient-border partners-box h-100">
                                 <div className="content text-center">
                                     <div className="box-img text-center mb-5">

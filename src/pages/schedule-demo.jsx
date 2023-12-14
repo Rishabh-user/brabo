@@ -8,19 +8,19 @@ function ScheduleDemo () {
             {/* <!-- Banner --> */}
             <section className="col-md-12 Schedule-Demo">
                 <div className="container">
-                    <div className="row flex-row-reverse align-items-center">
-                        <div className="col-md-6">
-                            <div className="Schedule-Demo-img">
-                                <img className="img-fluid" src={VideoImg} alt="case-study" width="529" height="400" />
-                            </div>
-                        </div>
-                        <div className="col-md-6">
+                    <div className="row align-items-center">
+                        <div className="col-lg-6">
                             <div className="contant">
-                                <h2 className="mb-5">Schedule a Demo</h2>						
+                                <h2 className="mb-lg-5 mb-md-3">Schedule a Demo</h2>						
                                 <p className="mb-4">See our Digital Manufacturing Platform and Solutions live in action with a personalized demo from our experts.</p>
                                 <p className="mb-5 sub-heading">Elevate your Digital Manufacturing transformation programs.</p>
                             </div>
                         </div>
+                        <div className="col-lg-6">
+                            <div className="Schedule-Demo-img">
+                                <img className="img-fluid" src={VideoImg} alt="case-study" width="529" height="400" />
+                            </div>
+                        </div>                        
                     </div>
                 </div>
             </section>
@@ -29,7 +29,7 @@ function ScheduleDemo () {
             <section className="col-md-12 give-live-demo business-value">
                 <div className="container">
                     <div className="row justify-content-center">
-                        <div className="col-md-9">
+                        <div className="col-lg-9">
                             <h2 className="mb-5 text-center">Give a live demo</h2>				
                             <div className="row">
                                 <div className="col-md-12">

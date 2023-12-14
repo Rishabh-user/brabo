@@ -12,7 +12,7 @@
 .btn{ min-width:265px; font-size: 20px; font-weight: 600; padding-top: 14px; padding-bottom: 14px;transition: all .5s ease-in;  border-radius: 12px}
 .btn:hover {background: linear-gradient(#f24822); background-color: #f24822; min-width: 280px;transition: all .5s ease-in;border-color: #f24822
 }
-.btn.btn-sm { min-width: inherit;padding: 5px 16px; font-size: 16px; font-weight: 700;line-height: 26px;}
+.btn.btn-sm { min-width: inherit;padding: 5px 16px; font-size: 16px; font-weight: 700;}
 .btn-orange{border:2px solid var(--orange); box-shadow: none;color: var(--black);}
 .dark .btn-orange{color: var(--white);}
 .dark .btn{ box-shadow: 6px 6px 18.670000076293945px 0px rgba(0, 0, 0, 0.7),-6.21999979019165px -6.21999979019165px 18.670000076293945px 0px rgba(59, 68, 81, 0.7); }
@@ -21,14 +21,17 @@
 .dark .border-blue{color: var(--white);}
 .dark .form-control{color: var(--white);}
 .form-control:not(textarea){height: 44px;padding: 30px;}
+.form-control::placeholder{font-size: 18px;font-weight: 400;}
 .form-control:focus, .form-check-input:focus{box-shadow: none;outline: none;}
 .dark .form-control:focus, .dark .form-check-input:focus{color: var(--white);background-color: transparent;}
 section{ padding-top: var(--section-gap); padding-bottom: var(--section-gap); }
 footer{ padding-top: var(--section-gap);  }
 h1, h2, h3, h4, h5, h6{font-family: 'Chakra Petch', sans-serif;}
 
-body{ font-size: 20px; font-weight: 400; line-height:normal; background-color: var(--light); color:var(--black); }
+h2{font-size: 64px;font-weight: 700;line-height: 70px;}
 
+body{ font-size: 18px; font-weight: 400; line-height:normal; background-color: var(--light); color:var(--black); }
+p{line-height: 27px;}
 .logo-light{ display: none;}
 .dark{ background-color:var(--dark); color:var(--white); }
 .dark .logo-dark{ display: none; }
@@ -65,6 +68,13 @@ a{text-decoration: none;color: var(--black);}
     z-index: 9;
     position: relative;
 }
+.form-control {
+    background-color: transparent;
+    display: flex;
+    text-align: left;
+    z-index: 9;
+    border: none;
+}
 /* Header */
 header{background-color: var(--white); position: relative; padding-top: 20px;padding-bottom: 20px;border-bottom: 1px solid rgba(255, 255, 255, 0.20); box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.10);}
 .dark header{ background-color: var(--dark); box-shadow: none;}
@@ -85,9 +95,11 @@ header{background-color: var(--white); position: relative; padding-top: 20px;pad
 .nav-link ul li .subMenu li a{white-space: nowrap;display: block;margin: 1rem;opacity: .7;font-size: 16px;}
 .nav-link ul li .subMenu li a:hover{opacity: 1;}
 .nav-button .btn:hover{min-width: 265px;}
+.mobile-logo{display: none;}
 /* Header */
 
 /*Banner*/
+.home {font-size: 20px;font-weight: 400;}
 .main_banner{ padding-top: calc(2 * var(--section-gap)); padding-bottom: calc(2 * var(--section-gap)); background-color: var(--white);}
 .dark .main_banner{ background-color: var(--dark);}
 .main_banner video{ mix-blend-mode: lighten; }
@@ -101,13 +113,13 @@ header{background-color: var(--white); position: relative; padding-top: 20px;pad
 .main_banner .owl-carousel.owl-drag .owl-item.center{ transform: scale(2.2); z-index: 99;}
 .main_banner .owl-carousel.owl-drag .owl-item.active .item{opacity: .3;}
 .main_banner .owl-carousel.owl-drag .owl-item.active.center .item{opacity: 1;}
-.animation-line .line{ position:absolute; z-index:-1 }
-.animation-line .line1{ top:20%; }
+.animation-line .line{ position:absolute; z-index:9 }
+.animation-line .line1{ top:-20%; }
 .animation-line .line2{ bottom:-10%; left:30%; }
-.animation-line .line3{ top:-10%; right:0%; }
-.animation-line .line4{ top:-10%; left:30%; }
-.animation-line .line5{ top:60%; right:0%; }
-.animation-line .line6{ bottom:-10%; right:20%; display:none; }
+.animation-line .line3{ top:-40%; right:0%; }
+.animation-line .line4{ top:-40%; left:30%; }
+.animation-line .line5{ top:80%; right:0%; }
+.animation-line .line6{ bottom:-55%; right:10%;}
 .dark .logo-dark{display: none;}
 .logo-dark{display: block;}
 
@@ -123,8 +135,8 @@ header{background-color: var(--white); position: relative; padding-top: 20px;pad
 .business-value .gredient-line .line2{ top:18%; left:6%; }
 .business-value .gredient-line .line3{ bottom:-10%; left: 20% }
 .business-value .gredient-line .line4{ top:-12%; right:5% }
-.business-value .gredient-line .line5{ top:18%; right:5% }
-.business-value .gredient-line .line6{ bottom:50%; right:7% }
+.business-value .gredient-line .line5{ top:50%; right:5% }
+.business-value .gredient-line .line6{ bottom:-25%; right:10% }
 /*business-value*/
 
 /* services */
@@ -207,7 +219,7 @@ header{background-color: var(--white); position: relative; padding-top: 20px;pad
 /* .Stay-connected .gradient-border { text-decoration: none; position: relative; background: rgb(226,89,21);background: linear-gradient(175deg, rgba(226,89,21,1) 0%, rgba(104,74,98,1) 54%, rgba(42,61,112,1) 100%); border-radius: 12px; color: #fff; font-size: 16px; font-weight: 500px; display: flex; justify-content: center; align-items: center; padding: 16px;} */
 /* .Stay-connected .gradient-border:before { content:""; width: calc(100% - 2px); height: calc(100% - 2px); top: 1px; left: 1px; right: 1px; bottom: 1px; position: absolute; display: block; background-color: #2C2F33; border-radius: 12px;} */
 .Stay-connected .form-control {  background-color: transparent; display: flex; text-align: left; z-index:9; border: none; height: 59px; margin-right: 10px; }
-.Stay-connected .form-control::placeholder {  font-size: 18px; font-weight: 400; }
+/* .form-control::placeholder {  font-size: 18px; font-weight: 400; } */
 .Stay-connected label {font-size: 18px; line-height: 26px; font-weight: 400; }
 .Stay-connected .form-check a { }
 .dark .Stay-connected .form-check input { background-color: transparent; }
@@ -248,7 +260,7 @@ footer p { font-size: 18px; font-weight: 700; }
 /* footer .gradient-border:before { content:""; width: calc(100% - 2px); height: calc(100% - 2px); top: 1px; left: 1px; right: 1px; bottom: 1px; position: absolute; display: block; background-color: #2C2F33; border-radius: 12px;} */
 footer .gradient-border:before :hover {background-color: #1f2023}
 footer .form-control {  background-color: transparent; display: flex; text-align: left; z-index:9; border: none; height: 44px; margin-right: 10px;font-size: 14px; padding: 20px;}
-footer .form-control::placeholder {  font-size: 18px; font-weight: 400; }
+footer .form-control::placeholder {  font-size: 14px;}
 .dark footer .form-control::placeholder {color: #fff;}
 footer .links {display: flex; justify-content: space-between; gap: 15px;}
 footer .links ul {margin: 0; padding: 0;}
@@ -304,15 +316,15 @@ footer .links ul li a{ text-decoration: none; color: #535353; font-size: 14px; f
 /*Powerful-Allies*/
 .Powerful-Allies h2{font-size: 42px; line-height: 56px; font-weight: 600;}
 .Powerful-Allies h6{font-size: 27px; line-height: 45px; font-weight: 500;}
-.Powerful-Allies p {font-size: 18px; line-height: 27px; font-weight: 400; }
+/* .Powerful-Allies p {font-size: 18px; line-height: 27px; font-weight: 400; } */
 /* .Powerful-Allies .btn-border {border: 1px solid #1957F3; background-color: transparent; color: #fff;} */
 /* .Powerful-Allies .btn-border:hover {border: 1px solid #1957F3; background-color: #1957F3; color: #fff;} */
 /*Powerful-Allies*/
 
 /*our people*/
-.our-people h2{font-size: 64px; font-weight: 700;}
+/* .our-people h2{font-size: 64px; font-weight: 700;} */
 .our-people .sub-heading{font-size: 27px; font-weight: 500;}
-.our-people p{font-size: 18px; font-weight: 400; line-height: 27px; }
+/* .our-people p{font-size: 18px; font-weight: 400; line-height: 27px; } */
 /* .our-people .btn-border {border: 1px solid #1957F3; background-color: transparent; color: #1957F3;} */
 /* .our-people .btn-border:hover {border: 1px solid #1957F3; background-color: #1957F3; color: #fff;} */
 .our-people .our-people-img { text-align: right; }
@@ -325,7 +337,7 @@ footer .links ul li a{ text-decoration: none; color: #535353; font-size: 14px; f
 .what-you-need .content { z-index: 9; position: relative;}
 .what-you-need h2 {font-size: 42px; line-height: 56px; font-weight: 600;}
 .what-you-need .sub-heading {font-size: 27px; font-weight: 500;}
-.what-you-need p {font-size: 18px; font-weight: 400; line-height: 27px;}
+/* .what-you-need p {font-size: 18px; font-weight: 400; line-height: 27px;} */
 .what-you-need .orange-text {font-size: 18px; font-weight: 700; line-height: 27px; color: var(--primary);}
 .dark .what-you-need .orange-text{color: #FF5C00;}
 /*what-you-need*/
@@ -337,64 +349,63 @@ footer .links ul li a{ text-decoration: none; color: #535353; font-size: 14px; f
 /* .sustainabilit-application-banner { background-image:url(../images/Sustainability-App-bg.png); background-size: cover; background-repeat: no-repeat; position: relative; } */
 .sustainabilit-application-banner:after {content:""; width: 100%; height: 100%; top:0; left:0; position: absolute; background-color: #131313; opacity: 50%;}
 .sustainabilit-application-banner .content { z-index: 9; }
-.sustainabilit-application-banner h2{font-size: 48px; font-weight: 700; color: #FF5C00;}
-.sustainabilit-application-banner p{ font-size: 48px; font-weight: 500;color: #E8E8E8;}
-.sustainabilit-application-banner .text-light{ font-size: 24px; font-weight: 400;color: #E8E8E8;}
+.sustainabilit-application-banner h2{font-size: 48px; font-weight: 700; color: var(--orange) !important;}
+.sustainabilit-application-banner p{ font-size: 48px; font-weight: 500;line-height: normal;color: var(--white);}
+.sustainabilit-application-banner .text-light{ font-size: 24px; font-weight: 400;opacity: .8;}
 /*bannar*/
 
 /*brabo sustainabilit application*/
-.brabo-sustainabilit-applications h2 { font-size: 42px; font-weight: 600; }
-.brabo-sustainabilit-applications p { font-size: 18px; font-weight: 400; line-height: 27px; }
+.brabo-sustainabilit-applications h2 { font-size: 42px; font-weight: 600;margin-bottom: 2rem; }
+/* .brabo-sustainabilit-applications p { font-size: 18px; font-weight: 400; line-height: 27px; } */
 .services-content .content img{width: 100%;height: auto;margin-top: 4rem;}
 /*brabo sustainabilit application*/
 
 /*Key-benefits*/
-.Key-benefits .benefits-box { padding: 32px 61px; }
+.Key-benefits .benefits-box { padding: 32px 61px; height: 100%;}
 .Key-benefits .heading {  font-size: 27px; font-weight: 500; position: relative; }
 .Key-benefits .heading:after {content: ""; width: 10%; height: 20%; bottom: -15px; left: 50%; position: absolute; background-color: #2F54EB; border-radius: 10px; transform: translateX(-50%);}
-.Key-benefits p {font-size: 18px; font-weight: 400; line-height: 22px; }
+/* .Key-benefits p {font-size: 18px; font-weight: 400; line-height: 22px; } */
 /*Key-benefits*/
 /**************************************sustainabilit-application-page-css************************************/
 
 /***************************************schedule_demo_page css**********************************/
 /*banner*/
-.Schedule-Demo h2{font-size: 64px; font-weight: 700;}
+/* .Schedule-Demo h2{font-size: 64px; font-weight: 700;} */
 .Schedule-Demo .sub-heading{font-size: 27px; font-weight: 500;}
-.Schedule-Demo p{font-size: 18px; font-weight: 400; line-height: 27px; }
+.Schedule-Demo p{font-size: 18px; font-weight: 400; line-height: 27px; opacity: .75;}
 .Schedule-Demo-img { text-align: right; }
 /*banner*/  
 /*give-live-demo*/
 .give-live-demo h2 { font-size: 42px; font-weight: 600; }
 .dark .gradient-border input{ background-color: transparent; border:none; z-index: 9; position: relative; }
-.dark .gradient-border input::placeholder { color: #969696; font-size: 18px; font-weight: 400; }
+.dark .gradient-border input::placeholder { color: #969696; }
 .dark .gradient-border textarea{ background-color: transparent; border:none; z-index: 9; position: relative; padding: 30px; }
-.dark .gradient-border textarea::placeholder { color: #969696; font-size: 18px; font-weight: 400; }
-.give-live-demo .form-check label{ font-size: 18px; font-weight: 400; line-height: 28px; color: #E8E8E8; } 
-.give-live-demo .form-check a { color: #E8E8E8;} 
+.dark .gradient-border textarea::placeholder { color: #969696; }
+.give-live-demo .form-check label{ font-size: 18px; font-weight: 400; line-height: 28px; } 
+.give-live-demo .form-check a { opacity: .7;} 
 .give-live-demo .submit-button { margin-top: 100px; text-align: center;}
 /*give-live-demo*/
 /********************************************schedule_demo_page css******************************************/
 
 /********************************************partner page css******************************************/
 /*banner*/
-.Become-Partner h2 { font-size: 64px; font-weight: 700; line-height: 84px; color: #1957F3; position: relative;}
+.Become-Partner h2 {  color: #1957F3; position: relative;}
 .Become-Partner h2:before {content: "BECOME A PARTNER"; width: 100%; height: 100%; top: 0; left: 0;  position: absolute; z-index: -1; color: rgba(173, 173, 173, 0.04); text-align: center; font-family: Inter; font-size: 86px; font-style: normal; font-weight: 900;
 line-height: normal;letter-spacing: 17.2px;}
-.Become-Partner .text-light { font-size: 18px; font-weight: 400; line-height: 27px; color: #E8E8E8; }
-.Become-Partner .text-hard { font-size: 27px; font-weight: 600; line-height: 35px; color: #E8E8E8; }
+/* .Become-Partner .text-light { font-size: 18px; font-weight: 400; line-height: 27px; color: #E8E8E8; } */
+.Become-Partner .text-hard { font-size: 27px; font-weight: 600; line-height: 35px; }
 /*banner*/
 
 /*partners*/
 .partners .partners-box { padding: 50px 60px; }
-.partners .heading {  font-size: 27px; font-weight: 500; color: #fff; }
-.partners p {font-size: 17px; font-weight: 400; line-height: 22px; color: #E8E8E8; }
+.partners .heading {  font-size: 27px; font-weight: 500; line-height: normal;}
+/* .partners p {font-size: 17px; font-weight: 400; line-height: 22px; color: #E8E8E8; } */
 .Personal-Detail h2 { font-size: 42px; font-weight: 600; }
-.Personal-Detail .form-check label{ font-size: 18px; font-weight: 400; line-height: 28px; color: #E8E8E8; } 
-.Personal-Detail .form-check a { color: #E8E8E8;} 
+.Personal-Detail .form-check label{ font-size: 18px; font-weight: 400; line-height: 28px; } 
 .Personal-Detail .submit-button { margin-top: 100px; text-align: center;}
 .Company-Detail h2 { font-size: 42px; font-weight: 600; }
-.Company-Detail .form-check label{ font-size: 18px; font-weight: 400; line-height: 28px; color: #E8E8E8; } 
-.Company-Detail .form-check a { color: #E8E8E8;} 
+.Company-Detail .form-check label{ font-size: 18px; font-weight: 400; line-height: 28px;  } 
+.Company-Detail .form-check a , .Personal-Detail .form-check a{ text-decoration: underline;} 
 .Company-Detail .submit-button { margin-top: 100px; text-align: center;}
 /*partners*/
 
@@ -404,7 +415,7 @@ line-height: normal;letter-spacing: 17.2px;}
 .profile .profile-box { padding: 15px 15px 30px 15px; }
 .profile .profile-box.gradient-border{align-items: flex-start;}
 .profile .heading {  font-size: 20px; font-weight: 700; line-height: 30px; color: #F86806; margin-bottom: 8px; }
-.profile p {font-size: 18px; font-weight: 400; line-height: 27px;  }
+/* .profile p {font-size: 18px; font-weight: 400; line-height: 27px;  } */
 .profile a {text-decoration: none; font-size: 18px; font-weight: 500; line-height: 27px; color: #2F54EB; }
 .load-icon {
     width: 40px;
@@ -427,13 +438,16 @@ line-height: normal;letter-spacing: 17.2px;}
     box-shadow: 6px 6px 18.67px 0px rgba(0, 0, 0, 0.70), -6.22px -6.22px 18.67px 0px rgba(59, 68, 81, 0.70);
 }
 .dark .teams-modal .modal-content{background: #1F2023;}
-.teams-modal .modal-header{border-bottom: none;}
-.team-popup{display: flex;}
+.teams-modal .modal-header{border-bottom: none;padding: 0;}
+.team-popup{display: flex;flex-wrap: wrap;}
 .team-popup figure { flex: 0 280px; max-width: 280px;}
 .team-popup figcaption{flex: 1;}
 .team-popup figcaption h4{color: var(--orange);}
+.team-popup figcaption div {color: #838383;}
 .social-popup {  display: flex;justify-content: flex-end ;color: var(--bs-primary) !important;  font-size: 30px;}
-.dark .btn-close{filter: invert(1);opacity: 1;}
+.btn-close{background-color: var(--orange);border: 1px solid var(--primary);border-radius: 50%;width: 25px;height: 25px;
+position: absolute;right: 20px; top: 20px;--bs-btn-close-bg: url(data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 16 16%27 fill=%27%23fff%27%3e%3cpath d=%27M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z%27/%3e%3c/svg%3e);
+opacity: 1;}
 .modal-backdrop{background-color: rgb(31 32 35 / 60%);}
 .load-more-btn{background-color: transparent;border: none;color: var(--primary);}
 /********************************************profiles page css******************************************/
@@ -450,7 +464,8 @@ line-height: normal;letter-spacing: 17.2px;}
     opacity: 50%;}
 .policy-pages .container{z-index: 9;position: relative;}   
 .policy-pages-content h2{font-size: 42px;} 
-.policy-pages-content p{font-size: 18px;line-height: 1.6;}
+.policy-pages h2{color: var(--white);}
+/* .policy-pages-content p{font-size: 18px;line-height: 1.6;} */
 /* Privacy policy */
 
 
@@ -467,7 +482,7 @@ line-height: normal;letter-spacing: 17.2px;}
 /*Filter By*/
 .filter-by h2 { font-size: 42px; font-weight: 600; margin-left: 15px; }
 .filter-by select {background-color: transparent; color: #fff; font-size: 18px; font-weight: 400; padding: 19px 30px; outline: none; border: none;}
-.filter-by input::placeholder { color: #fff; font-size: 18px; font-weight: 400; }
+.filter-by input::placeholder { color: #fff; }
 .sort-by {margin-left:15px; margin-top: 50px;}
 .sort-by h4 {font-size: 20px; font-weight: 600; margin-bottom: 0;}
 .sort-by-button { padding: 8px 30px; color: #fff; font-size: 16px; font-weight: 400; min-width: auto; }
@@ -596,7 +611,7 @@ line-height: normal;letter-spacing: 17.2px;}
     .h3, h3 { font-size: 1.5rem; }
     .business-value, .Platform-Affordability{ padding-top: var(--section-gap); padding-bottom: var(--section-gap); }
     .business-value .owl-carousel{ padding-top: var(--section-gap); }
-    .how-brabo h2, .case-study h2, .Continuous-Innovation h2{ width: auto; font-size: 40px;  line-height: normal;}
+    h2, .how-brabo h2, .case-study h2, .Continuous-Innovation h2{ width: auto; font-size: 40px;  line-height: normal;}
 }
 
 @media (max-width:1440px){
@@ -605,6 +620,8 @@ line-height: normal;letter-spacing: 17.2px;}
 
 @media (max-width:1366px){
     .Platform-Affordability p, .Continuous-Innovation p, .Continuous-Innovation span{ width: auto;}
+    .Schedule-Demo .sub-heading{font-size: 22px;}
+    
 }
 
 @media (max-width:1280px){
@@ -616,7 +633,8 @@ line-height: normal;letter-spacing: 17.2px;}
     .business-value .owl-carousel .owl-item .content{ padding: 15px;}
     p{ font-size: 16px;}
     .business-value .gredient-line .line, .animation-line .line, .Platform-Affordability .gredient-line .line{ transform: scale(0.5);}
-    .how-brabo h2, .case-study h2, .Continuous-Innovation h2{ font-size: 32px;}
+    h2, .how-brabo h2, .case-study h2, .Continuous-Innovation h2, .Powerful-Allies h2, .what-you-need h2
+    { font-size: 32px;}
     .help-us .box{ padding-left: 10px; padding-right: 10px;}
     .help-us a{ font-size: 16px;}
     .help-us h2{ line-height: normal;}
@@ -624,29 +642,48 @@ line-height: normal;letter-spacing: 17.2px;}
     .follow-us-linkedin .owl-carousel .owl-nav button span{ width: 40px; height: 40px; font-size: 16px;}
     .follow-us-linkedin .owl-carousel .owl-nav span.custom-prev{ margin-left: -20px;}
     .follow-us-linkedin .owl-carousel .owl-nav span.custom-next{  margin-right: -20px;}
+    .Schedule-Demo .sub-heading { font-size: 20px; }
+    .sustainabilit-application-banner p{font-size: 34px;}
+    .Key-benefits .benefits-box{padding: 30px 20px;}
+    .what-you-need .sub-heading{font-size: 24px;}
 }
 
 @media (max-width:991px){
+    .mobile-logo{display: block;}
+    .desktop-logo{display: none;}
     .nav-link{ display: none;}
     .case-study, .how-brabo{ text-align: center;}
     .case-study p, .case-study span{ width: auto;}
     .case-study span, .how-brabo span{ display: block;}
-    .case-study .contant a, .how-brabo .contant a{ display: none;}
+    .case-study .contant a, .how-brabo .contant a, .our-people .contant a{ display: none;}
     .how-brabo .how-brabo-img{ border: none;}
     .unlock-your-data h2{  font-size: 40px;  line-height: normal;}
     .help-us p br{ display: none;}
     .hide-button{ display: inline-block;}
     .desktop-logo{display: none;}
     .mobile-logo{display: flex;}
+    .Schedule-Demo-img, .our-people .our-people-img{text-align: center;}
+    .Schedule-Demo-img img, .our-people .our-people-img img{width: 100%;}
+    .sustainabilit-application-banner h2, .brabo-sustainabilit-applications h2{font-size: 34px;}
+    .sustainabilit-application-banner p {font-size: 26px;}
+    .sustainabilit-application-banner .text-light, .Become-Partner .text-hard{font-size: 20px;line-height: normal;}
+    .what-you-need .sub-heading {font-size: 20px;font-weight: 400;}
+    .partners .partners-box { padding: 30px; }
 }
 
 @media (max-width:767px){
+    .nav-button .btn:hover{min-width: inherit;}
     .main_banner{padding-top: 0;}
     :root{
         --section-gap: 40px;
     }
+    p{line-height: normal;}
+    .form-control::placeholder{font-size: 14px;}
+    .form-control:not(textarea), .dark .gradient-border textarea{padding: 20px;}
     .banner-logo {margin-bottom: 1rem;justify-content: center;}
-    .how-brabo h2, .case-study h2, .Continuous-Innovation h2, .unlock-your-data h2, .help-us h2, .Stay-connected h2 {font-size: 26px; line-height: normal;}
+    .nav-button .btn {min-width: 100px; font-size: 12px; }
+    h2, .how-brabo h2, .case-study h2, .Continuous-Innovation h2, .unlock-your-data h2, .help-us h2, .Stay-connected h2
+    , .what-you-need h2 {font-size: 26px; line-height: normal;}
     .business-value h2, .Platform-Affordability h2, .follow-us-linkedin h2{font-size: 38px;}
     .case-study p, .case-study span, .unlock-your-data p, .Stay-connected p{font-size: 18px;line-height: normal;}
     .Continuous-Innovation p, .Continuous-Innovation span, .Platform-Affordability p, .Stay-connected span{font-size: 16px;line-height: 1.6;}
@@ -654,27 +691,40 @@ line-height: normal;letter-spacing: 17.2px;}
     .Continuous-Innovation .contant { margin-left: 0;}
     .follow-us-linkedin .owl-carousel .owl-nav span.custom-next{margin-right: 0;}
     .follow-us-linkedin .owl-carousel .owl-nav span.custom-prev {margin-left: 0px;}
-    .Stay-connected label {font-size: 14px;line-height: normal;}
+    .Stay-connected label, .give-live-demo .form-check label {font-size: 14px;line-height: normal;}
     .help-us p{text-align: center;}
     .help-us .box-center {border-right: none;border-left: none;}
     .services .owl-carousel .owl-item .business-value-slider{justify-content: flex-start;}
     footer .links ul li{margin-bottom: 5px;}
     .footer-bottom{padding: 3rem 0 1.5rem;}
     .social-media{justify-content: flex-start;margin-top: 1rem;}
+    .sustainabilit-application-banner p{font-size: 28px;}
+    .icon img {width: 80px;}
+    .sustainabilit-application-banner h2, .brabo-sustainabilit-applications h2, .policy-pages-content h2{font-size: 30px;}
+    .language-swichter select, .language-swichter .fa-globe{font-size: 14px;}
+    header{padding-top: 10px;padding-bottom: 10px;}    
+    .our-people .sub-heading{font-size: 20px;}
+    .team-popup figure { flex: 0 100%;max-width: 100%;}
+    .btn-close{right: 0;top: 0;}
+    .Become-Partner h2:before{font-size: 40px;letter-spacing: 10;}
 }
 
 @media (max-width:480px){
+    p{font-size: 14px;}
     .services .owl-carousel .owl-item img{height: 200px;padding: 30px 10px 0 10px;}
-    .business-value h2, .Platform-Affordability h2, .follow-us-linkedin h2 {
-        font-size: 30px;line-height: normal;
+    .business-value h2, .Platform-Affordability h2, .follow-us-linkedin h2 {font-size: 30px;line-height: normal;
     }
-    .how-brabo h2, .case-study h2, .Continuous-Innovation h2, .unlock-your-data h2, .help-us h2, .Stay-connected h2 {
-        font-size: 22px;
-    }
+    .sustainabilit-application-banner h2, .brabo-sustainabilit-applications h2, .policy-pages-content h2 {font-size: 26px;}
+    .sustainabilit-application-banner p {font-size: 20px; }
     .btn, .unlock-your-data .btn{font-size: 14px;}
     .unlock-your-data .btn{padding: 20px;}
     .services .owl-carousel .owl-item .content {padding: 20px 10px;}
     .footer-bottom ul li a, footer p{font-size: 14px;}
+    .icon img {width: 50px;}
+    .Key-benefits .benefits-box {padding: 20px 16px;}
+    .Key-benefits .heading{font-size: 22px;}
+    .footer-bottom ul li a svg {width: 32px;}
+    
 }
 
 @media (max-width:320px){
@@ -684,11 +734,7 @@ line-height: normal;letter-spacing: 17.2px;}
 
 
 /* Dark light Mode */
-.nav-button {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
+.nav-button {display: flex;align-items: center; gap: 25px;}
 .dark .dark-light i.fa-sun{background-color: transparent;}
 .dark-light i.fa-sun{color: var(--white);}
 .dark-light i{
@@ -696,7 +742,7 @@ line-height: normal;letter-spacing: 17.2px;}
     top: 0px;border-radius: 50%;
     font-size: 14px;
     width: 25px;
-    height: 25px;
+    height: 25px;line-height: 25px;
     display: flex;
     align-items: center;
     justify-content: center; background-color: var(--primary);
@@ -720,7 +766,7 @@ line-height: normal;letter-spacing: 17.2px;}
     overflow: hidden;
     position: relative;
     transition: all 0.3s ease;
-    display: flex;gap:10px;justify-content: space-between;align-items: center;border: 1px solid var(--primary);
+    display: flex;justify-content: space-between;align-items: center;border: 1px solid var(--primary);
 }
 .dark .btn-color-mode-switch > label.btn-color-mode-switch-inner{border: 1px solid transparent;}
 .btn-color-mode-switch > .alert{
@@ -731,8 +777,8 @@ line-height: normal;letter-spacing: 17.2px;}
 }
 .btn-color-mode-switch input[type="checkbox"]{
     cursor: pointer;
-    width: 50px;
-    height: 25px;
+    width: 0px;
+    height: 0px;
     opacity: 0;
     position: absolute;
     top: 0;
@@ -741,10 +787,24 @@ line-height: normal;letter-spacing: 17.2px;}
 }
 .btn-color-mode-switch input[type="checkbox"]:checked + label.btn-color-mode-switch-inner{
     background: #484646;
-    color: #fff;width: 100px;
+    color: #fff;width: 80px;
 }
 .btn-color-mode-switch input[type="checkbox"]:checked ~ .alert{
     display: block;
 }
+@media (max-width:767px){
+    .btn-color-mode-switch input[type="checkbox"]:checked + label.btn-color-mode-switch-inner{width: 52px;}
+    .dark-light i{width: 20px;height: 20px;font-size: 10px;}
+    .btn-color-mode-switch > label.btn-color-mode-switch-inner{padding: 2px 5px;}
+    
+}
 /* Dark light Mode */
-
+/* Language Swichter */
+.language-swichter { margin-top: 6px;}
+.language-swichter select{background-color: transparent;border: none;font-size: 16px;}
+.dark .language-swichter select{color:var(--white);}
+.dark .language-swichter select:focus-visible {outline: none;}
+.dark .DataUnlock_dark{display:block;margin: auto;}
+.DataUnlock_dark{display:none}
+.dark .DataUnlock_light{display:none}
+.DataUnlock_light{display:block;margin: auto;}

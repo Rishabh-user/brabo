@@ -43,8 +43,8 @@ function ServiceDetail () {
                                 <img className="img-fluid" src={serviceData.acf.icon.url} alt={serviceData.title.rendered} width="106" height="96"/>                             
                             </div>
                             <h2 className="mb-3">{serviceData.title.rendered}</h2>
-                            <p className="mb-5" dangerouslySetInnerHTML={{ __html: serviceData.excerpt?.rendered || '' }}></p>
-                            <p className="text-light mb-5">{serviceData.acf.sub_title}</p>
+                            <p className="mb-lg-5" dangerouslySetInnerHTML={{ __html: serviceData.excerpt?.rendered || '' }}></p>
+                            <p className="text-light mb-lg-5">{serviceData.acf.sub_title}</p>
                         </div>                         
                     </div>
                 
@@ -58,8 +58,8 @@ function ServiceDetail () {
                 <div className="container">
                     <div className="row justify-content-center">
                     {serviceData ? (
-                        <div className="col-md-8">
-                            <div className="content p-5">
+                        <div className="col-lg-8">
+                            <div className="content p-lg-5">
                             <div dangerouslySetInnerHTML={{ __html: serviceData.content?.rendered || '' }}></div> </div>
                         </div>
                          ) : (                            
@@ -79,13 +79,13 @@ function ServiceDetail () {
                     </div>                    
                     <div className="row justify-content-center">
                         {serviceData.acf.benefit_list.map((benefit, index) => (				
-                        <div className="col-md-4 mb-5" key={index}>
+                        <div className="col-lg-4 col-md-6 mb-lg-5 mb-3" key={index}>
                             <div className="gradient-border benefits-box">                            
                                 <div className="content text-center">
-                                    <div className="box-img text-center mb-5">
+                                    <div className="box-img text-center mb-lg-5 mb-3">
                                         <img className="img-fluid" src={benefit.benefits_image} alt="{benefit.benefits_title}" width="100" height="99" />
                                     </div>
-                                    <p className="heading mb-5">{benefit.benefits_title}</p>
+                                    <p className="heading mb-lg-5 mb-4">{benefit.benefits_title}</p>
                                     <p className="mt-">{benefit.benefits_description}</p>
                                 </div>                                
                             </div>

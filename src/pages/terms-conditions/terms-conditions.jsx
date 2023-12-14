@@ -47,7 +47,7 @@ function PrivacyPolicy () {
                 <div className="container">
                     <div className="row">
                         <div className="col-md-12">
-                            <h2 className="mb-5">{privacyPolicyData.title.rendered}</h2>
+                            <h2 className="mb-lg-5 mb-3">{privacyPolicyData.title.rendered}</h2>
                             <p className="mb-5" dangerouslySetInnerHTML={{ __html: privacyPolicyData.content?.rendered }}></p>
                        </div>
                     </div>

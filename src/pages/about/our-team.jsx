@@ -63,7 +63,7 @@ function OurPeople() {
                     <div className="col-md-10">
                         <div className="row justify-content-center">
                         {teamData.map( (teams, index) => (
-                            <div className="col-md-3 mb-5" key={index}> 
+                            <div className="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-5" key={index}> 
                                 <div className="gradient-border profile-box h-100"  onClick={() => handleShow(teams.id)}>
                                     <div className="content text-center">
                                         <div className="box-img text-center mb-4">
@@ -85,14 +85,14 @@ function OurPeople() {
                             </div>
                         ))}
                         <Modal className="teams-modal" show={show} onHide={handleClose} size="lg" centered>
-                            <Modal.Header closeButton>
+                            <Modal.Header closeButton>          
                             </Modal.Header>
                             <Modal.Body>
                                 <div className="team-popup">
                                     <figure><img src={selectedData.featured_image} alt="" /></figure>
                                     <figcaption>
                                         <h4>{selectedData.title?.rendered}</h4>
-                                        <p className="mb-3" dangerouslySetInnerHTML={{ __html: selectedData.excerpt?.rendered}}></p>
+                                        <div className="mb-3" dangerouslySetInnerHTML={{ __html: selectedData.excerpt?.rendered}}></div>
                                         <p className="mb-3" dangerouslySetInnerHTML={{ __html: selectedData.content?.rendered}}></p>
                                     </figcaption>
                                 </div>
