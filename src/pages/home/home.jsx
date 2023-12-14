@@ -21,11 +21,10 @@ import { useParams } from 'react-router-dom';
 
 
 function Home() {
-	const options = {
+	const linkedinSlider = {
 		items: 3,
 		autoplay: true,
 		autoplayTimeout: 3000,
-		loop: true,
 		margin: 20,
 		dots: false,
 		nav: true,
@@ -46,17 +45,17 @@ function Home() {
 			},
 		},
 	};
-	const options1 = {
+	const bannerSlider = {
 		items: 3,
 		autoplay: true,
-		autoplayTimeout: 3000,
+		autoplayTimeout: 1000,
 		loop: true,
 		center: true,
 		margin: 10,
 		dots: false,
 		nav: false,
 	};
-	const options2 = {
+	const serviceSlider = {
 		items: 3,
 		autoplay: true,
 		autoplayTimeout: 3000,
@@ -130,7 +129,7 @@ function Home() {
 					<div className="row flex-row-reverse align-items-center banner-gap">
 						<div className="col-md-6">
 							{serviceData.length > 0 ? (
-								<OwlCarousel className="owl-theme" {...options1}>
+								<OwlCarousel className="owl-theme" {...bannerSlider}>
 									{serviceData.map((item) => (
 										<div className="item" key={item.id}>
 											<img
@@ -314,7 +313,7 @@ function Home() {
 				<div className="container">
 					<div className="row">
 					{serviceData.length > 0 ? (
-						<OwlCarousel className='owl-theme' {...options2}>						
+						<OwlCarousel className='owl-theme' {...serviceSlider}>						
 							{serviceData.map((item) => (
 								<div className='item' key={item.id}>
 									<div className="slider-item">
@@ -621,7 +620,7 @@ function Home() {
 					<div className="heading mb-5 text-center">
 						<h2>Follow us on Linked In</h2>
 					</div>
-					<OwlCarousel className='owl-theme' {...options}>
+					<OwlCarousel className='owl-theme' {...linkedinSlider} loop>
 						<div className='item'>
 							<div className="linkedin-box gradient-border">
 								<Link to="#">

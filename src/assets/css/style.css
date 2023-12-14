@@ -187,9 +187,9 @@ header{background-color: var(--white); position: relative; padding-top: 20px;pad
 .Platform-Affordability{ background:url(../images/gredient.png) center center no-repeat var(--white); background-size:contain; padding-top: calc(2 * var(--section-gap)); padding-bottom: calc(2 * var(--section-gap)); }
 .dark .Platform-Affordability{background-color: var(--dark);}
 .Platform-Affordability h2{font-size: 64px; line-height: 70px; font-weight: 700; margin-bottom: 20px}
-.Platform-Affordability p{font-size: 20px; line-height: 32px; font-weight: 500; width: 671px}
+.Platform-Affordability p{font-size: 20px; line-height: 32px; font-weight: 500; width: 671px;z-index: 9;position: relative;}
 .Platform-Affordability .container{ position:relative; }
-.Platform-Affordability .gredient-line .line{ position:absolute; z-index:-1; }
+.Platform-Affordability .gredient-line .line{ position:absolute; z-index:0; }
 .Platform-Affordability .gredient-line .line1{ top:-18%; left:0%; }
 .Platform-Affordability .gredient-line .line2{ top:60%; left:0%; }
 .Platform-Affordability .gredient-line .line3{ bottom:-28%; left: 15%; }
@@ -673,6 +673,7 @@ opacity: 1;}
 
 @media (max-width:767px){
     .nav-button .btn:hover{min-width: inherit;}
+    
     .main_banner{padding-top: 0;}
     :root{
         --section-gap: 40px;
@@ -682,6 +683,8 @@ opacity: 1;}
     .form-control:not(textarea), .dark .gradient-border textarea{padding: 20px;}
     .banner-logo {margin-bottom: 1rem;justify-content: center;}
     .nav-button .btn {min-width: 100px; font-size: 12px; }
+    
+    .btn:hover{min-width: 180px;}
     h2, .how-brabo h2, .case-study h2, .Continuous-Innovation h2, .unlock-your-data h2, .help-us h2, .Stay-connected h2
     , .what-you-need h2 {font-size: 26px; line-height: normal;}
     .business-value h2, .Platform-Affordability h2, .follow-us-linkedin h2{font-size: 38px;}
@@ -707,6 +710,18 @@ opacity: 1;}
     .team-popup figure { flex: 0 100%;max-width: 100%;}
     .btn-close{right: 0;top: 0;}
     .Become-Partner h2:before{font-size: 40px;letter-spacing: 10;}
+    .business-value .gredient-line .line6 {bottom: -40%;right: 4%;}
+    .business-value .gredient-line .line5 {bottom: 0%;right: 4%;}
+    .business-value .gredient-line .line4 {top: -55%;right: -4%;}
+    .business-value .gredient-line .line3 {bottom: -10%;left: 20%;}
+    .business-value .gredient-line .line2 {top: 0%;left: -6%;}
+    .business-value .gredient-line .line1 {top: -50%;left: -20%;}
+    .animation-line .line6 {bottom: 16%; right: 0; }
+    .animation-line .line5 { top: 50%; right: 0%; }
+    .animation-line .line4 {top: -30px;left: 20%; }
+    .animation-line .line3 { top: 0; right: 0%;}
+    .animation-line .line2 {bottom: 20%;left: 0;}
+    .animation-line .line1 { top: 0;}
 }
 
 @media (max-width:480px){
@@ -724,6 +739,13 @@ opacity: 1;}
     .Key-benefits .benefits-box {padding: 20px 16px;}
     .Key-benefits .heading{font-size: 22px;}
     .footer-bottom ul li a svg {width: 32px;}
+    .business-value .gredient-line .line, .animation-line .line, .Platform-Affordability .gredient-line .line{
+        transform: scale(0.35);
+    }
+    .business-value .gredient-line .line1{top: -30%;}
+    .business-value .gredient-line .line4{top: -20%;}
+    .business-value .gredient-line .line6{bottom: -45%;}
+    .business-value .gredient-line .line2{top:8%;}
     
 }
 
