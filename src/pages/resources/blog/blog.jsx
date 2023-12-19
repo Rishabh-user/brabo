@@ -13,9 +13,9 @@ function Blog () {
         <section className="col-md-12 business-value Knowledge-Hub-banner text-center">
             <div className="container">
                 <div className="row justify-content-center">
-                    <div className="col-md-8 content">
+                    <div className="col-lg-8 content">
                         <h2 className="mb-3">Knowledge Hub</h2>
-                        <p className="mb-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent dapibus in odio eget dignissim. Nulla ac fermentum tellus. Praesent at risus a libero finibus pharetra. In hac habitasse platea dictumst. Praesent porttitor nulla est, lacinia convallis diam tincidunt sit amet. Nam hendrerit vel turpis in bibendum. Integer in urna et felis mattis molestie.</p>
+                        <p className="mb-lg-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent dapibus in odio eget dignissim. Nulla ac fermentum tellus. Praesent at risus a libero finibus pharetra. In hac habitasse platea dictumst. Praesent porttitor nulla est, lacinia convallis diam tincidunt sit amet. Nam hendrerit vel turpis in bibendum. Integer in urna et felis mattis molestie.</p>
                     </div>
                 </div>
             </div>
@@ -25,41 +25,39 @@ function Blog () {
         {/* <!-- filter By --> */}
         <section className="col-md-12 filter-by">
             <div className="container">
-                <div className="row justify-content-center">
-                    <h2 className="mb-5">Filter by</h2>				
-                    <div className="row">
-                        <div className="col-md-4">
-                            <div className="Email-field">
-                                <div className="gradient-border mb-4">
-                                    <select name="cars" id="cars" className="content w-100">
-                                        <option value="volvo">Type & categories</option>
-                                        <option value="saab">Saab</option>
-                                        <option value="opel">Opel</option>
-                                        <option value="audi">Audi</option>
-                                    </select>				
-                                </div>														
-                            </div>								  
-                        </div>
-                        <div className="col-md-4">
-                            <div className="Email-field">
-                                <div className="gradient-border mb-4">
-                                    <input type="name" name="name" className="form-control" placeholder="Topics"/>				
-                                </div>														
-                            </div>								  
-                        </div>
-                        <div className="col-md-4">
-                            <div className="Email-field">
-                                <div className="gradient-border mb-4">
-                                    <input type="name" name="name" className="form-control" placeholder="Industry"/>				
-                                </div>														
-                            </div>								  
-                        </div>
+                <h2 className="mb-lg-5 mb-4">Filter by</h2>	
+                <div className="row justify-content-center">                    			
+                    <div className="col-md-4">
+                        <div className="Email-field">
+                            <div className="gradient-border mb-4">
+                                <select name="cars" id="cars" className="content w-100">
+                                    <option value="volvo">Type & categories</option>
+                                    <option value="saab">Saab</option>
+                                    <option value="opel">Opel</option>
+                                    <option value="audi">Audi</option>
+                                </select>				
+                            </div>														
+                        </div>								  
+                    </div>
+                    <div className="col-md-4">
+                        <div className="Email-field">
+                            <div className="gradient-border mb-4">
+                                <input type="name" name="name" className="form-control" placeholder="Topics"/>				
+                            </div>														
+                        </div>								  
+                    </div>
+                    <div className="col-md-4">
+                        <div className="Email-field">
+                            <div className="gradient-border mb-4">
+                                <input type="name" name="name" className="form-control" placeholder="Industry"/>				
+                            </div>														
+                        </div>								  
                     </div>
                 </div>
-                <div className="sort-by d-flex align-items-center">
-                    <h4 className="me-3">Sort By:</h4>						
-                    <div className="sort-by-button btn gradient-border me-3"><span className="content">Feature</span></div>		
-                    <div className="sort-by-button btn gradient-border"><span className="content">Most recent</span></div>		
+                <div className="sort-by">
+                    <h4>Sort By:</h4>						
+                    <div className="sort-by-button gradient-border"><span className="content">Feature</span></div>		
+                    <div className="sort-by-button gradient-border"><span className="content">Most recent</span></div>		
                 </div>
             </div>
         </section>
@@ -69,9 +67,9 @@ function Blog () {
         <section className="col-md-12 our-Blog">
             <div className="container-fluid">
                 <div className="row">
-                    <div className="col-md-8">
+                    <div className="col-lg-8 col-md-6">
                         <div className="row">
-                            <div className="col-md-6">
+                            <div className="col-lg-6 col-md-12 col-sm-6">
                                 <div className="Blog-box">
                                     <div className="Blog-img text-center">
                                         <img className="img-fluid" src={DashboardImg} alt="Dashboard-img" width="423" height="242"/>
@@ -88,7 +86,7 @@ function Blog () {
                                                     </figcaption>
                                                 </div>
                                                 <p className="sub-heading">NEWS LETTER TRENDS 2023</p>
-                                                <p className="text-light">Yet another year is coming to a close. Many of the 2022 trends we anticipated, did find their use in digital products across our devices this year. As we are about to welcome 2023, we are taking a more careful....</p>
+                                                <p className="">Yet another year is coming to a close. Many of the 2022 trends we anticipated, did find their use in digital products across our devices this year. As we are about to welcome 2023, we are taking a more careful....</p>
                                                 <div className="share-time d-flex mb-4 align-item-center">
                                                     <div className="d-flex between">
                                                         <figure>
@@ -115,7 +113,7 @@ function Blog () {
                                     </div>
                                 </div>
                             </div>
-                            <div className="col-md-6">
+                            <div className="col-lg-6 col-md-12 col-sm-6">
                                 <div className="Blog-box">
                                     <div className="Blog-img text-center">
                                         <img className="img-fluid" src={DashboardImg} alt="Dashboard-img" width="423" height="242"/>
@@ -132,7 +130,7 @@ function Blog () {
                                                     </figcaption>
                                                 </div>
                                                 <p className="sub-heading">NEWS LETTER TRENDS 2023</p>
-                                                <p className="text-light">Yet another year is coming to a close. Many of the 2022 trends we anticipated, did find their use in digital products across our devices this year. As we are about to welcome 2023, we are taking a more careful....</p>
+                                                <p className="">Yet another year is coming to a close. Many of the 2022 trends we anticipated, did find their use in digital products across our devices this year. As we are about to welcome 2023, we are taking a more careful....</p>
                                                 <div className="share-time d-flex mb-4 align-item-center">
                                                     <div className="d-flex between">
                                                         <figure>
@@ -159,97 +157,10 @@ function Blog () {
                                     </div>
                                 </div>
                             </div>
-                            <div className="col-md-6">
-                                <div className="Blog-box">
-                                    <div className="Blog-img text-center">
-                                        <img className="img-fluid" src={DashboardImg} alt="Dashboard-img" width="423" height="242"/>
-                                    </div>
-                                    <div className="gradient-border">							
-                                        <div className="content">								
-                                            <div className="mt-3">
-                                                <div className="d-flex mb-2 align-item-center">
-                                                    <figure>
-                                                        <img className="img-fluid" src={ExportIcon} alt="export-icon" width="30" height="30"/>
-                                                    </figure>
-                                                    <figcaption>
-                                                        <h3>Blog</h3>
-                                                    </figcaption>
-                                                </div>
-                                                <p className="sub-heading">NEWS LETTER TRENDS 2023</p>
-                                                <p className="text-light">Yet another year is coming to a close. Many of the 2022 trends we anticipated, did find their use in digital products across our devices this year. As we are about to welcome 2023, we are taking a more careful....</p>
-                                                <div className="share-time d-flex mb-4 align-item-center">
-                                                    <div className="d-flex between">
-                                                        <figure>
-                                                            <img className="img-fluid" src={ShareIcon} alt="export-icon" width="18" height="18"/>
-                                                        </figure>
-                                                        <figcaption className="ms-2">
-                                                            <p className="share-text">Sarang gujrathi</p>
-                                                        </figcaption>
-                                                    </div>
-                                                    <div>
-                                                        <span>8 min read</span>
-                                                    </div>
-                                                </div>
-                                                <div className="button-share d-flex align-item-center">
-                                                    <figure className="m-0">
-                                                        <Link to="#"className="btn btn-outline-primary btn-sm btn-orange">Read More</Link>
-                                                    </figure>
-                                                    <figcaption className="">
-                                                        <img className="img-fluid" src={ShareIcon2} alt="export-icon" width="25" height="25"/>
-                                                    </figcaption>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-md-6">
-                                <div className="Blog-box">
-                                    <div className="Blog-img text-center">
-                                        <img className="img-fluid" src={DashboardImg} alt="Dashboard-img" width="423" height="242"/>
-                                    </div>
-                                    <div className="gradient-border">							
-                                        <div className="content">								
-                                            <div className="mt-3">
-                                                <div className="d-flex mb-2 align-item-center">
-                                                    <figure>
-                                                        <img className="img-fluid" src={ExportIcon} alt="export-icon" width="30" height="30"/>
-                                                    </figure>
-                                                    <figcaption>
-                                                        <h3>Blog</h3>
-                                                    </figcaption>
-                                                </div>
-                                                <p className="sub-heading">NEWS LETTER TRENDS 2023</p>
-                                                <p className="text-light">Yet another year is coming to a close. Many of the 2022 trends we anticipated, did find their use in digital products across our devices this year. As we are about to welcome 2023, we are taking a more careful....</p>
-                                                <div className="share-time d-flex mb-4 align-item-center">
-                                                    <div className="d-flex between">
-                                                        <figure>
-                                                            <img className="img-fluid" src={ShareIcon} alt="export-icon" width="18" height="18"/>
-                                                        </figure>
-                                                        <figcaption className="ms-2">
-                                                            <p className="share-text">Sarang gujrathi</p>
-                                                        </figcaption>
-                                                    </div>
-                                                    <div>
-                                                        <span>8 min read</span>
-                                                    </div>
-                                                </div>
-                                                <div className="button-share d-flex align-item-center">
-                                                    <figure className="m-0">
-                                                        <Link to="#"className="btn btn-outline-primary btn-sm btn-orange">Read More</Link>
-                                                    </figure>
-                                                    <figcaption className="">
-                                                        <img className="img-fluid" src={ShareIcon2} alt="export-icon" width="25" height="25"/>
-                                                    </figcaption>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            
                         </div>
                     </div>
-                    <div className="col-md-4 recent">
+                    <div className="col-lg-4 col-md-6 recent">
                         <div className="search-field">
                             <div className="gradient-border mb-4">
                                 <input type="search" name="search" className="form-control" placeholder="Search from below list"/>	
@@ -292,7 +203,7 @@ function Blog () {
                     </div>
                 </div>
                 <div className="text-center View-all-button banner-gap">
-                    <Link to="#" className="view-button">View All</Link>
+                    <Link to="#" className="btn btn-primary view-button">View All</Link>
                 </div>
             </div>
         </section>

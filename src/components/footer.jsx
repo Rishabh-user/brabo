@@ -73,7 +73,7 @@ function Footer() {
       <footer>
         <div className="container">
           <div className="footer-logo mb-4 mobile-logo">
-              <Link to="#">
+              <Link to="/">
                 <img className="img-fluid logo-dark" src={BraboLogoDark} alt="Brabo logo" width="160" height="32" />
                 <img className="img-fluid logo-light" src={BraboLogoLight} alt="Brabo logo" width="160" height="32" />
               </Link>
@@ -128,7 +128,7 @@ function Footer() {
             </div>
             <div className="col-lg-3 mt-4 mt-md-0">
               <div className="footer-logo mb-4 desktop-logo">
-                <Link to="#">
+                <Link to="/">
                   <img className="img-fluid logo-dark" src={BraboLogoDark} alt="Brabo logo" width="160" height="32" />
                   <img className="img-fluid logo-light" src={BraboLogoLight} alt="Brabo logo" width="160" height="32" />
                 </Link>

@@ -1,6 +1,7 @@
 import React from "react";
 import BlogView from '../../../../assets/images/blog-view-img.png'
 import { Link } from "react-router-dom";
+import Author from '../../../../assets/images/profile-1.png'
 
 
 function BlogDetail () { 
@@ -10,7 +11,7 @@ function BlogDetail () {
             <section className="col-md-12 View-Resources-banner">
                 <div className="container">
                     <div className="row">
-                        <div className="col-md-8 content">
+                        <div className="col-lg-8 content">
                             <h2 className="mb-4">Industry 4.0 and the sustainability goals of the manufacturing sector</h2>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent dapibus in odio eget dignissim. Nulla ac fermentum tellus. Praesent at risus a libero finibus pharetra. In hac habitasse platea dictumst. Praesent porttitor nulla est, lacinia convallis diam tincidunt sit amet. Nam hendrerit vel turpis in bibendum. Integer in urna et felis mattis molestie.</p>
                         </div>
@@ -29,55 +30,46 @@ function BlogDetail () {
                             </div>
                             <div className="blog-view-text">
                                 <p className="">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent dapibus in odio eget dignissim. Nulla ac fermentum tellus. Praesent at risus a libero finibus pharetra. In hac habitasse platea dictumst. Praesent porttitor nulla est, lacinia convallis diam tincidunt sit amet. Nam hendrerit vel turpis in bibendum. Integer in urna et felis mattis molestie.</p>
-                            </div>
-                            <div className="blog-view-text">
-                                <p className="">Donec ipsum ante, congue sit amet condimentum eget, rutrum porta neque. Donec consequat efficitur aliquam. Mauris ut dapibus ex, id porta mauris. Maecenas vitae nunc velit. Vivamus viverra eros et diam pharetra, at ornare dolor varius. Integer ullamcorper nisl nec diam condimentum eleifend. Ut fermentum commodo dolor, eget vehicula risus pulvinar vel. Morbi ut dolor risus. Donec mollis nulla sit amet lectus pharetra, et pulvinar ligula faucibus. Morbi ut venenatis augue, sit amet imperdiet purus. Vestibulum placerat magna neque, eget maximus dui sagittis id. Donec urna lacus, ornare vel leo eu, tincidunt bibendum leo. Vestibulum at arcu dapibus, accumsan erat eleifend, dictum neque. Quisque diam nibh, tempor a sollicitudin sed, egestas ut diam. Fusce in ultrices felis.</p>
-                            </div>
-                            <div className="blog-view-text">
-                                <p className="">In sodales dolor tellus, eu dapibus sem elementum vitae. Suspendisse ex magna, lacinia et augue sit amet, posuere pellentesque sem. Cras venenatis dui dapibus congue bibendum. Aenean auctor lacus orci, sed porta purus pharetra sed. Vivamus non mi ligula. Aenean elit dolor, suscipit quis ex vel, finibus commodo enim. Phasellus vehicula quis ex id volutpat. Aliquam at quam a augue elementum egestas. Cras dictum elit arcu, et volutpat ligula auctor consectetur. Fusce cursus eleifend egestas.</p>
-                            </div>
-                            <div className="blog-view-text">
-                                <p className="">Fusce venenatis convallis efficitur. Proin laoreet nulla vitae ligula eleifend sollicitudin vel ut dolor. Proin vitae nulla id tortor luctus iaculis quis ac tellus. Praesent elementum nulla eu malesuada pellentesque. Etiam varius dui nec placerat pretium. Sed et enim leo. Phasellus id varius ante. Aliquam a turpis sit amet libero dapibus tincidunt. Proin pulvinar, ligula sed commodo aliquam, sapien ipsum lacinia est, sed venenatis felis libero imperdiet dui. Curabitur ullamcorper imperdiet elit ut iaculis. Mauris quis diam gravida, tincidunt urna at, sagittis ante. Vivamus in justo vel orci suscipit mattis vitae eget leo. Aliquam placerat libero finibus viverra faucibus. Sed ac eros ligula. In vulputate risus non iaculis tempus. Nulla sem lorem, lobortis ut nibh quis, interdum congue nisl.</p>
+                                <p className="">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent dapibus in odio eget dignissim. Nulla ac fermentum tellus. Praesent at risus a libero finibus pharetra. In hac habitasse platea dictumst. Praesent porttitor nulla est, lacinia convallis diam tincidunt sit amet. Nam hendrerit vel turpis in bibendum. Integer in urna et felis mattis molestie.</p>
+                                <p className="">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent dapibus in odio eget dignissim. Nulla ac fermentum tellus. Praesent at risus a libero finibus pharetra. In hac habitasse platea dictumst. Praesent porttitor nulla est, lacinia convallis diam tincidunt sit amet. Nam hendrerit vel turpis in bibendum. Integer in urna et felis mattis molestie.</p>
+                                <p className="">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent dapibus in odio eget dignissim. Nulla ac fermentum tellus. Praesent at risus a libero finibus pharetra. In hac habitasse platea dictumst. Praesent porttitor nulla est, lacinia convallis diam tincidunt sit amet. Nam hendrerit vel turpis in bibendum. Integer in urna et felis mattis molestie.</p>
+                                <p className="">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent dapibus in odio eget dignissim. Nulla ac fermentum tellus. Praesent at risus a libero finibus pharetra. In hac habitasse platea dictumst. Praesent porttitor nulla est, lacinia convallis diam tincidunt sit amet. Nam hendrerit vel turpis in bibendum. Integer in urna et felis mattis molestie.</p>
+                                <p className="">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent dapibus in odio eget dignissim. Nulla ac fermentum tellus. Praesent at risus a libero finibus pharetra. In hac habitasse platea dictumst. Praesent porttitor nulla est, lacinia convallis diam tincidunt sit amet. Nam hendrerit vel turpis in bibendum. Integer in urna et felis mattis molestie.</p>
                             </div>
                             <div className="blog-links">
                                 <h5>Sources</h5>
                                 <p><Link to="#">https.///degsdxbf</Link></p>
                                 <ul>
-                                    <Link to="#">
-                                        <li>								
-                                            <img className="img-fluid" src="assets/images/share-icon.png" alt="share-icon" width="16" height="16"/>
-                                        </li>
-                                    </Link>
-                                    <Link to="#">
-                                        <li>								
-                                            <img className="img-fluid" src="assets/images/share-icon.png" alt="share-icon" width="16" height="16"/>
-                                        </li>
-                                    </Link>
-                                    <Link to="#">
-                                        <li>								
-                                            <img className="img-fluid" src="assets/images/share-icon.png" alt="share-icon" width="16" height="16"/>
-                                        </li>
-                                    </Link>
-                                    <Link to="#">
-                                        <li>								
-                                            <img className="img-fluid" src="assets/images/share-icon.png" alt="share-icon" width="16" height="16"/>
-                                        </li>
-                                    </Link>
-                                    <Link to="#">
-                                        <li>								
-                                            <img className="img-fluid" src="assets/images/share-icon.png" alt="share-icon" width="16" height="16"/>
-                                        </li>
-                                    </Link>
-                                    <Link to="#">
-                                        <li>								
-                                            <img className="img-fluid" src="assets/images/share-icon.png" alt="share-icon" width="16" height="16"/>
-                                        </li>
-                                    </Link>
-                                    <Link to="#">
-                                        <li>								
-                                            <img className="img-fluid" src="assets/images/share-icon.png" alt="share-icon" width="16" height="16"/>
-                                        </li>
-                                    </Link>
+                                    <li>								
+                                        <Link>
+                                            <i class="fa-brands fa-facebook-f"></i>
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link>
+                                            <i class="fa-brands fa-linkedin-in"></i>
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link>
+                                            <i class="fa-brands fa-twitter"></i>
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link>
+                                            <i class="fa-solid fa-share-nodes"></i>
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link>
+                                            <i class="fa-brands fa-instagram"></i>
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link>
+                                            <i class="fa-regular fa-envelope"></i>
+                                        </Link>
+                                    </li>                                    
                                 </ul>
                             </div>
                         </div>
@@ -114,12 +106,12 @@ function BlogDetail () {
             {/* <!-- Blog-view --> */}
 
             {/* <!-- ABOUT THE AUTHOR --> */}
-            <section className="col-md-12 Blog-about-author">
-                <div className="container">
+            <section className="col-md-12 ">
+                <div className="container">                    
                     <div className="row">
-                        <div className="d-flex">
+                        <div className="Blog-about-author">
                             <figure>
-                                <img className="img-fluid" src="assets/images/logo_light.png" alt="Brabo logo" width="160" height="32" />
+                                <img className="img-fluid" src={Author} alt="Brabo logo" width="160" height="32" />
                             </figure>
                             <figcaption>
                                 <h3 className="mb-4">ABOUT THE AUTHOR</h3>

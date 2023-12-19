@@ -37,15 +37,30 @@ const[data, setData] = useState([]);
   const toggleMode = () => {
     setDarkMode(prevMode => !prevMode);
   };
+  // mobile menu
+  const [navOpen, setNavOpen] = useState(false);
+  const toggleNav = () => {
+    setNavOpen(!navOpen);
+  };
+  
+  const [subNavOpen, setSubNavOpen] = useState({});
+  const toggleSubNav = (parentId) => {
+    setSubNavOpen((prevState) => ({
+      ...prevState,
+      [parentId]: !prevState[parentId],
+    }));
+  };
 
   return (
     <div>
       <header>
         <div className="container">
           <nav className="navigation">
-            <div className="logo">
-               <Link to="/">
-                <img className='logo-dark desktop-logo' src={LogoDark} alt="Brabo Logo" width={180} height={35} />
+            <div className="logo" onClick={toggleNav}>
+               <Link to="/" >
+                <img className='logo-dark desktop-logo' src={LogoDark} alt="Brabo Logo" width={180} height={35}
+                
+                />
                 </Link>
                <Link to="/">
                   <img className='logo-light' src={LogoLight} alt="Brabo Logo" width={42} height={32} />                  
@@ -54,12 +69,14 @@ const[data, setData] = useState([]);
                   <img className='logo-dark mobile-logo' src={LogoLightMobile} alt="Brabo Logo" width={42} height={32} />
                 </Link>
             </div>
-            <div className="nav-link">
+            <div className={`nav-link ${navOpen ? 'open' : ''}`} >
               <ul className="main-navigation">
                 {data.filter(menu => menu.post_parent === 0).map( (menu, index) => (
                   <li key={index}>
-                    <Link to={menu.url}>{menu.title}</Link>
-                    <ul className="subMenu gradient-border">
+                    <div onClick={() => toggleSubNav(menu.object_id)}>
+                      <Link to={menu}>{menu.title}</Link>
+                    </div>
+                    <ul className={`subMenu gradient-border ${subNavOpen[menu.object_id] ? 'subMenuOpen' : ''}`} >
                        {data.filter(submenu => submenu.post_parent == menu.object_id)
                        .map( ( submenu, subindex) => (
                         <li key={subindex}><Link to={submenu.url}>{submenu.title}</Link></li>
@@ -68,8 +85,7 @@ const[data, setData] = useState([]);
                     </ul>
                   </li>
                 ))
-                }
-                
+                }                
               </ul>
             </div>
             <div className="nav-button">

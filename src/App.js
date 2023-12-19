@@ -14,6 +14,7 @@ const PrivacyPolicy = React.lazy(() => import('./pages/privacy-policy/privacy-po
 const TermsConditions = React.lazy(() => import('./pages/terms-conditions/terms-conditions'));
 const Blog = React.lazy(() => import('./pages/resources/blog/blog'));
 const BlogDetail = React.lazy(() => import('./pages/resources/blog/blog-detail/blog-detail'));
+const Career = React.lazy(() => import('./pages/about/career'));
 
 function App() {
   return (
@@ -36,7 +37,8 @@ function App() {
               <Route path="/privacy-policy" element={<PrivacyPolicy />} />
               <Route path="/terms-condition" element={<TermsConditions />} />
               <Route path='/resources/blog' element={<Blog />}  />
-              <Route path='/resources/blog-detail' element={<BlogDetail />}  />
+              <Route path='/resources/blog/blog-detail' element={<BlogDetail />}  />
+              <Route path='/company/careers' element={<Career />}  />
               <Route path="*" element={<NotFound />} />
             </Route>
           </Routes>

@@ -126,7 +126,7 @@ header{background-color: var(--white); position: relative; padding-top: 20px;pad
 /*Banner*/
 
 /*business-value*/
-.business-value{ background:url('../images/gredient.png') top center no-repeat; background-size:contain; padding-top: calc(2 * var(--section-gap)); padding-bottom: calc(2 * var(--section-gap)); }
+.business-value{ background: url('../images/gredient.png') top center no-repeat;background-blend-mode: luminosity; ;background-size:contain; padding-top: calc(2 * var(--section-gap)); padding-bottom: calc(2 * var(--section-gap)); }
 .business-value h2{font-size: 72px; line-height: 80px; font-weight: 700; margin-bottom: 20px; color: var(--primary);}
 .dark .business-value h2{ color: var(--white); }
 .business-value .container{ position:relative; }
@@ -146,7 +146,7 @@ header{background-color: var(--white); position: relative; padding-top: 20px;pad
 .services .owl-carousel{}
 .services .owl-carousel .owl-item .content{text-align: left;margin-top: 100px;padding: 30px;}
 .services .owl-carousel .owl-item .business-value-slider{margin-top: -120px;}
-.services .owl-carousel .owl-item img{z-index: 99;position: relative;padding: 30px 30px 0 30px;border-radius: 10px; height: 300px; object-fit: cover;}
+.services .owl-carousel .owl-item img{z-index: 99;position: relative;border-radius: 10px; height: 300px; object-fit: cover;}
 .services .owl-carousel .owl-item .item:hover .business-value-slider:before { background: #fdcaad;}
 .dark .services .owl-carousel .owl-item .item:hover .business-value-slider:before { background: var(--hover-blue);}
 .business-value-slider.gradient-border:before{background-color: var(--light);}
@@ -196,6 +196,7 @@ header{background-color: var(--white); position: relative; padding-top: 20px;pad
 .Platform-Affordability .gredient-line .line4{ top:-20%; right:0% }
 .Platform-Affordability .gredient-line .line5{ top:55%; right:0%; }
 .Platform-Affordability .gredient-line .line6{ bottom:-32%; right:0%; }
+.Platform-Affordability .gredient-line svg path {fill: #ccc;}
 /*Platform-Affordability*/
 
 /*help-us*/
@@ -306,7 +307,7 @@ footer .links ul li a{ text-decoration: none; color: #535353; font-size: 14px; f
 
 /***************************************************Company Page css****************************************/
 /*banner*/
-/* .banner-2 { background-image:url(../images/top-bg.png); background-size: cover; background-repeat: no-repeat; position: relative; } */
+.dark .banner-2 {background: #131313; background-blend-mode:luminosity ;}
 .banner-2:after {content:""; width: 100%; height: 100%; top:0; left:0; position: absolute; background-color: #131313; opacity: 50%;}
 .banner-2 .content { z-index: 9; }
 .banner-2 p{color: #E8E8E8;}
@@ -332,7 +333,7 @@ footer .links ul li a{ text-decoration: none; color: #535353; font-size: 14px; f
 
 /*what-you-need*/
 .what-you-need {background-image:url(../images/what-you-need-light.png); background-size: cover; background-position: center center; background-repeat: no-repeat; position: relative;}
-.dark .what-you-need {background-image:url(../images/what-you-need-bg.png);}
+.dark .what-you-need {background-image:url(../images/what-you-need-bg.png);background-color: #131313;background-blend-mode:luminosity ;}
 .dark .what-you-need:after {content:""; width: 100%; height: 100%; top:0; left:0; position: absolute; background-color: #212121; opacity: 50%;}
 .what-you-need .content { z-index: 9; position: relative;}
 .what-you-need h2 {font-size: 42px; line-height: 56px; font-weight: 600;}
@@ -361,7 +362,7 @@ footer .links ul li a{ text-decoration: none; color: #535353; font-size: 14px; f
 /*brabo sustainabilit application*/
 
 /*Key-benefits*/
-.Key-benefits .benefits-box { padding: 32px 61px; height: 100%;}
+.Key-benefits .benefits-box { padding: 1.5rem; height: 100%;box-shadow: 6px 6px 18.67px 0px rgba(0, 0, 0, 0.70), -6.22px -6.22px 18.67px 0px rgba(59, 68, 81, 0.70);}
 .Key-benefits .heading {  font-size: 27px; font-weight: 500; position: relative; }
 .Key-benefits .heading:after {content: ""; width: 10%; height: 20%; bottom: -15px; left: 50%; position: absolute; background-color: #2F54EB; border-radius: 10px; transform: translateX(-50%);}
 /* .Key-benefits p {font-size: 18px; font-weight: 400; line-height: 22px; } */
@@ -480,12 +481,12 @@ opacity: 1;}
 /*bannar*/
 
 /*Filter By*/
-.filter-by h2 { font-size: 42px; font-weight: 600; margin-left: 15px; }
-.filter-by select {background-color: transparent; color: #fff; font-size: 18px; font-weight: 400; padding: 19px 30px; outline: none; border: none;}
-.filter-by input::placeholder { color: #fff; }
-.sort-by {margin-left:15px; margin-top: 50px;}
+.filter-by h2 { font-size: 42px; font-weight: 600;  }
+.filter-by select {background-color: transparent; font-size: 18px; font-weight: 400; padding: 18px 30px; outline: none; border: none;}
+.dark .filter-by input::placeholder { color: #fff; }
+.sort-by { margin-top: 50px;display: flex;flex-wrap: wrap;gap:10px}
 .sort-by h4 {font-size: 20px; font-weight: 600; margin-bottom: 0;}
-.sort-by-button { padding: 8px 30px; color: #fff; font-size: 16px; font-weight: 400; min-width: auto; }
+.sort-by-button { padding: 8px 30px; font-size: 16px; font-weight: 400; min-width: auto; }
 /*Filter By*/
 
 /*blog*/
@@ -493,10 +494,12 @@ opacity: 1;}
 .our-Blog .Blog-box .content{text-align: left;margin-top: 100px;padding: 30px;}
 .our-Blog .Blog-box .gradient-border{margin-top: -120px;}
 .our-Blog .Blog-box img{z-index: 99;position: relative;}
+.our-Blog .Blog-box figure img{filter: invert(1);}
+.dark .our-Blog .Blog-box figure img{filter: inherit;}
 .our-Blog .Blog-box a:hover .gradient-border:before { background: var(--hover-blue);}
 .our-Blog .Blog-box h3{font-size: 24px; font-weight: 600; margin-left: 10px; margin-bottom: 0;}
 .our-Blog .Blog-box .sub-heading{font-size: 18px; font-weight: 500;}
-.our-Blog .Blog-box .text-light{font-size: 15px; font-weight: 400; line-height: 26px;  }
+.our-Blog .Blog-box .text-light{font-size: 16px;  }
 .our-Blog .Blog-box .share-time{ justify-content: space-between; }
 .our-Blog .Blog-box .between{ align-items: baseline;}
 .our-Blog .Blog-box .share-text { font-size: 15px; font-weight: 400; line-height: 26px; margin-bottom: 0; }
@@ -510,12 +513,12 @@ opacity: 1;}
 .our-Blog .recent{padding-right: 0; padding-left: 30px;}
 .our-Blog .recent-post { padding: 50px; }
 .our-Blog .recent-post h4 {font-size: 32px; font-weight: 600; }
-.our-Blog .recent-post p {font-size: 17px; font-weight: 400; line-height: 26px;}
+/* .our-Blog .recent-post p {font-size: 17px; font-weight: 400; line-height: 26px;} */
 .our-Blog .recent-post ul {margin: 0; padding: 0;}
 .our-Blog .recent-post ul li {list-style: none; }
 .our-Blog .recent-post ul li a{text-decoration: none; font-size: 17px; font-weight: 400; color: #fff; }
-.our-Blog .search-field .gradient-border { padding-top: 0; margin-right: -20px; }
-.our-Blog .View-all-button .view-button { padding: 20px 400px; background-color: #1957F3; color: #fff; text-decoration: none; border-radius: 12px;}
+.our-Blog .search-field .gradient-border { padding-top: 0;}
+.our-Blog .View-all-button .view-button { padding: 20px 400px;margin-top: 1.5rem;}
 /*recent post*/
 /********************************************Resources page css******************************************/
 
@@ -528,7 +531,7 @@ opacity: 1;}
 /*Blog view*/
 .Blog-view .blog-view-img { margin-bottom: 60px; }
 .Blog-view .blog-view-text { margin-bottom: 50px; }
-.Blog-view .blog-view-text p{ font-size: 18px; font-weight: 400; line-height: 28px;}
+/* .Blog-view .blog-view-text p{ font-size: 18px; font-weight: 400; line-height: 28px;} */
 .Blog-view .stay-Connected { padding:60px 40px;}
 .Blog-view .stay-Connected h2 {font-size: 32px; font-weight:400;}
 .Blog-view .stay-Connected p {font-size: 20px; font-weight: 500;}
@@ -536,32 +539,35 @@ opacity: 1;}
 .Blog-view .stay-Connected .Email-field .gradient-border { box-shadow: none; padding: 10px;}
 .Blog-view .stay-Connected .Email-field input { padding: 10px 20px; }
 .Blog-view .stay-Connected .Email-field .btn {z-index: 99; min-width:180px; font-size: 18px; }
-.Blog-view .stay-Connected .Email-field label { font-size: 16px; }
 .Blog-view .stay-Connected .form-check input { padding: 0; border: 1px solid #A7A7A7;}
-.Blog-view .stay-Connected .form-check label { opacity: .7; font-size: 16px; font-weight: 400; line-height: 26px; }
+.Blog-view .stay-Connected .form-check label { opacity: .7;font-size: 16px;line-height: 27px;}
 .Blog-view .stay-Connected .form-check label a {text-decoration: underline; }
 /*Blog view*/
 
 /*Blog links*/
-.Blog-view .blog-links h5 {font-size: 28px; font-weight: 600; margin-bottom: 20px;}
-.Blog-view .blog-links p a {text-decoration: none; font-size: 18px; font-weight: 500; color: #fff; }
-.Blog-view .blog-links ul {display: flex; margin: 0; padding: 0;}
-.Blog-view .blog-links ul li {list-style: none; background-color: #000; width: 40px; height: 40px; border-radius: 50px; justify-content: center; align-items: center; display: flex;}
-.Blog-view .blog-links ul a{margin-right: 16px;}
+.blog-links h5 {font-size: 28px; font-weight: 600; margin-bottom: 20px;}
+.blog-links p a {text-decoration: none; font-size: 18px; font-weight: 500; }
+.blog-links ul {display: flex; margin: 0; padding: 0;gap:10px;}
+.blog-links ul li {list-style: none; background-color: var(--black); width: 40px;
+    font-size: 20px;
+    height: 40px; border-radius: 50px; justify-content: center; align-items: center; display: flex;}
+.blog-links ul li a {color: var(--white);}
 /*Blog links*/
 
 /*Blog-about-author*/
-.Blog-about-author figure { background-color: #000; width: 150px; height: 150px; border-radius: 50px; justify-content: center; align-items: center; display: flex;}
-.Blog-about-author figcaption p {font-size: 18px; font-weight: 400; line-height: 28px;}
+.Blog-about-author { display: flex;gap: 30px;}
+.Blog-about-author figure { background-color: #D9D9D9;; width: 150px; height: 150px; border-radius: 50%; justify-content: center; align-items: center; display: flex;overflow: hidden;}
+.Blog-about-author figure img{width: 150px;height: 150px;}
+.Blog-about-author figcaption  {flex: 1;}
 /*Blog-about-author*/
 /********************************************View Resources page css******************************************/
 
 /********************************************Career page css******************************************/
 /*career-banner*/
-.Career-banner .sub-heading {color: #E8E8E8; font-size: 27px; font-weight: 500;}
-.Career-banner h1 {color: #E8E8E8; font-size: 72px; font-weight: 700;}
-.Career-banner .text-light {color: #E8E8E8; font-size: 18px; font-weight: 400;}
-.Career-banner .internship-text {color: #E8E8E8; font-size: 27px; font-weight: 500;}
+.Career-banner .sub-heading {font-size: 27px; font-weight: 500;}
+/* .Career-banner h1 {color: #E8E8E8; font-size: 72px; font-weight: 700;} */
+/* .Career-banner .text-light {color: #E8E8E8; font-size: 18px; font-weight: 400;} */
+.Career-banner .internship-text { font-size: 27px; font-weight: 500;}
 /*career-banner*/
 
 /*career Key-benefits*/
@@ -570,9 +576,9 @@ opacity: 1;}
 
 /*Core Values*/
 .core-values .heading {color: #fff; font-size: 54px; font-weight: 600; position: relative; margin-bottom: 120px;} 
-.core-values .heading:before {content:"CORE"; width: 100%; height: 100%; top: -70%; left: 4%; position: absolute; z-index: -1; color: rgba(173, 173, 173, 0.04); text-align: center; font-size: 125px; font-weight: 900; letter-spacing: 125px; -webkit-text-stroke-width: 1px; -webkit-text-stroke-color: #373737; }
+.core-values .heading:before {content:"CORE"; left: 50%;transform: translateX(-50%) ;position: absolute; z-index: -1; color: rgba(173, 173, 173, 0.04); text-align: center; font-size: 125px; font-weight: 900; letter-spacing: 125px; -webkit-text-stroke-width: 1px; -webkit-text-stroke-color: #373737; }
 .core-values .text-hard {color: #E8E8E8; font-size: 27px; font-weight: 500;}
-.core-values .text-light {color: #E8E8E8 !important; font-size: 17px; font-weight: 400; line-height: 26px; width: 70%;}
+/* .core-values .text-light {color: #E8E8E8 !important; font-size: 17px; font-weight: 400; line-height: 26px; width: 70%;} */
 /*Core Values*/
 
 /*Career opportunities*/
@@ -621,10 +627,11 @@ opacity: 1;}
 @media (max-width:1366px){
     .Platform-Affordability p, .Continuous-Innovation p, .Continuous-Innovation span{ width: auto;}
     .Schedule-Demo .sub-heading{font-size: 22px;}
-    
+    .our-Blog .View-all-button .view-button{padding: 10px;}
 }
 
 @media (max-width:1280px){
+    p{line-height: normal;}
     .banner-logo img{  width: 250px;}
     .main_banner{ padding-top: var(--section-gap);}
     .btn{ min-width: 180px;  font-size: 16px; padding-top: 8px; padding-bottom: 8px;}
@@ -634,7 +641,7 @@ opacity: 1;}
     p{ font-size: 16px;}
     .business-value .gredient-line .line, .animation-line .line, .Platform-Affordability .gredient-line .line{ transform: scale(0.5);}
     h2, .how-brabo h2, .case-study h2, .Continuous-Innovation h2, .Powerful-Allies h2, .what-you-need h2
-    { font-size: 32px;}
+    { font-size: 32px;line-height: normal;}
     .help-us .box{ padding-left: 10px; padding-right: 10px;}
     .help-us a{ font-size: 16px;}
     .help-us h2{ line-height: normal;}
@@ -646,12 +653,56 @@ opacity: 1;}
     .sustainabilit-application-banner p{font-size: 34px;}
     .Key-benefits .benefits-box{padding: 30px 20px;}
     .what-you-need .sub-heading{font-size: 24px;}
+    .Knowledge-Hub-banner p{font-size: 20px;line-height: normal;}
+    .our-Blog .Blog-box .content, .our-Blog .recent-post{padding: 20px;}
+    .Blog-img {padding: 0 15px; }
+    .Blog-view .stay-Connected{padding: 20px;}
+    .Blog-view .stay-Connected h2{font-size: 22px;}
+    .Blog-view .stay-Connected p{font-size: 18px;}
+    .Blog-view .stay-Connected .Email-field .btn{min-width: inherit;font-size: 12px;}
+    .Blog-view .stay-Connected .Email-field input {padding: 0;height: auto;}
+    .Blog-view .stay-Connected .Email-field input::placeholder{font-size: 14px;}
+    .Blog-view .stay-Connected .form-check label{font-size: 14px;line-height: normal;}
+    .core-values .heading:before{font-size:100px;letter-spacing: 100px;top:-65%}
+    .core-values .heading{font-size: 45px;margin-bottom: 50px;}
+    .Key-benefits .heading{font-size: 20px;font-weight: 400px;}
 }
 
 @media (max-width:991px){
-    .mobile-logo{display: block;}
+     .mobile-logo{display: block;}
     .desktop-logo{display: none;}
     .nav-link{ display: none;}
+    .navigation{position: relative;}
+    .nav-link.open{ display: block;}
+    .nav-link.open ul>li {padding: 10px 0; font-size: 14px; }
+    .nav-link.open ul{ display: block;
+        position: absolute;
+        top: 40px;
+        left: 25px;
+        z-index: 9;
+        transition: .5s;
+        border: 1px solid transparent;
+        border-image: linear-gradient(175deg, rgba(226,89,21,1) 0%, rgba(104,74,98,1) 54%, rgba(42,61,112,1) 100%);
+        border-image-slice: 1;
+        border-radius: 12px;
+        background-color: var(--gradient-bg);
+        min-width: 170px;}
+    .nav-link.open ul:before {
+        content: "";
+        width: calc(100% - 2px);
+        height: calc(100% - 2px);
+        top: 1px;
+        left: 1px;
+        right: 1px;
+        bottom: 1px;
+        position: absolute;
+        display: block;
+        background-color: var(--gradient-bg);
+        border-radius: 12px;
+    }   
+    .nav-link.open ul>li .subMenu.subMenuOpen {display: block;}
+    .nav-link.open ul>li .subMenu.subMenuOpen li a{margin: 0 .5rem;font-size: 14px;}
+    .nav-link ul>li:hover .subMenu{display: none;}
     .case-study, .how-brabo{ text-align: center;}
     .case-study p, .case-study span{ width: auto;}
     .case-study span, .how-brabo span{ display: block;}
@@ -669,6 +720,8 @@ opacity: 1;}
     .sustainabilit-application-banner .text-light, .Become-Partner .text-hard{font-size: 20px;line-height: normal;}
     .what-you-need .sub-heading {font-size: 20px;font-weight: 400;}
     .partners .partners-box { padding: 30px; }
+    
+    
 }
 
 @media (max-width:767px){
@@ -678,9 +731,10 @@ opacity: 1;}
     :root{
         --section-gap: 40px;
     }
-    p{line-height: normal;}
+    
     .form-control::placeholder{font-size: 14px;}
     .form-control:not(textarea), .dark .gradient-border textarea{padding: 20px;}
+    .filter-by select{font-size: 14px;height: 44px;padding: 10px 15px;}
     .banner-logo {margin-bottom: 1rem;justify-content: center;}
     .nav-button .btn {min-width: 100px; font-size: 12px; }
     
@@ -722,11 +776,16 @@ opacity: 1;}
     .animation-line .line3 { top: 0; right: 0%;}
     .animation-line .line2 {bottom: 20%;left: 0;}
     .animation-line .line1 { top: 0;}
+    .Knowledge-Hub-banner p{font-size: 16px;}
+    .filter-by h2{font-size: 32px;}
+    .our-Blog .recent{padding-left: calc(var(--bs-gutter-x) * .5);}
+    .Blog-view .stay-Connected{display: none;}
+    .Key-benefits .benefits-box{max-width: 60%;margin: auto;}
 }
 
 @media (max-width:480px){
     p{font-size: 14px;}
-    .services .owl-carousel .owl-item img{height: 200px;padding: 30px 10px 0 10px;}
+    .services .owl-carousel .owl-item img{height: 200px;}
     .business-value h2, .Platform-Affordability h2, .follow-us-linkedin h2 {font-size: 30px;line-height: normal;
     }
     .sustainabilit-application-banner h2, .brabo-sustainabilit-applications h2, .policy-pages-content h2 {font-size: 26px;}
@@ -746,7 +805,7 @@ opacity: 1;}
     .business-value .gredient-line .line4{top: -20%;}
     .business-value .gredient-line .line6{bottom: -45%;}
     .business-value .gredient-line .line2{top:8%;}
-    
+    .about-us-banner .btn {min-width: 130px;}
 }
 
 @media (max-width:320px){
@@ -825,6 +884,7 @@ opacity: 1;}
 .language-swichter { margin-top: 6px;}
 .language-swichter select{background-color: transparent;border: none;font-size: 16px;}
 .dark .language-swichter select{color:var(--white);}
+.dark .language-swichter select option{color: var(--black);}
 .dark .language-swichter select:focus-visible {outline: none;}
 .dark .DataUnlock_dark{display:block;margin: auto;}
 .DataUnlock_dark{display:none}

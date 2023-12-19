@@ -25,17 +25,34 @@ function AboutUs() {
       };
       fetchAbout();
   }, [slug]);
+
+  // change background image on dark and light mode
+  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [bgImage, setBgImage] = useState('');
+  useEffect(() => {
+    const isDark = document.body.classList.contains('dark');
+    setIsDarkMode(isDark);
+  }, []);
+  useEffect(() => {
+    const imageUrl = isDarkMode
+      ? 'url(${aboutData.acf.dark_image.url})'
+      : 'url(${aboutData.acf.light_image.url})';
+    setBgImage(imageUrl);
+  }, [isDarkMode]);
+  // change background image on dark and light mode
+
   return (
     <>
     {aboutData && (
       <div>
         {/* <!-- Banner --> */}        
-          <section className="col-md-12 business-value banner-2 text-center" 
+          <section className="col-md-12 business-value banner-2 text-center about-us-banner" 
           style={{
               backgroundImage: `url(${aboutData.featured_image})`,
               backgroundSize: 'cover',
               backgroundPosition: 'center',
               position: 'relative',
+              backgroundBlendMode: 'luminosity',
           }}
           >
             <div className="container">
@@ -44,8 +61,8 @@ function AboutUs() {
                   <h2>{aboutData.title.rendered}</h2>
                   <p className="mb-5" dangerouslySetInnerHTML={{ __html: aboutData.excerpt.rendered }}></p>
                   <div className="d-flex justify-content-center">
-                    <Link to="#" className="btn btn-primary me-5">Leadership</Link>
-                    <Link to="#" className="btn btn-outline-primary border-white">Careers</Link>
+                    <Link to="/company/our-people" className="btn btn-primary me-lg-5 me-2">Leadership</Link>
+                    <Link to="/company/careers" className="btn btn-outline-primary border-white">Careers</Link>
                   </div>
                 </div>
               </div>
@@ -81,7 +98,7 @@ function AboutUs() {
                   <h2 className="mb-4">{aboutData.acf.heading2}</h2>
                   <p className="mb-lg-4 sub-heading">{aboutData.acf.subheading2}</p>
                   <p>{aboutData.acf.description2}</p>                  
-                  <Link to="#" className="btn btn-outline-primary">Meet our Sol-Mates </Link>
+                  <Link to="/company/our-people" className="btn btn-outline-primary">Meet our Sol-Mates </Link>
                 </div>
               </div>
               <div className="col-lg-6">
@@ -96,7 +113,9 @@ function AboutUs() {
         {/* <!-- Our people --> */}
 
         {/* <!-- what-you-need --> */}
-        <section className="col-md-12 what-you-need text-center">
+        <section className="col-md-12 what-you-need text-center" 
+          style={{ backgroundImage: `url(${bgImage})` }}
+        >
           <div className="container">
             <div className="row justify-content-center">
               <div className="col-lg-8 col-md-12">
@@ -105,7 +124,7 @@ function AboutUs() {
                   <p className="mb-lg-5 mb-3 sub-heading">{aboutData.acf.subheading3}</p>
                   <p className="m-0">{aboutData.acf.description3}</p>
                   <p className="orange-text mb-5">All you need to do is, Reach Out.</p>
-                  <Link to="#" className="btn btn-primary">Contact Us</Link>
+                  <Link to="/company/get-in-touch" className="btn btn-primary">Contact Us</Link>
                 </div>
               </div>
             </div>

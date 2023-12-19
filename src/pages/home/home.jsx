@@ -23,8 +23,8 @@ import { useParams } from 'react-router-dom';
 function Home() {
 	const linkedinSlider = {
 		items: 3,
-		autoplay: true,
-		autoplayTimeout: 3000,
+		//autoplay: true,
+		//autoplayTimeout: 3000,
 		margin: 20,
 		dots: false,
 		nav: true,
@@ -47,8 +47,8 @@ function Home() {
 	};
 	const bannerSlider = {
 		items: 3,
-		autoplay: true,
-		autoplayTimeout: 1000,
+		//autoplay: true,
+		//autoplayTimeout: 1000,
 		loop: true,
 		center: true,
 		margin: 10,
@@ -57,8 +57,8 @@ function Home() {
 	};
 	const serviceSlider = {
 		items: 3,
-		autoplay: true,
-		autoplayTimeout: 3000,
+		//autoplay: true,
+		//autoplayTimeout: 3000,
 		loop: true,
 		margin: 20,
 		dots: true,
@@ -119,6 +119,23 @@ function Home() {
 		};
 		fetchAbout();
 	});
+
+	// change image on dark and light mode
+	const [isDarkMode, setIsDarkMode] = useState(false);
+	const [unlockImage, setunlockImage] = useState('');
+	useEffect(() => {
+	  const isDark = document.body.classList.contains('dark');
+	  setIsDarkMode(isDark);
+	}, []);
+	useEffect(() => {
+		if (homeData && homeData.acf) {
+			const imageUrl = isDarkMode
+			  ? homeData.acf.unlock_dark_image?.url
+			  : homeData.acf.unlock_light_image?.url;
+			  setunlockImage(imageUrl); 
+		  }
+	  }, [isDarkMode, homeData]);
+	// change image on dark and light mode
 	return (
 		<>
 		{homeData ? (
@@ -317,7 +334,7 @@ function Home() {
 							{serviceData.map((item) => (
 								<div className='item' key={item.id}>
 									<div className="slider-item">
-										<div className="">
+										<div className="p-3">
 											<img className="img-fluid" src={item.featured_image} alt={item.title.rendered} width="423" height="242" />
 										</div>
 										<div className="business-value-slider gradient-border">
@@ -401,7 +418,7 @@ function Home() {
 						</div>
 						<div className="col-lg-6">
 							<div className="case-study-img text-center">
-								<img className="img-fluid" src={CaseStudy} alt="case-study" width="529" height="400" />
+								<img className="img-fluid" src={homeData.acf.image6.url} alt={homeData.acf.heading6} width="529" height="400" />
 							</div>
 							<Link to="#" className="btn btn-primary hide-button mt-5">Read more</Link>
 						</div>
@@ -418,8 +435,9 @@ function Home() {
 							<h2>{homeData.acf.heading3}</h2>
 							<p className="mb-5">{homeData.acf.subheading3}</p>
 							<div className="unlock-data-img text-center">
-								<img loading="lazy" className="img-fluid DataUnlock_dark" src={DataUnlock} alt="how brabo" width="1070" height="640" />
-								<img loading="lazy" className="img-fluid DataUnlock_light" src={DataUnlockLight} alt="how brabo" width={1236} height={821} />
+								
+								<img loading="lazy" className="img-fluid" src={unlockImage} alt="how brabo" width="1070" height="640" />
+								
 							</div>
 							<Link to="#" className="btn btn-primary">Learn about the Modern Tech Stack </Link>
 						</div>
@@ -620,7 +638,7 @@ function Home() {
 					<div className="heading mb-5 text-center">
 						<h2>Follow us on Linked In</h2>
 					</div>
-					<OwlCarousel className='owl-theme' {...linkedinSlider} loop>
+					<OwlCarousel className='owl-theme' {...linkedinSlider}>
 						<div className='item'>
 							<div className="linkedin-box gradient-border">
 								<Link to="#">

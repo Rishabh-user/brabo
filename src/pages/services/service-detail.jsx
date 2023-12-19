@@ -30,7 +30,7 @@ function ServiceDetail () {
             {serviceData && (
             <section className="col-md-12 business-value sustainabilit-application-banner text-center" 
             style={{
-                backgroundImage: `url(${serviceData.featured_image})`,
+                backgroundImage: `url(${serviceData.acf.servicebanner.url})`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
                 position: 'relative',
@@ -70,6 +70,55 @@ function ServiceDetail () {
             </section>
             {/* <!-- Powerful-Allies --> */}
 
+            {/* <!-- Additional LeftSide --> */}
+            {serviceData && serviceData.acf && serviceData.acf.leftheading && serviceData.acf.leftdescription && serviceData.acf.leftimage && (
+			<section className="col-md-12 case-study">
+				<div className="container">
+					<div className="row align-items-center">
+						<div className="col-lg-6">
+							<div className="contant">
+								<h2 className="mb-4">{serviceData.acf.leftheading}</h2>
+								<p>{serviceData.acf.leftdescription}</p>
+								{/* <Link to="#" className="btn btn-primary">Read more</Link> */}
+							</div>
+						</div>
+						<div className="col-lg-6">
+							<div className="case-study-img text-center">
+								<img className="img-fluid" src={serviceData.acf.leftimage.url} alt={serviceData.acf.leftheading} width="570" height="440" />
+							</div>
+							{/* <Link to="#" className="btn btn-primary hide-button mt-5">Read more</Link> */}
+						</div>
+					</div>
+				</div>
+			</section>
+            )}
+			{/* <!-- Additional LeftSide --> */}
+
+            {/* <!-- Additional RightSide --> */}
+            {serviceData && serviceData.acf && serviceData.acf.rightheading && serviceData.acf.rightdescription && serviceData.acf.rightimages && (
+			<section className="col-md-12 case-study">
+				<div className="container">
+					<div className="row flex-row-reverse align-items-center">
+                        <div className="col-lg-6">
+                            <div className="contant">
+								<h2 className="mb-4">{serviceData.acf.rightheading}</h2>
+								<p>{serviceData.acf.rightdescription}</p>
+								{/* <Link to="#" className="btn btn-primary">Read more</Link> */}
+							</div>							
+						</div>
+						<div className="col-lg-6">
+                            <div className="case-study-img text-center">
+								<img className="img-fluid" src={serviceData.acf.rightimages.url} alt={serviceData.acf.rightheading} width="570" height="440" />
+							</div>
+                            {/* <Link to="#" className="btn btn-primary hide-button mt-5">Read more</Link> */}
+						</div>
+						
+					</div>
+				</div>
+			</section>
+            )}
+			{/* <!-- Additional RightSide --> */}
+
             {/* <!-- Key benefits --> */}
             <section className="col-md-12 Key-benefits">
             {serviceData ? (
@@ -79,7 +128,7 @@ function ServiceDetail () {
                     </div>                    
                     <div className="row justify-content-center">
                         {serviceData.acf.benefit_list.map((benefit, index) => (				
-                        <div className="col-lg-4 col-md-6 mb-lg-5 mb-3" key={index}>
+                        <div className="col-lg-3 col-md-6 mb-lg-5 mb-3" key={index}>
                             <div className="gradient-border benefits-box">                            
                                 <div className="content text-center">
                                     <div className="box-img text-center mb-lg-5 mb-3">
@@ -101,6 +150,25 @@ function ServiceDetail () {
                 )}
             </section>
             {/* <!-- Key benefits --> */}
+
+            {/* Additional Content */}
+            {serviceData && serviceData.acf && serviceData.acf.content && (
+            <section className="col-md-12 brabo-sustainabilit-applications services-content text-center">
+            <div className="container">
+                <div className="row justify-content-center">
+                
+                    <div className="col-lg-8">
+                    <div className="content p-lg-5">
+                        <div dangerouslySetInnerHTML={{ __html: serviceData.acf.content }}></div>
+                    </div>
+                    </div>
+               
+                </div>
+            </div>
+            </section>
+            )}
+            {/* Additional Content */}
+
         </>
     );
 }
