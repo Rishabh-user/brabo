@@ -62,7 +62,7 @@ function Home() {
 		loop: true,
 		margin: 20,
 		dots: true,
-		nav: false,
+		nav: true,
 		responsiveClass: true,
 		responsive: {
 			0: {

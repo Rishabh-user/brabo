@@ -2,13 +2,15 @@
     --dark: #1F2023;
     --light: #F2F3FA;
     --white: #fff;
+    --light-white: #E8E8E8;
     --black: #000;
-    --section-gap: 80px;
+    --section-gap: 60px;
     --gradient-bg: #2c2f33;
     --hover-blue: #000823;
     --orange : #f24822;
     --primary: #1957F3;
 }
+.btn-primary{ background-color: var(--primary);}
 .btn{ min-width:265px; font-size: 20px; font-weight: 600; padding-top: 14px; padding-bottom: 14px;transition: all .5s ease-in;  border-radius: 12px}
 .btn:hover {background: linear-gradient(#f24822); background-color: #f24822; min-width: 280px;transition: all .5s ease-in;border-color: #f24822
 }
@@ -26,14 +28,15 @@
 .dark .form-control:focus, .dark .form-check-input:focus{color: var(--white);background-color: transparent;}
 section{ padding-top: var(--section-gap); padding-bottom: var(--section-gap); }
 footer{ padding-top: var(--section-gap);  }
-h1, h2, h3, h4, h5, h6{font-family: 'Chakra Petch', sans-serif;}
+body{ font-family: 'Poppins', sans-serif; color: var(--light-white);}
+.dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6{ color: var(--white);}
+h1, h2, h3, h4, h5, h6{font-family: 'Chakra Petch', sans-serif; color: var(--primary);  }
 
 h2{font-size: 64px;font-weight: 700;line-height: 70px;}
 
 body{ font-size: 18px; font-weight: 400; line-height:normal; background-color: var(--light); color:var(--black); }
-p{line-height: 27px;}
 .logo-light{ display: none;}
-.dark{ background-color:var(--dark); color:var(--white); }
+.dark{ background-color:var(--dark); color:var(--light-white); }
 .dark .logo-dark{ display: none; }
 .dark .logo-light{ display: block;}
 
@@ -105,7 +108,7 @@ header{background-color: var(--white); position: relative; padding-top: 20px;pad
 .main_banner video{ mix-blend-mode: lighten; }
 .banner-logo{ display:flex; margin-bottom:2rem; }
 .main_banner .container{ position:relative; }
-.main_banner .owl-carousel{ height:300px;}
+.main_banner .owl-carousel{ height:350px;}
 .main_banner .owl-carousel .owl-stage-outer, .main_banner .owl-carousel .owl-stage{ height:100%;}
 .main_banner .owl-carousel .owl-stage{ display: flex; align-items: center; }
 .main_banner .owl-carousel.owl-drag .owl-item{ transform: scale(1);}
@@ -126,7 +129,7 @@ header{background-color: var(--white); position: relative; padding-top: 20px;pad
 /*Banner*/
 
 /*business-value*/
-.business-value{ background: url('../images/gredient.png') top center no-repeat;background-blend-mode: luminosity; ;background-size:contain; padding-top: calc(2 * var(--section-gap)); padding-bottom: calc(2 * var(--section-gap)); }
+.business-value{ background: url('../images/gredient.png') top center no-repeat;background-blend-mode: luminosity; ;background-size:contain; padding-top: calc(1 * var(--section-gap)); padding-bottom: calc(1 * var(--section-gap)); }
 .business-value h2{font-size: 72px; line-height: 80px; font-weight: 700; margin-bottom: 20px; color: var(--primary);}
 .dark .business-value h2{ color: var(--white); }
 .business-value .container{ position:relative; }
@@ -178,7 +181,7 @@ header{background-color: var(--white); position: relative; padding-top: 20px;pad
 /*Continuous-Innovation*/
 .Continuous-Innovation h2 { font-size: 64px; line-height: 70px; font-weight: 700;}
 .Continuous-Innovation p { font-size: 20px; line-height: 26px; font-weight: 400; width: 530px;}
-.Continuous-Innovation span { font-size: 20px; line-height: 26px; font-weight: 700; width: 530px; margin-bottom: 40px; display: flex; color: #8f9091;}
+.Continuous-Innovation span { font-size: 20px; line-height: 26px; font-weight: 700; width: 530px; margin-bottom: 40px; display: flex; opacity: 0.9;}
 .Continuous-Innovation-img {border-right: 1px solid #ccc;}
 .Continuous-Innovation .contant {margin-left: 30px;}
 /*Continuous-Innovation*/
