@@ -113,14 +113,7 @@ header{background-color: var(--white); position: relative; padding-top: 20px;pad
 .main_banner video{ mix-blend-mode: lighten; }
 .banner-logo{ display:flex; margin-bottom:2rem; }
 .main_banner .container{ position:relative; }
-.main_banner .owl-carousel{ height:350px;}
-.main_banner .owl-carousel .owl-stage-outer, .main_banner .owl-carousel .owl-stage{ height:100%;}
-.main_banner .owl-carousel .owl-stage{ display: flex; align-items: center; }
-.main_banner .owl-carousel.owl-drag .owl-item{ transform: scale(1);}
 .main_banner .owl-carousel.owl-drag .owl-item img{ border-radius: 6px;}
-.main_banner .owl-carousel.owl-drag .owl-item.center{ transform: scale(2.2); z-index: 99;}
-.main_banner .owl-carousel.owl-drag .owl-item.active .item{opacity: .3;}
-.main_banner .owl-carousel.owl-drag .owl-item.active.center .item{opacity: 1;}
 .animation-line .line{ position:absolute; z-index:9 }
 .animation-line .line1{ top:-20%; }
 .animation-line .line2{ bottom:-10%; left:30%; }
@@ -131,7 +124,21 @@ header{background-color: var(--white); position: relative; padding-top: 20px;pad
 .dark .logo-dark{display: none;}
 .logo-dark{display: block;}
 
+.main_banner .owl-carousel .owl-stage{ display: flex; height: 350px; align-items: center;}
+.main_banner .owl-item , .main_banner .item { position: relative; -webkit-transition: all .4s; -moz-transition: all .4s; transition: all .4s; }
+.main_banner .item{  opacity: 0.5; }
+.main_banner .center .item { transform: scale(2); opacity: 1;}
+.main_banner .owl-item.active.center { z-index: 5;}
 /*Banner*/
+
+/* Service slider */
+.services .owl-carousel .owl-stage{ display: flex;}
+.services .owl-carousel .owl-stage .item, .services .owl-carousel .owl-stage .slider-item{ height: 100%; display: flex; flex-wrap: wrap; padding: 2px;}
+.services .owl-carousel .owl-stage .slider-item>div{ flex: 0 100%; max-width: 100%;}
+
+.business-value-slider{ margin-top: -140px;}
+/*.business-value-slider{ flex-wrap: wrap; height: 100%;} */
+/* Service Slider */
 
 /*business-value*/
 .business-value{ background: url('../images/gredient.png') top center no-repeat;background-blend-mode: luminosity; ;background-size:contain; padding-top: calc(1 * var(--section-gap)); padding-bottom: calc(1 * var(--section-gap)); }
@@ -158,8 +165,7 @@ header{background-color: var(--white); position: relative; padding-top: 20px;pad
 .services .owl-carousel .owl-nav span.custom-next {
     margin-right: 0;
 }
-.services .owl-carousel .owl-item .content{text-align: left;margin-top: 100px;padding: 30px;}
-.services .owl-carousel .owl-item .business-value-slider{margin-top: -120px;}
+.services .owl-carousel .owl-item .content{text-align: left; margin-top: 100px; padding: 30px; }
 .services .owl-carousel .owl-item img{z-index: 99;position: relative;border-radius: 10px; height: 300px; object-fit: cover;}
 .services .owl-carousel .owl-item .item:hover .business-value-slider:before { background: #fdcaad;}
 .dark .services .owl-carousel .owl-item .item:hover .business-value-slider:before { background: var(--hover-blue);}

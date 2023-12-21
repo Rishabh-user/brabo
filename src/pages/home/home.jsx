@@ -52,8 +52,8 @@ function Home() {
 		autoplay: true, 
 		autoplayTimeout: 3000, 
 		loop: true,
+		margin: 5,
 		center: true,
-		margin: 10,
 		dots: false,
 		nav: false,
 	  };
@@ -338,7 +338,7 @@ function Home() {
 							{serviceData.map((item) => (
 								<div className='item' key={item.id}>
 									<div className="slider-item">
-										<div className="p-3">
+										<div className="slider-item-img p-3">
 											<img className="img-fluid" src={item.featured_image} alt={item.title.rendered} width="423" height="242" />
 										</div>
 										<div className="business-value-slider gradient-border">
