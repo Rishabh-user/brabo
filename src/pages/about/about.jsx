@@ -45,7 +45,8 @@ function AboutUs() {
     <>
     {aboutData && (
       <div>
-        {/* <!-- Banner --> */}        
+        {/* <!-- Banner --> */}  
+        <div style={{overflow:"hidden"}}>     
           <section className="col-md-12 business-value banner-2 text-center about-us-banner" 
           style={{
               backgroundImage: `url(${aboutData.featured_image})`,
@@ -68,7 +69,7 @@ function AboutUs() {
               </div>
             </div>
           </section>       
-       
+        </div> 
         {/* <!-- banner --> */}
 
         {/* <!-- Powerful-Allies --> */}

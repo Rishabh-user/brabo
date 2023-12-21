@@ -7,13 +7,23 @@ import LogoLightMobile from '../assets/images/logo-mobile.png';
 
 function Header() {
 const[data, setData] = useState([]);
+const[logoData, setLogoData] = useState([]);
+const[logoLightData, setLogoLightData] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
       try {
+        
         const response = await fetch(`${BASE_URL}/primary_menu`);
         const data = await response.json();
-        console.log('API Data:', data);
         setData(data);
+
+        const resp_logo = await fetch(`${BASE_URL}/widgets-area-image-light`);
+        const logo = await resp_logo.json();
+        setLogoData(logo);
+
+        const resp_logolight = await fetch(`${BASE_URL}/widgets-area-image-dark`);
+        const logo_dark = await resp_logolight.json();
+        setLogoLightData(logo_dark);
         
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -22,16 +32,31 @@ const[data, setData] = useState([]);
 
     fetchData();
   }, []);
-
-  const [darkMode, setDarkMode] = useState(true);
-
+  // Add sticky class
+  const [isSticky, setIsSticky] = useState(false);
   useEffect(() => {
-    // Toggle body classes based on darkMode state
+    const handleScroll = () => {
+      const offset = window.scrollY;
+      if (offset > 100) {
+        setIsSticky(true);
+      } else {
+        setIsSticky(false);
+      }
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []); 
+
+   // Toggle body classes based on darkMode state
+  const [darkMode, setDarkMode] = useState(true);
+  useEffect(() => {    
     const body = document.querySelector('body');
     if (darkMode) {
-      body.classList.add('dark'); // Replace 'dark-theme' with your dark mode class
+      body.classList.add('dark'); 
     } else {
-      body.classList.remove('dark'); // Replace 'dark-theme' with your dark mode class
+      body.classList.remove('dark'); 
     }
   }, [darkMode]);
   const toggleMode = () => {
@@ -39,53 +64,73 @@ const[data, setData] = useState([]);
   };
   // mobile menu
   const [navOpen, setNavOpen] = useState(false);
+  const [subNavOpen, setSubNavOpen] = useState({});
   const toggleNav = () => {
-    setNavOpen(!navOpen);
+    setSubNavOpen({});
+  setNavOpen(!navOpen);
+  };
+   
+  const toggleSubNav = (parentId) => {
+    setSubNavOpen((prevState) => {
+      const newState = { ...prevState };
+      Object.keys(newState).forEach((key) => {
+        if (key !== parentId) {
+          newState[key] = false; // Close other submenus
+        }
+      });
+      newState[parentId] = !prevState[parentId]; // Toggle the selected submenu
+      return newState;
+    });
   };
   
-  const [subNavOpen, setSubNavOpen] = useState({});
-  const toggleSubNav = (parentId) => {
-    setSubNavOpen((prevState) => ({
-      ...prevState,
-      [parentId]: !prevState[parentId],
-    }));
+  const renderSubMenu = (parentId) => {
+    const subMenuItems = data.filter((submenu) => submenu.menu_item_parent === parentId);
+    if (!subMenuItems.length) {
+      return null; // Return null if there are no submenu items
+    }
+  
+    return (
+      <ul className={`subMenu gradient-border ${subNavOpen[parentId] ? 'subMenuOpen' : ''}`}>
+        {subMenuItems.map((submenu, subindex) => (
+          <li key={subindex}>
+            <div onClick={() => toggleSubNav(submenu.post_name)}>
+              <Link to={submenu.url}>{submenu.title}</Link>
+            </div>
+            {submenu.menu_item_parent && renderSubMenu(submenu.post_name)}
+          </li>
+        ))}
+      </ul>
+    );
   };
 
+
+
   return (
-    <div>
-      <header>
+    <div className='position-relative'>
+      <header className={`${isSticky ? 'sticky' : ''}`}>
         <div className="container">
-          <nav className="navigation">
-            <div className="logo" onClick={toggleNav}>
-               <Link to="/" >
-                <img className='logo-dark desktop-logo' src={LogoDark} alt="Brabo Logo" width={180} height={35}
-                
-                />
+          <nav className="navigation">            
+              <div className="logo" onClick={toggleNav}>                
+                <Link to="/">
+                  {logoLightData && logoLightData.image_src_array && (
+                    <img className='logo-light' src={logoLightData.image_src_array} alt="Brabo Logo" width={42} height={32} />
+                  )}
+                  {logoData && logoData.image_src_array && (
+                    <img className='logo-dark' src={logoData.image_src_array} alt="Brabo Logo" width={42} height={32} />                  
+                  )}
                 </Link>
-               <Link to="/">
-                  <img className='logo-light' src={LogoLight} alt="Brabo Logo" width={42} height={32} />                  
-                </Link>
-               <Link to="/">
-                  <img className='logo-dark mobile-logo' src={LogoLightMobile} alt="Brabo Logo" width={42} height={32} />
-                </Link>
-            </div>
+              </div>
+            
             <div className={`nav-link ${navOpen ? 'open' : ''}`} >
               <ul className="main-navigation">
-                {data.filter(menu => menu.post_parent === 0).map( (menu, index) => (
+                {data.filter((menu) => menu.menu_item_parent === '0').map((menu, index) => (
                   <li key={index}>
-                    <div onClick={() => toggleSubNav(menu.object_id)}>
-                      <Link to={menu}>{menu.title}</Link>
+                    <div onClick={() => toggleSubNav(menu.post_name)}>
+                      <Link to={menu.url}>{menu.title}</Link>
                     </div>
-                    <ul className={`subMenu gradient-border ${subNavOpen[menu.object_id] ? 'subMenuOpen' : ''}`} >
-                       {data.filter(submenu => submenu.post_parent == menu.object_id)
-                       .map( ( submenu, subindex) => (
-                        <li key={subindex}><Link to={submenu.url}>{submenu.title}</Link></li>
-                       ) )
-                       }
-                    </ul>
+                    {menu.menu_item_parent && renderSubMenu(menu.post_name)}
                   </li>
-                ))
-                }                
+                ))}
               </ul>
             </div>
             <div className="nav-button">

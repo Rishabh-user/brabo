@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import BraboDark from '../../assets/images/logo_dark.png';
 import BraboLight from '../../assets/images/logo_light.png';
-import CaseStudy from '../../assets/images/case-study-img.png';
+// import CaseStudy from '../../assets/images/case-study-img.png';
 //import HowBrabo from '../../assets/images/how-brabo-img.png';
 import DataUnlock from '../../assets/images/unlock-data-img.png';
-import DataUnlockLight from '../../assets/images/unlock-data-img-light.png'
+// import DataUnlockLight from '../../assets/images/unlock-data-img-light.png'
 //import ContinousInnovation from '../../assets/images/Continuous-Innovation-img.png';
 import SunnyLandscape from '../../assets/images/sunny-landscape.png'
 import ThirdRendering from '../../assets/images/3d-rendering.png';
@@ -21,10 +21,12 @@ import { useParams } from 'react-router-dom';
 
 
 function Home() {
+	
 	const linkedinSlider = {
 		items: 3,
-		//autoplay: true,
-		//autoplayTimeout: 3000,
+		loop:true,
+		autoplay: true,
+		autoplayTimeout: 3000,
 		margin: 20,
 		dots: false,
 		nav: true,
@@ -47,22 +49,26 @@ function Home() {
 	};
 	const bannerSlider = {
 		items: 3,
-		//autoplay: true,
-		//autoplayTimeout: 1000,
+		autoplay: true, 
+		autoplayTimeout: 3000, 
 		loop: true,
 		center: true,
 		margin: 10,
 		dots: false,
 		nav: false,
-	};
+	  };
 	const serviceSlider = {
 		items: 3,
-		//autoplay: true,
-		//autoplayTimeout: 3000,
+		autoplay: true,
+		autoplayTimeout: 3000,
 		loop: true,
 		margin: 20,
-		dots: true,
+		dots: false,
 		nav: true,
+		navText: [
+			"<span class='custom-prev'><i class='fa-solid fa-angle-left'></i></span>",
+			"<span class='custom-next'><i class='fa-solid fa-angle-right'></i></span>"
+		],
 		responsiveClass: true,
 		responsive: {
 			0: {
@@ -86,7 +92,6 @@ function Home() {
 				if (response.ok) {
 					const data = await response.json();
 					if (Array.isArray(data)) {
-						console.log('Slider: data', data)
 						setServiceData(data);
 					}
 				} else {
@@ -105,36 +110,35 @@ function Home() {
 	useEffect(() => {
 		const fetchAbout = async () => {
 			try {
-			  const id = '424';
-				const response = await fetch(`${BASE_URL}/pages/${id}`);
-				if (response.ok) {
-				  const data = await response.json();
-				  setHomeData(data);
-				} else {
-					throw new Error('Failed to fetch data');
-				}
+			const id = '424';
+			const response = await fetch(`${BASE_URL}/pages/${id}`);
+			if (response.ok) {
+				const data = await response.json();
+				setHomeData(data);
+			} else {
+				throw new Error('Failed to fetch data');
+			}
 			} catch (error) {
-				console.error('Error fetching data:', error);
+			console.error('Error fetching data:', error);
 			}
 		};
-		fetchAbout();
-	});
 
+		fetchAbout();
+		}, []); 
 	// change image on dark and light mode
-	const [isDarkMode, setIsDarkMode] = useState(false);
-	const [unlockImage, setunlockImage] = useState('');
-	useEffect(() => {
-	  const isDark = document.body.classList.contains('dark');
-	  setIsDarkMode(isDark);
-	}, []);
-	useEffect(() => {
-		if (homeData && homeData.acf) {
-			const imageUrl = isDarkMode
-			  ? homeData.acf.unlock_dark_image?.url
-			  : homeData.acf.unlock_light_image?.url;
-			  setunlockImage(imageUrl); 
-		  }
-	  }, [isDarkMode, homeData]);
+
+	// const [unlockImage, setunlockImage] = useState('');
+	// useEffect(() => {
+	// 	if (homeData && homeData.acf) {
+	// 	  let imageUrl = ''; 
+	// 	  if (document.body.classList.contains('dark')) {
+	// 		imageUrl = homeData.acf.unlock_dark_image?.url || ''; 
+	// 	  } else {
+	// 		imageUrl = homeData.acf.unlock_light_image?.url || ''; 
+	// 	  }
+	// 	  setunlockImage(imageUrl); 
+	// 	}
+	//   }, [homeData]);
 	// change image on dark and light mode
 	return (
 		<>
@@ -434,10 +438,8 @@ function Home() {
 						<div className="col-md-12">
 							<h2>{homeData.acf.heading3}</h2>
 							<p className="mb-5">{homeData.acf.subheading3}</p>
-							<div className="unlock-data-img text-center">
-								
-								<img loading="lazy" className="img-fluid" src={unlockImage} alt="how brabo" width="1070" height="640" />
-								
+							<div className="unlock-data-img text-center">								
+								<img loading="lazy" className="img-fluid" src={DataUnlock} alt="how brabo" width="1070" height="640" />
 							</div>
 							<Link to="#" className="btn btn-primary">Learn about the Modern Tech Stack </Link>
 						</div>

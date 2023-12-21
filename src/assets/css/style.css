@@ -80,7 +80,7 @@ a{text-decoration: none;color: var(--black);}
 }
 /* Header */
 header{background-color: var(--white); position: relative; padding-top: 20px;padding-bottom: 20px;border-bottom: 1px solid rgba(255, 255, 255, 0.20); box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.10);}
-.dark header{ background-color: var(--dark); box-shadow: none;}
+.dark header{ background-color: var(--dark); box-shadow: none;z-index: 99;}
 .navigation{display: flex;align-items: center;justify-content: space-between;}
 .nav-link ul{display: flex;gap: 64px;}
 .main-navigation>li{padding: 16px 0; }
@@ -99,6 +99,11 @@ header{background-color: var(--white); position: relative; padding-top: 20px;pad
 .nav-link ul li .subMenu li a:hover{opacity: 1;}
 .nav-button .btn:hover{min-width: 265px;}
 .mobile-logo{display: none;}
+.sticky {
+    position: sticky;
+    height: 200px;
+    top: 40px;
+}
 /* Header */
 
 /*Banner*/
@@ -146,7 +151,13 @@ header{background-color: var(--white); position: relative; padding-top: 20px;pad
 .services{ background-color: var(--white);}
 .dark .services{ background-color: var(--dark);}
 
-.services .owl-carousel{}
+.services .owl-carousel .owl-nav button span {width: 50px;height: 50px;}
+.services .owl-carousel .owl-nav span.custom-prev {
+    margin-left: -25px;
+}
+.services .owl-carousel .owl-nav span.custom-next {
+    margin-right: 0;
+}
 .services .owl-carousel .owl-item .content{text-align: left;margin-top: 100px;padding: 30px;}
 .services .owl-carousel .owl-item .business-value-slider{margin-top: -120px;}
 .services .owl-carousel .owl-item img{z-index: 99;position: relative;border-radius: 10px; height: 300px; object-fit: cover;}
@@ -242,18 +253,19 @@ header{background-color: var(--white); position: relative; padding-top: 20px;pad
 .follow-us-linkedin .linkedin-box:hover  .inner-top{ padding: 20px 20px 40px 20px;transition: .5s;margin-bottom: 10px;}
 .follow-us-linkedin .linkedin-box .box-img{transition: .5s;}
 .follow-us-linkedin .linkedin-box:hover .box-img img{transform: scaleY(1.1);margin-bottom: 10px;transition: .5s;}
-.follow-us-linkedin .owl-carousel .owl-nav {position: absolute;top: 50%;transform: translateY(-50%);display: flex;
+.owl-carousel .owl-nav {position: absolute;top: 50%;transform: translateY(-50%);display: flex;
     justify-content: space-between;width: 100%;}
-.follow-us-linkedin .owl-carousel .owl-nav button span{background-color: var(--light);border-radius: 50%;
+.owl-carousel .owl-nav button span{background-color: var(--light);border-radius: 50%;
 border: none;width: 80px;height: 80px;font-size: 30px;display: flex;align-items: center;justify-content: center;
 box-shadow: 0px 0px 10px #ccc;}
-.dark .follow-us-linkedin .owl-carousel .owl-nav button span{background-color: var(--gradient-bg);color: var(--white);}
-.follow-us-linkedin .owl-carousel .owl-nav button:hover{background-color: transparent;color: var(--black);}
-.dark .follow-us-linkedin .owl-carousel .owl-nav button:hover{color: var(--white);}
-.follow-us-linkedin .owl-carousel .owl-nav span.custom-prev {
+.dark .owl-carousel .owl-nav button span{background-color: var(--gradient-bg);color: var(--white);}
+.owl-carousel .owl-nav button:hover{background-color: transparent;color: var(--black);}
+.dark .owl-carousel .owl-nav button:hover{color: var(--white);}
+.owl-carousel .owl-nav button:hover{background-color: transparent !important;}
+.owl-carousel .owl-nav span.custom-prev {
     margin-left: -40px;
 }
-.follow-us-linkedin .owl-carousel .owl-nav span.custom-next {
+.owl-carousel .owl-nav span.custom-next {
     margin-right: -40px;
 }
 /*help us*/
@@ -310,7 +322,21 @@ footer .links ul li a{ text-decoration: none; color: #535353; font-size: 14px; f
 
 /***************************************************Company Page css****************************************/
 /*banner*/
-.dark .banner-2 {background: #131313; background-blend-mode:luminosity ;}
+.dark .banner-2 {background: #131313; background-blend-mode:luminosity ;
+    -ms-transition: all 10s ease;
+    -webkit-transition: all 10s ease;
+    -moz-transition: all 10s ease;
+    -o-transition: all 10s ease;
+    transition: all 10s ease;
+}
+.banner-2:hover {
+    /* img zoom in on hover (x, y): */
+    -ms-transform: scale(1.1, 1.1);
+    -webkit-transform: scale(1.1, 1.1);
+    -moz-transform: scale(1.1, 1.1);
+    -o-transform: scale(1.1, 1.1); 
+    transform: scale(1.1, 1.1);
+  }
 .banner-2:after {content:""; width: 100%; height: 100%; top:0; left:0; position: absolute; background-color: #131313; opacity: 50%;}
 .banner-2 .content { z-index: 9; }
 .banner-2 p{color: #E8E8E8;}
@@ -649,9 +675,9 @@ opacity: 1;}
     .help-us a{ font-size: 16px;}
     .help-us h2{ line-height: normal;}
     footer .links{ flex-wrap: wrap;}
-    .follow-us-linkedin .owl-carousel .owl-nav button span{ width: 40px; height: 40px; font-size: 16px;}
-    .follow-us-linkedin .owl-carousel .owl-nav span.custom-prev{ margin-left: -20px;}
-    .follow-us-linkedin .owl-carousel .owl-nav span.custom-next{  margin-right: -20px;}
+    .owl-carousel .owl-nav button span{ width: 40px; height: 40px; font-size: 16px;}
+     .owl-carousel .owl-nav span.custom-prev{ margin-left: -20px;}
+     .owl-carousel .owl-nav span.custom-next{  margin-right: -20px;}
     .Schedule-Demo .sub-heading { font-size: 20px; }
     .sustainabilit-application-banner p{font-size: 34px;}
     .Key-benefits .benefits-box{padding: 30px 20px;}
@@ -689,7 +715,7 @@ opacity: 1;}
         border-image-slice: 1;
         border-radius: 12px;
         background-color: var(--gradient-bg);
-        min-width: 170px;}
+        min-width: 170px;z-index: 99;}
     .nav-link.open ul:before {
         content: "";
         width: calc(100% - 2px);
@@ -700,9 +726,10 @@ opacity: 1;}
         bottom: 1px;
         position: absolute;
         display: block;
-        background-color: var(--gradient-bg);
+        background-color: var(--light);
         border-radius: 12px;
-    }   
+    }
+    .dark .nav-link.open ul:before  {background-color: var(--gradient-bg);} 
     .nav-link.open ul>li .subMenu.subMenuOpen {display: block;}
     .nav-link.open ul>li .subMenu.subMenuOpen li a{margin: 0 .5rem;font-size: 14px;}
     .nav-link ul>li:hover .subMenu{display: none;}
