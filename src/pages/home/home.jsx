@@ -1,15 +1,9 @@
 import React, { useState, useEffect } from "react";
 import BraboDark from '../../assets/images/logo_dark.png';
 import BraboLight from '../../assets/images/logo_light.png';
-// import CaseStudy from '../../assets/images/case-study-img.png';
-//import HowBrabo from '../../assets/images/how-brabo-img.png';
-import DataUnlock from '../../assets/images/unlock-data-img.png';
-// import DataUnlockLight from '../../assets/images/unlock-data-img-light.png'
-//import ContinousInnovation from '../../assets/images/Continuous-Innovation-img.png';
 import SunnyLandscape from '../../assets/images/sunny-landscape.png'
 import ThirdRendering from '../../assets/images/3d-rendering.png';
 import EngineerUse from '../../assets/images/engineer-use.png';
-//import UplImplementation from '../../assets/images/UPL_Implementation.png';
 import { Link } from "react-router-dom";
 
 
@@ -125,16 +119,12 @@ function Home() {
 
 		fetchAbout();
 		}, []); 
-	// change image on dark and light mode
 
-	// const [unlockImage, setunlockImage] = useState('');
-	const [isDarkMode, setIsDarkMode] = useState(false);
-	const [bgImage, setBgImage] = useState('');
-	
+	// change image on dark and light mode
+	const [bgImage, setBgImage] = useState('');	
 	useEffect(() => {
 		const handleBodyClassChange = () => {
-		const isDark = document.body.classList.contains('dark');
-		setIsDarkMode(isDark); 
+		const isDark = document.body.classList.contains('dark');		
 		if (homeData && homeData.acf) {
 			const imageUrl = isDark
 				? homeData.acf.unlock_dark_image?.url || ''

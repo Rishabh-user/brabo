@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
-import LogoDark from '../assets/images/logo_dark.png';
-import LogoLight from '../assets/images/logo.png';
 import { BASE_URL } from '../api';
-import LogoLightMobile from '../assets/images/logo-mobile.png';
 
 function Header() {
 const[data, setData] = useState([]);
