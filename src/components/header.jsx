@@ -83,18 +83,24 @@ const[logoLightData, setLogoLightData] = useState([]);
     });
   };
   
+   // Function to decode HTML entities
+   const decodeHtmlEntities = (html) => {
+    const txt = document.createElement('textarea');
+    txt.innerHTML = html;
+    return txt.value;
+  };
   const renderSubMenu = (parentId) => {
     const subMenuItems = data.filter((submenu) => submenu.menu_item_parent === parentId);
     if (!subMenuItems.length) {
       return null; // Return null if there are no submenu items
-    }
+    }  
   
     return (
       <ul className={`subMenu gradient-border ${subNavOpen[parentId] ? 'subMenuOpen' : ''}`}>
         {subMenuItems.map((submenu, subindex) => (
           <li key={subindex}>
             <div onClick={() => toggleSubNav(submenu.post_name)}>
-              <Link to={submenu.url}>{submenu.title}</Link>
+              <Link to={submenu.url}>{decodeHtmlEntities(submenu.title)}</Link>
             </div>
             {submenu.menu_item_parent && renderSubMenu(submenu.post_name)}
           </li>
@@ -126,7 +132,7 @@ const[logoLightData, setLogoLightData] = useState([]);
                 {data.filter((menu) => menu.menu_item_parent === '0').map((menu, index) => (
                   <li key={index}>
                     <div onClick={() => toggleSubNav(menu.post_name)}>
-                      <Link to={menu.url}>{menu.title}</Link>
+                      <Link to={menu.url}>{decodeHtmlEntities(menu.title)}</Link>
                     </div>
                     {menu.menu_item_parent && renderSubMenu(menu.post_name)}
                   </li>

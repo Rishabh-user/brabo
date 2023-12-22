@@ -128,18 +128,25 @@ function Home() {
 	// change image on dark and light mode
 
 	// const [unlockImage, setunlockImage] = useState('');
-	// useEffect(() => {
-	// 	if (homeData && homeData.acf) {
-	// 	  let imageUrl = ''; 
-	// 	  if (document.body.classList.contains('dark')) {
-	// 		imageUrl = homeData.acf.unlock_dark_image?.url || ''; 
-	// 	  } else {
-	// 		imageUrl = homeData.acf.unlock_light_image?.url || ''; 
-	// 	  }
-	// 	  setunlockImage(imageUrl); 
-	// 	}
-	//   }, [homeData]);
-	// change image on dark and light mode
+	const [isDarkMode, setIsDarkMode] = useState(false);
+	const [bgImage, setBgImage] = useState('');
+	
+	useEffect(() => {
+		const handleBodyClassChange = () => {
+		const isDark = document.body.classList.contains('dark');
+		setIsDarkMode(isDark); 
+		if (homeData && homeData.acf) {
+			const imageUrl = isDark
+				? homeData.acf.unlock_dark_image?.url || ''
+				: homeData.acf.unlock_light_image?.url || '';
+			setBgImage(imageUrl); 
+			}
+		};
+		document.body.addEventListener('change', handleBodyClassChange);
+		handleBodyClassChange();		  
+	}, [homeData]);
+
+
 	return (
 		<>
 		{homeData ? (
@@ -346,7 +353,7 @@ function Home() {
 												<div className="mt-3">
 													<h3>{item.title.rendered}</h3>
 													<div dangerouslySetInnerHTML={{ __html: item.excerpt.rendered || '' }}></div>
-													<Link to="/service/:slug" className="btn btn-outline-primary btn-sm btn-orange">Learn More</Link>
+													<Link to={`/service/${item.slug}`} className="btn btn-outline-primary btn-sm btn-orange">Learn More</Link>
 												</div>
 											</div>
 										</div>
@@ -439,7 +446,7 @@ function Home() {
 							<h2>{homeData.acf.heading3}</h2>
 							<p className="mb-5">{homeData.acf.subheading3}</p>
 							<div className="unlock-data-img text-center">								
-								<img loading="lazy" className="img-fluid" src={DataUnlock} alt="how brabo" width="1070" height="640" />
+								<img loading="lazy" className="img-fluid" src={bgImage} alt="how brabo" width="1070" height="640" />
 							</div>
 							<Link to="#" className="btn btn-primary">Learn about the Modern Tech Stack </Link>
 						</div>
