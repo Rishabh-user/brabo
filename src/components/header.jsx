@@ -28,22 +28,6 @@ const[logoLightData, setLogoLightData] = useState([]);
     };
 
     fetchData();
-  }, []);
-  // Add sticky class
-  const [isSticky, setIsSticky] = useState(false);
-  useEffect(() => {
-    const handleScroll = () => {
-      const offset = window.scrollY;
-      if (offset > 100) {
-        setIsSticky(true);
-      } else {
-        setIsSticky(false);
-      }
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
   }, []); 
 
    // Toggle body classes based on darkMode state
@@ -109,8 +93,8 @@ const[logoLightData, setLogoLightData] = useState([]);
 
 
   return (
-    <div className='position-relative'>
-      <header className={`${isSticky ? 'sticky' : ''}`}>
+    <div className='position-sticky'>
+      <header>
         <div className="container">
           <nav className="navigation">            
               <div className="logo" onClick={toggleNav}>                

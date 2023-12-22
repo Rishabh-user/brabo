@@ -15,6 +15,21 @@ import { useParams } from 'react-router-dom';
 
 
 function Home() {
+
+	const CircleSlider = {
+		items: 3,
+		loop: true,
+		mouseDrag: false,
+		touchDrag: false,
+		pullDrag: false,
+		rewind: true,
+		autoplay: true,
+		autoplayTimeout: 3000,
+		margin: 0,
+		nav: false,
+		dots: false,
+		center: true
+	};
 	
 	const linkedinSlider = {
 		items: 3,
@@ -459,8 +474,67 @@ function Home() {
 							</div>
 						</div>
 						<div className="col-md-6">
-							<div className="Continuous-Innovation-img">
-								<img className="img-fluid" src={homeData.acf.image4.url} alt={homeData.acf.heading4} width="558" height="550" />
+							<div className="main-circle-slider">
+								<div className="circle-slider-graphic">
+
+								</div>
+								<OwlCarousel className='circle-slider' {...CircleSlider}>
+									<div className='item'>
+										<div className="animate-circle">
+											<figure>
+												<img className="img-fluid" src={SunnyLandscape} alt="sunny-landscape" width="50" height="50" />
+											</figure>
+											<figcaption>
+												<h4>Build your own KPI's</h4>
+												<p>Illuminate your world with Solilever. Light the way to a brighter, more sustainable future.</p>
+											</figcaption>
+										</div>
+									</div>
+									<div className='item'>
+										<div className="animate-circle">
+											<figure>
+												<img className="img-fluid" src={SunnyLandscape} alt="sunny-landscape" width="50" height="50" />
+											</figure>
+											<figcaption>
+												<h4>Build your own KPI's 1</h4>
+												<p>Illuminate your world with Solilever. Light the way to a brighter, more sustainable future.</p>
+											</figcaption>
+										</div>
+									</div>
+									<div className='item'>
+										<div className="animate-circle">
+											<figure>
+												<img className="img-fluid" src={SunnyLandscape} alt="sunny-landscape" width="50" height="50" />
+											</figure>
+											<figcaption>
+												<h4>Build your own KPI's 2</h4>
+												<p>Illuminate your world with Solilever. Light the way to a brighter, more sustainable future.</p>
+											</figcaption>
+										</div>
+									</div>
+									<div className='item'>
+										<div className="animate-circle">
+											<figure>
+												<img className="img-fluid" src={SunnyLandscape} alt="sunny-landscape" width="50" height="50" />
+											</figure>
+											<figcaption>
+												<h4>Build your own KPI's 3</h4>
+												<p>Illuminate your world with Solilever. Light the way to a brighter, more sustainable future.</p>
+											</figcaption>
+										</div>
+									</div>
+									<div className='item'>
+										<div className="animate-circle">
+											<figure>
+												<img className="img-fluid" src={SunnyLandscape} alt="sunny-landscape" width="50" height="50" />
+											</figure>
+											<figcaption>
+												<h4>Build your own KPI's 4</h4>
+												<p>Illuminate your world with Solilever. Light the way to a brighter, more sustainable future.</p>
+											</figcaption>
+										</div>
+									</div>
+								</OwlCarousel>
 							</div>
 						</div>
 					</div>
