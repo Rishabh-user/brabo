@@ -15,8 +15,8 @@ import { useParams } from 'react-router-dom';
 
 
 function Home() {
-
-	const CircleSlider = {
+	
+const CircleSlider = {
 		items: 3,
 		loop: true,
 		mouseDrag: false,
@@ -115,7 +115,9 @@ function Home() {
 	// Get Services
 
 	// Get Data
+	
 	const [homeData, setHomeData] = useState(null);
+	
 	useEffect(() => {
 		const fetchAbout = async () => {
 			try {
@@ -123,12 +125,13 @@ function Home() {
 			const response = await fetch(`${BASE_URL}/pages/${id}`);
 			if (response.ok) {
 				const data = await response.json();
-				setHomeData(data);
+				setHomeData(data);				
 			} else {
 				throw new Error('Failed to fetch data');
 			}
 			} catch (error) {
 			console.error('Error fetching data:', error);
+			return null;
 			}
 		};
 
@@ -189,68 +192,68 @@ function Home() {
 					</div>
 					<div className="animation-line">
 						<div className="line line1">
-							<svg xmlns="http://www.w3.org/2000/svg" width="17" height="75" viewBox="0 0 17 75" fill="none">
-								<path fillRule="evenodd" clipRule="evenodd" d="M9.86654 16.8487C13.8911 16.1872 16.9613 12.6925 16.9613 8.48067C16.9613 3.79693 13.1644 0 8.48067 0C3.79693 0 0 3.79693 0 8.48067C0 12.6925 3.07036 16.1872 7.09493 16.8487V74.279H9.86654V16.8487ZM14.1897 8.48067C14.1897 11.6337 11.6337 14.1897 8.48067 14.1897C5.32764 14.1897 2.77161 11.6337 2.77161 8.48067C2.77161 5.32764 5.32764 2.77161 8.48067 2.77161C11.6337 2.77161 14.1897 5.32764 14.1897 8.48067Z" fill="url(#paint0_linear_1435_19199)" fillOpacity="0.53" />
-								<defs>
-									<linearGradient id="paint0_linear_1435_19199" x1="8.48068" y1="-1.1204e-07" x2="24.9444" y2="74.279" gradientUnits="userSpaceOnUse">
-										<stop stopColor="white" />
-										<stop offset="1" stopColor="white" stopOpacity="0" />
-									</linearGradient>
-								</defs>
-							</svg>
+						<svg xmlns="http://www.w3.org/2000/svg" width="17" height="75" viewBox="0 0 17 75" fill="none">
+							<path fillRule="evenodd" clipRule="evenodd" d="M9.86654 16.8487C13.8911 16.1872 16.9613 12.6925 16.9613 8.48067C16.9613 3.79693 13.1644 0 8.48067 0C3.79693 0 0 3.79693 0 8.48067C0 12.6925 3.07036 16.1872 7.09493 16.8487V74.279H9.86654V16.8487ZM14.1897 8.48067C14.1897 11.6337 11.6337 14.1897 8.48067 14.1897C5.32764 14.1897 2.77161 11.6337 2.77161 8.48067C2.77161 5.32764 5.32764 2.77161 8.48067 2.77161C11.6337 2.77161 14.1897 5.32764 14.1897 8.48067Z" fill="url(#paint0_linear_2020_10282)" fillOpacity="0.53"/>
+							<defs>
+							<linearGradient id="paint0_linear_2020_10282" x1="8.48068" y1="-1.1204e-07" x2="24.9444" y2="74.279" gradientUnits="userSpaceOnUse">
+								<stop stopColor="#FF5C00"/>
+								<stop offset="1" stopColor="white"/>
+							</linearGradient>
+							</defs>
+						</svg>
 						</div>
 						<div className="line line2">
 							<svg xmlns="http://www.w3.org/2000/svg" width="55" height="120" viewBox="0 0 55 120" fill="none">
-								<path fillRule="evenodd" clipRule="evenodd" d="M46.9704 18.2068C51.3693 17.5389 54.7402 13.7409 54.7402 9.15547C54.7402 4.09905 50.6412 0 45.5848 0C40.5283 0 36.4293 4.09905 36.4293 9.15547C36.4293 13.7408 39.8001 17.5388 44.1988 18.2067V78.8035H0V119.179H2.77161V81.5751H46.9704V18.2068ZM51.9686 9.15547C51.9686 12.6812 49.1105 15.5393 45.5848 15.5393C42.059 15.5393 39.2009 12.6812 39.2009 9.15547C39.2009 5.62976 42.059 2.77161 45.5848 2.77161C49.1105 2.77161 51.9686 5.62976 51.9686 9.15547Z" fill="url(#paint0_linear_1435_19200)" fillOpacity="0.53" />
+								<path fillRule="evenodd" clipRule="evenodd" d="M46.9704 18.2068C51.3693 17.5389 54.7402 13.7409 54.7402 9.15547C54.7402 4.09905 50.6412 0 45.5848 0C40.5283 0 36.4293 4.09905 36.4293 9.15547C36.4293 13.7408 39.8001 17.5388 44.1988 18.2067V78.8035H0V119.179H2.77161V81.5751H46.9704V18.2068ZM51.9686 9.15547C51.9686 12.6812 49.1105 15.5393 45.5848 15.5393C42.059 15.5393 39.2009 12.6812 39.2009 9.15547C39.2009 5.62976 42.059 2.77161 45.5848 2.77161C49.1105 2.77161 51.9686 5.62976 51.9686 9.15547Z" fill="url(#paint0_linear_2020_10283)" fillOpacity="0.53"/>
 								<defs>
-									<linearGradient id="paint0_linear_1435_19200" x1="54.6006" y1="-4.23472e-07" x2="27.3701" y2="119.179" gradientUnits="userSpaceOnUse">
-										<stop stopColor="white" />
-										<stop offset="1" stopColor="white" stopOpacity="0" />
-									</linearGradient>
+								<linearGradient id="paint0_linear_2020_10283" x1="54.6006" y1="-4.23472e-07" x2="27.3701" y2="119.179" gradientUnits="userSpaceOnUse">
+								<stop stopColor="#1957F3"/>
+								<stop offset="1" stopColor="white"/>
+								</linearGradient>
 								</defs>
 							</svg>
 						</div>
 						<div className="line line3">
 							<svg xmlns="http://www.w3.org/2000/svg" width="55" height="120" viewBox="0 0 55 120" fill="none">
-								<path fillRule="evenodd" clipRule="evenodd" d="M7.76978 100.972C3.37089 101.64 -4.00866e-07 105.438 0 110.024C4.42047e-07 115.08 4.09905 119.179 9.15547 119.179C14.2119 119.179 18.3109 115.08 18.3109 110.024C18.3109 105.438 14.9402 101.64 10.5414 100.972L10.5414 40.3755L54.7402 40.3755L54.7402 0L51.9686 2.42301e-07L51.9686 37.6039L7.76978 37.6039L7.76978 100.972ZM2.77161 110.024C2.7716 106.498 5.62976 103.64 9.15547 103.64C12.6812 103.64 15.5393 106.498 15.5393 110.024C15.5393 113.549 12.6812 116.407 9.15547 116.407C5.62976 116.407 2.77161 113.549 2.77161 110.024Z" fill="url(#paint0_linear_1435_19201)" fillOpacity="0.53" />
+								<path fillRule="evenodd" clipRule="evenodd" d="M7.76978 100.972C3.37089 101.64 -4.00866e-07 105.438 0 110.024C4.42047e-07 115.08 4.09905 119.179 9.15547 119.179C14.2119 119.179 18.3109 115.08 18.3109 110.024C18.3109 105.438 14.9402 101.64 10.5414 100.972L10.5414 40.3755L54.7402 40.3755L54.7402 0L51.9686 2.42301e-07L51.9686 37.6039L7.76978 37.6039L7.76978 100.972ZM2.77161 110.024C2.7716 106.498 5.62976 103.64 9.15547 103.64C12.6812 103.64 15.5393 106.498 15.5393 110.024C15.5393 113.549 12.6812 116.407 9.15547 116.407C5.62976 116.407 2.77161 113.549 2.77161 110.024Z" fill="url(#paint0_linear_2020_10284)" fillOpacity="0.53"/>
 								<defs>
-									<linearGradient id="paint0_linear_1435_19201" x1="8.86941" y1="119.179" x2="65.4101" y2="-3.62939e-06" gradientUnits="userSpaceOnUse">
-										<stop stopColor="white" />
-										<stop offset="1" stopColor="white" stopOpacity="0" />
-									</linearGradient>
+								<linearGradient id="paint0_linear_2020_10284" x1="8.86941" y1="119.179" x2="65.4101" y2="-3.62939e-06" gradientUnits="userSpaceOnUse">
+								<stop stopColor="#1957F3"/>
+								<stop offset="1" stopColor="white"/>
+								</linearGradient>
 								</defs>
 							</svg>
 						</div>
 						<div className="line line4">
 							<svg xmlns="http://www.w3.org/2000/svg" width="197" height="109" viewBox="0 0 197 109" fill="none">
-								<path fillRule="evenodd" clipRule="evenodd" d="M0 0V108.924H115.022V60.6981H178.28C178.823 65.2362 182.685 68.7542 187.37 68.7542C192.426 68.7542 196.525 64.6551 196.525 59.5987C196.525 54.5423 192.426 50.4432 187.37 50.4432C182.884 50.4432 179.152 53.6686 178.367 57.9265H112.25V106.152H2.77161V0H0ZM193.754 59.5987C193.754 63.1244 190.895 65.9826 187.37 65.9826C183.844 65.9826 180.986 63.1244 180.986 59.5987C180.986 56.073 183.844 53.2148 187.37 53.2148C190.895 53.2148 193.754 56.073 193.754 59.5987Z" fill="url(#paint0_linear_1435_19202)" fillOpacity="0.53" />
+								<path fillRule="evenodd" clipRule="evenodd" d="M0 0V108.924H115.022V60.6981H178.28C178.823 65.2362 182.685 68.7542 187.37 68.7542C192.426 68.7542 196.525 64.6551 196.525 59.5987C196.525 54.5423 192.426 50.4432 187.37 50.4432C182.884 50.4432 179.152 53.6686 178.367 57.9265H112.25V106.152H2.77161V0H0ZM193.754 59.5987C193.754 63.1244 190.895 65.9826 187.37 65.9826C183.844 65.9826 180.986 63.1244 180.986 59.5987C180.986 56.073 183.844 53.2148 187.37 53.2148C190.895 53.2148 193.754 56.073 193.754 59.5987Z" fill="url(#paint0_linear_2020_10285)" fillOpacity="0.53"/>
 								<defs>
-									<linearGradient id="paint0_linear_1435_19202" x1="190.132" y1="51.5519" x2="-36.8624" y2="46.2858" gradientUnits="userSpaceOnUse">
-										<stop stopColor="white" />
-										<stop offset="1" stopColor="white" stopOpacity="0" />
-									</linearGradient>
+								<linearGradient id="paint0_linear_2020_10285" x1="190.132" y1="51.5519" x2="-36.8624" y2="46.2858" gradientUnits="userSpaceOnUse">
+								<stop stopColor="#FF5C00"/>
+								<stop offset="1" stopColor="white"/>
+								</linearGradient>
 								</defs>
 							</svg>
 						</div>
 						<div className="line line5">
 							<svg xmlns="http://www.w3.org/2000/svg" width="75" height="18" viewBox="0 0 75 18" fill="none">
-								<path fillRule="evenodd" clipRule="evenodd" d="M17.4151 7.17142C16.7536 3.14687 13.2589 0.0765379 9.04708 0.0765381C4.36333 0.0765383 0.566406 3.87347 0.566406 8.55721C0.566406 13.241 4.36333 17.0379 9.04708 17.0379C13.2589 17.0379 16.7536 13.9676 17.4151 9.94303L74.8453 9.94302V7.17142L17.4151 7.17142ZM9.04708 2.84814C12.2001 2.84814 14.7562 5.40418 14.7562 8.55721C14.7562 11.7102 12.2001 14.2663 9.04708 14.2663C5.89405 14.2663 3.33801 11.7102 3.33801 8.55721C3.33801 5.40418 5.89405 2.84814 9.04708 2.84814Z" fill="url(#paint0_linear_1435_19203)" fillOpacity="0.53" />
+								<path fillRule="evenodd" clipRule="evenodd" d="M17.4151 7.17105C16.7536 3.1465 13.2589 0.0761717 9.04708 0.0761719C4.36333 0.0761721 0.566406 3.8731 0.566406 8.55685C0.566406 13.2406 4.36333 17.0375 9.04708 17.0375C13.2589 17.0375 16.7536 13.9672 17.4151 9.94266L74.8453 9.94266V7.17105L17.4151 7.17105ZM9.04708 2.84778C12.2001 2.84778 14.7562 5.40381 14.7562 8.55685C14.7562 11.7099 12.2001 14.2659 9.04708 14.2659C5.89405 14.2659 3.33801 11.7099 3.33801 8.55685C3.33801 5.40381 5.89405 2.84778 9.04708 2.84778Z" fill="url(#paint0_linear_2020_10286)" fillOpacity="0.53"/>
 								<defs>
-									<linearGradient id="paint0_linear_1435_19203" x1="0.566406" y1="8.39136" x2="74.8454" y2="8.39135" gradientUnits="userSpaceOnUse">
-										<stop stopColor="white" />
-										<stop offset="1" stopColor="white" stopOpacity="0" />
-									</linearGradient>
+								<linearGradient id="paint0_linear_2020_10286" x1="0.566406" y1="8.39099" x2="74.8454" y2="8.39099" gradientUnits="userSpaceOnUse">
+								<stop stopColor="#1957F3"/>
+								<stop offset="1" stopColor="white"/>
+								</linearGradient>
 								</defs>
 							</svg>
 						</div>
 						<div className="line line6">
 							<svg xmlns="http://www.w3.org/2000/svg" width="59" height="124" viewBox="0 0 59 124" fill="none">
-								<path fillRule="evenodd" clipRule="evenodd" d="M9.15547 0C14.2119 6.02973e-08 18.3109 4.09905 18.3109 9.15547C18.3109 13.8398 14.793 17.7025 10.2549 18.2456L10.2549 81.5035H58.4809V123.336H55.7093V84.2751H7.48333L7.48333 18.1586C3.2254 17.3728 -5.3487e-08 13.6408 0 9.15547C6.02973e-08 4.09905 4.09904 -6.02973e-08 9.15547 0ZM9.15547 2.7716C12.6812 2.7716 15.5393 5.62976 15.5393 9.15547C15.5393 12.6812 12.6812 15.5393 9.15547 15.5393C5.62976 15.5393 2.77161 12.6812 2.77161 9.15547C2.77161 5.62976 5.62976 2.7716 9.15547 2.7716Z" fill="url(#paint0_linear_1435_19204)" fillOpacity="0.53" />
+								<path fillRule="evenodd" clipRule="evenodd" d="M9.15547 0C14.2119 6.02973e-08 18.3109 4.09905 18.3109 9.15547C18.3109 13.8398 14.793 17.7025 10.2549 18.2456L10.2549 81.5035H58.4809V123.336H55.7093V84.2751H7.48333L7.48333 18.1586C3.2254 17.3728 -5.3487e-08 13.6408 0 9.15547C6.02973e-08 4.09905 4.09904 -6.02973e-08 9.15547 0ZM9.15547 2.7716C12.6812 2.7716 15.5393 5.62976 15.5393 9.15547C15.5393 12.6812 12.6812 15.5393 9.15547 15.5393C5.62976 15.5393 2.77161 12.6812 2.77161 9.15547C2.77161 5.62976 5.62976 2.7716 9.15547 2.7716Z" fill="url(#paint0_linear_2020_10287)" fillOpacity="0.53"/>
 								<defs>
-									<linearGradient id="paint0_linear_1435_19204" x1="29.2404" y1="0" x2="58.758" y2="123.614" gradientUnits="userSpaceOnUse">
-										<stop stopColor="white" />
-										<stop offset="1" stopColor="white" stopOpacity="0" />
-									</linearGradient>
+								<linearGradient id="paint0_linear_2020_10287" x1="29.2404" y1="0" x2="58.758" y2="123.614" gradientUnits="userSpaceOnUse">
+								<stop stopColor="#FF5C00"/>
+								<stop offset="1" stopColor="white"/>
+								</linearGradient>
 								</defs>
 							</svg>
 						</div>
@@ -464,7 +467,7 @@ function Home() {
 			<section className="col-md-12 Continuous-Innovation">
 				<div className="container-fluid">
 					<div className="row flex-row-reverse align-items-center">
-						<div className="col-md-6">
+						<div className="col-lg-6">
 							<div className="contant">
 								<h2 className="mb-4">{homeData.acf.heading4}</h2>
 								<p>{homeData.acf.subtitle1}</p>
@@ -473,7 +476,7 @@ function Home() {
 								<Link to="#" className="btn btn-primary">Read more</Link>
 							</div>
 						</div>
-						<div className="col-md-6">
+						<div className="col-lg-6">
 							<div className="main-circle-slider">
 								<div className="circle-slider-graphic">
 
@@ -680,7 +683,7 @@ function Home() {
 							<div className="row">
 								<div className="col-md-12">
 									<div className="Email-field">
-										<div className="gradient-border d-flex mb-4 p-2">
+										<div className="gradient-border d-flex mb-4 m-1 p-2">
 											<input type="email" name="email" className="form-control" placeholder="E-mail address" />
 											<button className="btn btn-primary">Subscribe</button>
 										</div>

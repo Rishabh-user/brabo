@@ -1,20 +1,47 @@
-import React from "react";
-import BlogView from '../../../../assets/images/blog-view-img.png'
+import React, {useState, useEffect} from "react";
+//import BlogView from '../../../../assets/images/blog-view-img.png'
 import { Link } from "react-router-dom";
-import Author from '../../../../assets/images/profile-1.png'
+import Author from '../../../../assets/images/profile-1.png';
+import { useParams } from 'react-router-dom'; 
+import { BASE_URL } from "../../../../api";
 
 
 function BlogDetail () { 
+    const { postId } = useParams();
+    const [postData, setPostData] = useState(null);
+    useEffect(() => {
+        const fetchPosts = async () => {
+            try {
+                const response = await fetch(`${BASE_URL}/posts/${postId}`);
+                if (response.ok) {
+                  const data = await response.json();
+                  setPostData(data);
+                } else {
+                    throw new Error('Failed to fetch data');
+                }
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        };
+        fetchPosts();
+    }, [postId]);
+    const decodeHtmlEntities = (html) => {
+        const txt = document.createElement('textarea');
+        txt.innerHTML = html;
+        return txt.value;
+    };
     return (
-        <>
+        <> 
+        {postData && (
+            <div>
             {/* <!--View Resources banner --> */}
             <section className="col-md-12 View-Resources-banner">
                 <div className="container">
                     <div className="row">
                         <div className="col-lg-8 content">
-                            <h2 className="mb-4">Industry 4.0 and the sustainability goals of the manufacturing sector</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent dapibus in odio eget dignissim. Nulla ac fermentum tellus. Praesent at risus a libero finibus pharetra. In hac habitasse platea dictumst. Praesent porttitor nulla est, lacinia convallis diam tincidunt sit amet. Nam hendrerit vel turpis in bibendum. Integer in urna et felis mattis molestie.</p>
-                        </div>
+                            <h2 className="mb-4">{decodeHtmlEntities(postData.title.rendered)}</h2>
+                            <div className="" dangerouslySetInnerHTML={{__html: postData.excerpt.rendered}}></div>
+                         </div>
                     </div>
                 </div>
             </section>
@@ -26,15 +53,10 @@ function BlogDetail () {
                     <div className="row">
                         <div className="col-md-7">
                             <div className="blog-view-img">
-                                <img className="img-fluid" src={BlogView} alt="blog-view-img" width="1000" height="540"/>
+                                <img className="img-fluid" src={postData.featured_image} alt="blog-view-img" width="1000" height="540"/>
                             </div>
                             <div className="blog-view-text">
-                                <p className="">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent dapibus in odio eget dignissim. Nulla ac fermentum tellus. Praesent at risus a libero finibus pharetra. In hac habitasse platea dictumst. Praesent porttitor nulla est, lacinia convallis diam tincidunt sit amet. Nam hendrerit vel turpis in bibendum. Integer in urna et felis mattis molestie.</p>
-                                <p className="">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent dapibus in odio eget dignissim. Nulla ac fermentum tellus. Praesent at risus a libero finibus pharetra. In hac habitasse platea dictumst. Praesent porttitor nulla est, lacinia convallis diam tincidunt sit amet. Nam hendrerit vel turpis in bibendum. Integer in urna et felis mattis molestie.</p>
-                                <p className="">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent dapibus in odio eget dignissim. Nulla ac fermentum tellus. Praesent at risus a libero finibus pharetra. In hac habitasse platea dictumst. Praesent porttitor nulla est, lacinia convallis diam tincidunt sit amet. Nam hendrerit vel turpis in bibendum. Integer in urna et felis mattis molestie.</p>
-                                <p className="">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent dapibus in odio eget dignissim. Nulla ac fermentum tellus. Praesent at risus a libero finibus pharetra. In hac habitasse platea dictumst. Praesent porttitor nulla est, lacinia convallis diam tincidunt sit amet. Nam hendrerit vel turpis in bibendum. Integer in urna et felis mattis molestie.</p>
-                                <p className="">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent dapibus in odio eget dignissim. Nulla ac fermentum tellus. Praesent at risus a libero finibus pharetra. In hac habitasse platea dictumst. Praesent porttitor nulla est, lacinia convallis diam tincidunt sit amet. Nam hendrerit vel turpis in bibendum. Integer in urna et felis mattis molestie.</p>
-                                <p className="">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent dapibus in odio eget dignissim. Nulla ac fermentum tellus. Praesent at risus a libero finibus pharetra. In hac habitasse platea dictumst. Praesent porttitor nulla est, lacinia convallis diam tincidunt sit amet. Nam hendrerit vel turpis in bibendum. Integer in urna et felis mattis molestie.</p>
+                                <div className="" dangerouslySetInnerHTML={{__html: postData.content.rendered}}></div>
                             </div>
                             <div className="blog-links">
                                 <h5>Sources</h5>
@@ -42,32 +64,32 @@ function BlogDetail () {
                                 <ul>
                                     <li>								
                                         <Link>
-                                            <i class="fa-brands fa-facebook-f"></i>
+                                            <i className="fa-brands fa-facebook-f"></i>
                                         </Link>
                                     </li>
                                     <li>
                                         <Link>
-                                            <i class="fa-brands fa-linkedin-in"></i>
+                                            <i className="fa-brands fa-linkedin-in"></i>
                                         </Link>
                                     </li>
                                     <li>
                                         <Link>
-                                            <i class="fa-brands fa-twitter"></i>
+                                            <i className="fa-brands fa-twitter"></i>
                                         </Link>
                                     </li>
                                     <li>
                                         <Link>
-                                            <i class="fa-solid fa-share-nodes"></i>
+                                            <i className="fa-solid fa-share-nodes"></i>
                                         </Link>
                                     </li>
                                     <li>
                                         <Link>
-                                            <i class="fa-brands fa-instagram"></i>
+                                            <i className="fa-brands fa-instagram"></i>
                                         </Link>
                                     </li>
                                     <li>
                                         <Link>
-                                            <i class="fa-regular fa-envelope"></i>
+                                            <i className="fa-regular fa-envelope"></i>
                                         </Link>
                                     </li>                                    
                                 </ul>
@@ -128,6 +150,8 @@ function BlogDetail () {
                 </div>
             </section>
             {/* <!-- ABOUT THE AUTHOR --> */}
+            </div>
+        )}
         </>
     );
 }

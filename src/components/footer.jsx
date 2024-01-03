@@ -67,6 +67,13 @@ function Footer() {
     };
     
   }, []);
+
+   // Function to decode HTML entities
+   const decodeHtmlEntities = (html) => {
+    const txt = document.createElement('textarea');
+    txt.innerHTML = html;
+    return txt.value;
+  };
   return (
     <div>
       {/* <!-- footer --> */}
@@ -86,7 +93,7 @@ function Footer() {
                   <p className="mb-3">Brabo Apps</p>
                   {footerOne.map( (footer_menu1, index) => (
                     <li key={index}>
-                      <Link to={footer_menu1.url} >{footer_menu1.title}</Link>
+                      <Link to={footer_menu1.url} >{decodeHtmlEntities(footer_menu1.title)}</Link>
                     </li>
                   ))}                  
                 </ul>
@@ -95,7 +102,7 @@ function Footer() {
                   <p className="mb-3">Platform</p>
                   {footerTwo.map( (footer_menu2, index) => (
                     <li key={index}>
-                       <Link to={footer_menu2.url} >{footer_menu2.title}</Link>
+                       <Link to={footer_menu2.url} >{decodeHtmlEntities(footer_menu2.title)}</Link>
                     </li>
                   ))} 
                 </ul>
@@ -104,7 +111,7 @@ function Footer() {
                   <p className="mb-3">Resources</p>
                   {footerThree.map( (footer_menu3, index) => (
                     <li key={index}>
-                       <Link to={footer_menu3.url} >{footer_menu3.title}</Link>
+                       <Link to={footer_menu3.url} >{decodeHtmlEntities(footer_menu3.title)}</Link>
                     </li>
                   ))}                   
                 </ul>
@@ -113,7 +120,7 @@ function Footer() {
                   <p className="mb-3">Company</p>
                   {footerFour.map( (footer_menu4, index) => (
                     <li key={index}>
-                       <Link to={footer_menu4.url} >{footer_menu4.title}</Link>
+                       <Link to={footer_menu4.url} >{decodeHtmlEntities(footer_menu4.title)}</Link>
                     </li>
                   ))}                  
                 </ul>

@@ -41,6 +41,22 @@ function AboutUs() {
   }, [isDarkMode]);
   // change background image on dark and light mode
 
+  // change image on dark and light mode
+	const [powerfullImg, setPowerfullImg] = useState('');	
+	useEffect(() => {
+		const handleBodyClassChange = () => {
+		const isDark = document.body.classList.contains('dark');		
+		if (aboutData && aboutData.acf) {
+			const imageUrl = isDark
+				? aboutData.acf.map_dark_image?.url || ''
+				: aboutData.acf.map_light_image?.url || '';
+        setPowerfullImg(imageUrl); 
+			}
+		};
+		document.body.addEventListener('change', handleBodyClassChange);
+		handleBodyClassChange();		  
+	}, [aboutData]);
+
   return (
     <>
     {aboutData && (
@@ -81,7 +97,7 @@ function AboutUs() {
                 <h6 className="mb-5">One Family</h6>
                 <p className="mb-5">{aboutData.acf.description1}</p>
                 <div className="Powerful-Allies-img text-center">
-                  <img className="img-fluid" src={aboutData.acf.image1.url} alt="how brabo" width="939" height="499"/>
+                  <img className="img-fluid" src={powerfullImg} alt="how brabo" width="939" height="499"/>
                 </div>
                 <Link to={aboutData.acf.learn_more.url} className="btn btn-outline-primary border-blue">Learn more <i className="fa fa-angle-right ms-2"></i></Link>
               </div>

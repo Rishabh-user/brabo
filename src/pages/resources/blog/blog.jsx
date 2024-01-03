@@ -1,12 +1,35 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import { Link } from "react-router-dom";
-import DashboardImg from '../../../assets/images/Dashboard-img.png';
 import ExportIcon from '../../../assets/images/export-icon.png';
 import ShareIcon from '../../../assets/images/share-icon.png';
 import ShareIcon2 from '../../../assets/images/share-icon-2.png';
-
+import { BASE_URL } from "../../../api";
+import { useParams } from "react-router-dom";
 
 function Blog () { 
+    const { postId } = useParams();
+    const [postData, setPostData] = useState(null);
+    useEffect(() => {
+        const fetchPosts = async () => {
+            try {
+                const response = await fetch(`${BASE_URL}/posts`);
+                if (response.ok) {
+                  const data = await response.json();
+                  setPostData(data);
+                } else {
+                    throw new Error('Failed to fetch data');
+                }
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        };
+        fetchPosts();
+    }, [postId]);
+    const decodeHtmlEntities = (html) => {
+        const txt = document.createElement('textarea');
+        txt.innerHTML = html;
+        return txt.value;
+    };
     return (
         <>
         {/* <!--Knowledge Hub Banner --> */}
@@ -69,10 +92,14 @@ function Blog () {
                 <div className="row">
                     <div className="col-lg-8 col-md-6">
                         <div className="row">
-                            <div className="col-lg-6 col-md-12 col-sm-6">
-                                <div className="Blog-box">
+                            {postData === null ? (
+                                <p>Loading...</p> 
+                            )  : (
+                            postData.map((item, id) => (
+                            <div className="col-lg-6 col-md-12 col-sm-6" key={id}>
+                                <Link to={`/resources/blog/${item.id}`} className="Blog-box">
                                     <div className="Blog-img text-center">
-                                        <img className="img-fluid" src={DashboardImg} alt="Dashboard-img" width="423" height="242"/>
+                                        <img className="img-fluid" src={item.featured_image} alt="Dashboard-img" width="423" height="242"/>
                                     </div>
                                     <div className="gradient-border">							
                                         <div className="content">								
@@ -82,11 +109,14 @@ function Blog () {
                                                         <img className="img-fluid" src={ExportIcon} alt="export-icon" width="30" height="30"/>
                                                     </figure>
                                                     <figcaption>
-                                                        <h3>Blog</h3>
-                                                    </figcaption>
+                                                    {item.categories.map((category, index) => (
+                                                        <h3 key={index}>{decodeHtmlEntities(category.name)}</h3>
+                                                    ))}
+                                                    </figcaption>                                                    
                                                 </div>
-                                                <p className="sub-heading">NEWS LETTER TRENDS 2023</p>
-                                                <p className="">Yet another year is coming to a close. Many of the 2022 trends we anticipated, did find their use in digital products across our devices this year. As we are about to welcome 2023, we are taking a more careful....</p>
+                                                <p className="sub-heading">{decodeHtmlEntities(item.title.rendered)}</p>
+                                                <div className="" dangerouslySetInnerHTML={{__html: item.excerpt.rendered}}></div>
+                                                
                                                 <div className="share-time d-flex mb-4 align-item-center">
                                                     <div className="d-flex between">
                                                         <figure>
@@ -111,53 +141,10 @@ function Blog () {
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </Link>
                             </div>
-                            <div className="col-lg-6 col-md-12 col-sm-6">
-                                <div className="Blog-box">
-                                    <div className="Blog-img text-center">
-                                        <img className="img-fluid" src={DashboardImg} alt="Dashboard-img" width="423" height="242"/>
-                                    </div>
-                                    <div className="gradient-border">							
-                                        <div className="content">								
-                                            <div className="mt-3">
-                                                <div className="d-flex mb-2 align-item-center">
-                                                    <figure>
-                                                        <img className="img-fluid" src={ExportIcon} alt="export-icon" width="30" height="30"/>
-                                                    </figure>
-                                                    <figcaption>
-                                                        <h3>Blog</h3>
-                                                    </figcaption>
-                                                </div>
-                                                <p className="sub-heading">NEWS LETTER TRENDS 2023</p>
-                                                <p className="">Yet another year is coming to a close. Many of the 2022 trends we anticipated, did find their use in digital products across our devices this year. As we are about to welcome 2023, we are taking a more careful....</p>
-                                                <div className="share-time d-flex mb-4 align-item-center">
-                                                    <div className="d-flex between">
-                                                        <figure>
-                                                            <img className="img-fluid" src={ShareIcon} alt="export-icon" width="18" height="18"/>
-                                                        </figure>
-                                                        <figcaption className="ms-2">
-                                                            <p className="share-text">Sarang gujrathi</p>
-                                                        </figcaption>
-                                                    </div>
-                                                    <div>
-                                                        <span>8 min read</span>
-                                                    </div>
-                                                </div>
-                                                <div className="button-share d-flex align-item-center">
-                                                    <figure className="m-0">
-                                                        <Link to="#"className="btn btn-outline-primary btn-sm btn-orange">Read More</Link>
-                                                    </figure>
-                                                    <figcaption className="">
-                                                        <img className="img-fluid" src={ShareIcon2} alt="export-icon" width="25" height="25"/>
-                                                    </figcaption>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
+                            ))
+                            )}
                         </div>
                     </div>
                     <div className="col-lg-4 col-md-6 recent">
@@ -220,7 +207,7 @@ function Blog () {
                         <div className="row">
                             <div className="col-md-12">
                                 <div className="Email-field">
-                                    <div className="gradient-border d-flex mb-4">
+                                    <div className="gradient-border d-flex m-1 mb-4 p-2">
                                         <input type="email" name="email" className="form-control" placeholder="E-mail address" />
                                         <button className="btn btn-primary">Subscribe</button>									
                                     </div>

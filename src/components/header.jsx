@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
 import { BASE_URL } from '../api';
+import LanguageSelect from './language';
 
 function Header() {
-const[data, setData] = useState([]);
-const[logoData, setLogoData] = useState([]);
-const[logoLightData, setLogoLightData] = useState([]);
+  const[data, setData] = useState([]);
+  const[logoData, setLogoData] = useState([]);
+  const[logoLightData, setLogoLightData] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -113,7 +114,7 @@ const[logoLightData, setLogoLightData] = useState([]);
                 {data.filter((menu) => menu.menu_item_parent === '0').map((menu, index) => (
                   <li key={index}>
                     <div onClick={() => toggleSubNav(menu.post_name)}>
-                      <Link to={menu.url}>{decodeHtmlEntities(menu.title)}</Link>
+                      <Link to={menu}>{decodeHtmlEntities(menu.title)}</Link>
                     </div>
                     {menu.menu_item_parent && renderSubMenu(menu.post_name)}
                   </li>
@@ -134,12 +135,7 @@ const[logoLightData, setLogoLightData] = useState([]);
                   </div>
                   <div className='language-swichter'>
                     <i className="fa-solid fa-globe me-2"></i>
-                    <select name="" id="">
-                      <option value="1">EN</option>
-                      <option value="2">SP</option>
-                      <option value="3">FR</option>
-                      <option value="4">GR</option>
-                    </select>
+                    <LanguageSelect />                    
                   </div>
               </div>
             </div>
