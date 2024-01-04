@@ -36,8 +36,8 @@ function App() {
               <Route path="/company/get-in-touch" element={<GetinTouch />} />
               <Route path="/privacy-policy" element={<PrivacyPolicy />} />
               <Route path="/terms-condition" element={<TermsConditions />} />
-              <Route path='/resources/blog' element={<Blog />}  />
-              <Route path='/resources/blog/:postId' element={<BlogDetail />}  />
+              <Route path='/resources' element={<Blog />}  />
+              <Route path='/resources/:postId' element={<BlogDetail />}  />
               <Route path='/company/careers' element={<Career />}  />
               <Route path="*" element={<NotFound />} />
             </Route>

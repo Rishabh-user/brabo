@@ -4,11 +4,13 @@ import ExportIcon from '../../../assets/images/export-icon.png';
 import ShareIcon from '../../../assets/images/share-icon.png';
 import ShareIcon2 from '../../../assets/images/share-icon-2.png';
 import { BASE_URL } from "../../../api";
-import { useParams } from "react-router-dom";
+//import { useParams } from "react-router-dom";
+import FilterBlog from "./filter-blog";
 
 function Blog () { 
-    const { postId } = useParams();
+    //const { postId } = useParams();
     const [postData, setPostData] = useState(null);
+    const [selectedCategory, setSelectedCategory] = useState('');
     useEffect(() => {
         const fetchPosts = async () => {
             try {
@@ -24,7 +26,7 @@ function Blog () {
             }
         };
         fetchPosts();
-    }, [postId]);
+    }, [selectedCategory]);
     const decodeHtmlEntities = (html) => {
         const txt = document.createElement('textarea');
         txt.innerHTML = html;
@@ -46,60 +48,23 @@ function Blog () {
         {/* <!--  Knowledge Hub banner --> */}
 
         {/* <!-- filter By --> */}
-        <section className="col-md-12 filter-by">
-            <div className="container">
-                <h2 className="mb-lg-5 mb-4">Filter by</h2>	
-                <div className="row justify-content-center">                    			
-                    <div className="col-md-4">
-                        <div className="Email-field">
-                            <div className="gradient-border mb-4">
-                                <select name="cars" id="cars" className="content w-100">
-                                    <option value="volvo">Type & categories</option>
-                                    <option value="saab">Saab</option>
-                                    <option value="opel">Opel</option>
-                                    <option value="audi">Audi</option>
-                                </select>				
-                            </div>														
-                        </div>								  
-                    </div>
-                    <div className="col-md-4">
-                        <div className="Email-field">
-                            <div className="gradient-border mb-4">
-                                <input type="name" name="name" className="form-control" placeholder="Topics"/>				
-                            </div>														
-                        </div>								  
-                    </div>
-                    <div className="col-md-4">
-                        <div className="Email-field">
-                            <div className="gradient-border mb-4">
-                                <input type="name" name="name" className="form-control" placeholder="Industry"/>				
-                            </div>														
-                        </div>								  
-                    </div>
-                </div>
-                <div className="sort-by">
-                    <h4>Sort By:</h4>						
-                    <div className="sort-by-button gradient-border"><span className="content">Feature</span></div>		
-                    <div className="sort-by-button gradient-border"><span className="content">Most recent</span></div>		
-                </div>
-            </div>
-        </section>
+        <FilterBlog setSelectedCategory={setSelectedCategory} />
         {/* <!-- filter By --> */}
 
         {/* <!-- Our Blog --> */}
         <section className="col-md-12 our-Blog">
             <div className="container-fluid">
-                <div className="row">
-                    <div className="col-lg-8 col-md-6">
-                        <div className="row">
+                <div className="blog-post">
+                    <div className="article">
+                        <div className="blog">
                             {postData === null ? (
                                 <p>Loading...</p> 
                             )  : (
                             postData.map((item, id) => (
-                            <div className="col-lg-6 col-md-12 col-sm-6" key={id}>
-                                <Link to={`/resources/blog/${item.id}`} className="Blog-box">
-                                    <div className="Blog-img text-center">
-                                        <img className="img-fluid" src={item.featured_image} alt="Dashboard-img" width="423" height="242"/>
+                            <div className="blog-item" key={id}>
+                                <Link to={`/resources/${item.id}`} className="Blog-box">
+                                    <div className="Blog-img text-center p-3">
+                                        <img className="img-fluid" src={item.featured_image} alt="Dashboard-img" width="560" height="435"/>
                                     </div>
                                     <div className="gradient-border">							
                                         <div className="content">								
@@ -147,12 +112,7 @@ function Blog () {
                             )}
                         </div>
                     </div>
-                    <div className="col-lg-4 col-md-6 recent">
-                        <div className="search-field">
-                            <div className="gradient-border mb-4">
-                                <input type="search" name="search" className="form-control" placeholder="Search from below list"/>	
-                            </div>														
-                        </div>
+                    <div className="aside recent">                        
                         <div className="recent-post gradient-border">
                             <div className="content">
                                 <h4 className="mb-3">Recents Post</h4>
@@ -161,18 +121,7 @@ function Blog () {
                                 <p className="mb-3">take us whenever you go so that you know what’s gemipsum doloecommando dolor anean massa.</p>
                                 <p className="mb-3">take us whenever you go so that you know what’s gemipsum doloecommando dolor anean massa.</p>
                                 <p className="mb-3">take us whenever you go so that you know what’s gemipsum doloecommando dolor anean massa.</p>
-                                <div className="mt-5 mb-5">
-                                    <ul>
-                                        <h4 className="mb-3">Articles</h4>
-                                        <li className="mb-3"><Link to="#">Sustainability App</Link></li>
-                                        <li className="mb-3"><Link to="#">Sustainability App</Link></li>
-                                        <li className="mb-3"><Link to="#">Sustainability App</Link></li>
-                                        <li className="mb-3"><Link to="#">Sustainability App</Link></li>
-                                        <li className="mb-3"><Link to="#">Sustainability App</Link></li>
-                                        <li className="mb-3"><Link to="#">Sustainability App</Link></li>
-                                        <li className="mb-3"><Link to="#">Sustainability App</Link></li>
-                                    </ul>
-                                </div>
+                                
                                 <div className="">
                                     <ul className="mb-5">
                                         <h4 className="mb-3">Categories</h4>

@@ -18,7 +18,9 @@
 .btn-orange{border:2px solid var(--orange); box-shadow: none;color: var(--black);}
 .dark .btn-orange{color: var(--white);}
 .dark .btn{ box-shadow: 6px 6px 18.670000076293945px 0px rgba(0, 0, 0, 0.7),-6.21999979019165px -6.21999979019165px 18.670000076293945px 0px rgba(59, 68, 81, 0.7); }
-
+select option {
+    color: var(--black);
+}
 .border-white{border-color: var(--white);color: white;}
 .dark .border-blue{color: var(--white);}
 .dark .form-control{color: var(--white);}
@@ -562,6 +564,7 @@ opacity: 1;z-index: 9;}
 .our-Blog .Blog-box .button-share{ justify-content: space-between; }
 .our-Blog .Blog-box .button-share a{ font-size: 16px; font-weight: 700; }
 .our-Blog .gradient-border{ padding-top: 10px; }
+.blog {display: grid;grid-template-columns: repeat(2, 1fr); gap: 40px;}
 /*blog*/
 
 /*recent post*/
@@ -614,6 +617,9 @@ opacity: 1;z-index: 9;}
 .Blog-about-author figure { background-color: #D9D9D9;; width: 150px; height: 150px; border-radius: 50%; justify-content: center; align-items: center; display: flex;overflow: hidden;}
 .Blog-about-author figure img{width: 150px;height: 150px;}
 .Blog-about-author figcaption  {flex: 1;}
+.blog-post{display: flex;}
+.aside { flex: 0 550px;  max-width: 550px;}
+.article { flex: 1;}
 /*Blog-about-author*/
 /********************************************View Resources page css******************************************/
 
