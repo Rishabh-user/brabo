@@ -4,13 +4,17 @@ import { BASE_URL } from '../api';
 import LanguageSelect from './language';
 
 function Header() {
-  const[data, setData] = useState([]);
-  const[logoData, setLogoData] = useState([]);
-  const[logoLightData, setLogoLightData] = useState([]);
+  const [data, setData] = useState([]);
+  const [logoData, setLogoData] = useState([]);
+  const [logoLightData, setLogoLightData] = useState([]);
+  const [selectedLanguage, setSelectedLanguage] = useState('en');
+  const handleLanguageChange = (lang) => {
+    setSelectedLanguage(lang);
+  };
   useEffect(() => {
     const fetchData = async () => {
       try {
-        
+
         const response = await fetch(`${BASE_URL}/primary_menu`);
         const data = await response.json();
         setData(data);
@@ -22,23 +26,23 @@ function Header() {
         const resp_logolight = await fetch(`${BASE_URL}/widgets-area-image-dark`);
         const logo_dark = await resp_logolight.json();
         setLogoLightData(logo_dark);
-        
+
       } catch (error) {
         console.error('Error fetching data:', error);
       }
     };
 
     fetchData();
-  }, []); 
+  }, []);
 
-   // Toggle body classes based on darkMode state
+  // Toggle body classes based on darkMode state
   const [darkMode, setDarkMode] = useState(true);
-  useEffect(() => {    
+  useEffect(() => {
     const body = document.querySelector('body');
     if (darkMode) {
-      body.classList.add('dark'); 
+      body.classList.add('dark');
     } else {
-      body.classList.remove('dark'); 
+      body.classList.remove('dark');
     }
   }, [darkMode]);
   const toggleMode = () => {
@@ -49,9 +53,9 @@ function Header() {
   const [subNavOpen, setSubNavOpen] = useState({});
   const toggleNav = () => {
     setSubNavOpen({});
-  setNavOpen(!navOpen);
+    setNavOpen(!navOpen);
   };
-   
+
   const toggleSubNav = (parentId) => {
     setSubNavOpen((prevState) => {
       const newState = { ...prevState };
@@ -64,9 +68,9 @@ function Header() {
       return newState;
     });
   };
-  
-   // Function to decode HTML entities
-   const decodeHtmlEntities = (html) => {
+
+  // Function to decode HTML entities
+  const decodeHtmlEntities = (html) => {
     const txt = document.createElement('textarea');
     txt.innerHTML = html;
     return txt.value;
@@ -75,8 +79,8 @@ function Header() {
     const subMenuItems = data.filter((submenu) => submenu.menu_item_parent === parentId);
     if (!subMenuItems.length) {
       return null; // Return null if there are no submenu items
-    }  
-  
+    }
+
     return (
       <ul className={`subMenu gradient-border ${subNavOpen[parentId] ? 'subMenuOpen' : ''}`}>
         {subMenuItems.map((submenu, subindex) => (
@@ -97,18 +101,18 @@ function Header() {
     <div className='position-sticky'>
       <header>
         <div className="container">
-          <nav className="navigation">            
-              <div className="logo" onClick={toggleNav}>                
-                <Link to="/">
-                  {logoLightData && logoLightData.image_src_array && (
-                    <img className='logo-light' src={logoLightData.image_src_array} alt="Brabo Logo" width={42} height={32} />
-                  )}
-                  {logoData && logoData.image_src_array && (
-                    <img className='logo-dark' src={logoData.image_src_array} alt="Brabo Logo" width={42} height={32} />                  
-                  )}
-                </Link>
-              </div>
-            
+          <nav className="navigation">
+            <div className="logo" onClick={toggleNav}>
+              <Link to="/">
+                {logoLightData && logoLightData.image_src_array && (
+                  <img className='logo-light' src={logoLightData.image_src_array} alt="Brabo Logo" width={42} height={32} />
+                )}
+                {logoData && logoData.image_src_array && (
+                  <img className='logo-dark' src={logoData.image_src_array} alt="Brabo Logo" width={42} height={32} />
+                )}
+              </Link>
+            </div>
+
             <div className={`nav-link ${navOpen ? 'open' : ''}`} >
               <ul className="main-navigation">
                 {data.filter((menu) => menu.menu_item_parent === '0').map((menu, index) => (
@@ -124,19 +128,19 @@ function Header() {
             <div className="nav-button">
               <Link to="/schedule-demo" className="btn btn-primary">Schedule a Demo</Link>
               <div className='text-end'>
-                  <div className="dark-light">
-                      <label className="switch btn-color-mode-switch">
-                          <input type="checkbox" name="color_mode" id="color_mode" value="1" defaultChecked={darkMode} onClick={toggleMode} />
-                          <label htmlFor="color_mode" className="btn-color-mode-switch-inner">
-                            <i className="fa-solid fa-moon"></i>  
-                            <i className="fa fa-sun"></i>                        
-                          </label>
-                      </label>
-                  </div>
-                  <div className='language-swichter'>
-                    <i className="fa-solid fa-globe me-2"></i>
-                    <LanguageSelect />                    
-                  </div>
+                <div className="dark-light">
+                  <label className="switch btn-color-mode-switch">
+                    <input type="checkbox" name="color_mode" id="color_mode" value="1" defaultChecked={darkMode} onClick={toggleMode} />
+                    <label htmlFor="color_mode" className="btn-color-mode-switch-inner">
+                      <i className="fa-solid fa-moon"></i>
+                      <i className="fa fa-sun"></i>
+                    </label>
+                  </label>
+                </div>
+                <div className='language-swichter'>
+                  <i className="fa-solid fa-globe me-2"></i>
+                  <LanguageSelect onLanguageChange={handleLanguageChange} />
+                </div>
               </div>
             </div>
           </nav>

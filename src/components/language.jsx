@@ -1,7 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { BASE_URL } from '../api';
+import { useLanguage } from './LanguageContext';
 
 function LanguageSelect() {
+
+  const { selectedLanguage, changeLanguage } = useLanguage();
+
+
+
   const [languages, setLanguages] = useState({});
 
   useEffect(() => {
@@ -20,6 +26,11 @@ function LanguageSelect() {
     fetchData();
   }, []);
 
+  const handleLanguageChange = (event) => {
+    const newLanguage = event.target.value;
+    changeLanguage(newLanguage);
+  };
+
   if (Object.keys(languages).length === 0) {
     return <div>Loading...</div>;
   }
@@ -30,9 +41,9 @@ function LanguageSelect() {
   ));
 
   return (
-    
-    <select id="languages">{options}</select>        
-     
+
+    <select id="languages" value={selectedLanguage} onChange={handleLanguageChange}>{options}</select>
+
   );
 }
 

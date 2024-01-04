@@ -2,16 +2,18 @@ import React from 'react';
 import { Outlet } from 'react-router-dom';
 import Header from './header';
 import Footer from './footer';
-
+import { LanguageProvider } from './LanguageContext';
 function Layout() {
   return (
-    <div>
-      <Header />
+    <LanguageProvider>
+      <div>
+        <Header />
         <main>
-            <Outlet /> 
+          <Outlet />
         </main>
-      <Footer />
-    </div>
+        <Footer />
+      </div>
+    </LanguageProvider>
   );
 }
 
