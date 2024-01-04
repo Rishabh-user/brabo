@@ -161,7 +161,7 @@ function Home() {
 	}, []);
 
 	useEffect(() => {
-		initHome(selectedLanguage);
+		initHome('en');
 	}, [initHome]);
 
 	useEffect(() => {
