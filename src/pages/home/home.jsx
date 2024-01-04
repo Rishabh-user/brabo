@@ -161,8 +161,8 @@ function Home() {
 	}, []);
 
 	useEffect(() => {
-		initHome('en');
-	}, [initHome]);
+		initHome(selectedLanguage);
+	}, [selectedLanguage, initHome]);
 
 	useEffect(() => {
 		// Call initHome only if selectedLanguage has changed
