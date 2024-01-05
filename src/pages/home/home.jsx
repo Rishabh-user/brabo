@@ -15,9 +15,11 @@ import { useParams } from 'react-router-dom';
 import { useLanguage } from '../../components/LanguageContext';
 
 
+
+
 function Home() {
 	const { selectedLanguage } = useLanguage();
-	const prevLanguage = useRef(selectedLanguage);
+	const prevLanguage = useRef(null);
 
 	const CircleSlider = {
 		items: 3,
@@ -124,6 +126,7 @@ function Home() {
 	const initHome = useCallback(async (langCode) => {
 		console.log('initHome called with langCode:', langCode);
 		try {
+
 			const id = '424';
 			const response = await fetch(`${BASE_URL}/pages/${id}`);
 
@@ -140,17 +143,21 @@ function Home() {
 							const updatedData = await updatedResponse.json();
 							console.log('other lang data', updatedData);
 							setHomeData(updatedData);
+							document.title = updatedData.title.rendered || 'Brabo Home';
 						} else {
 							setHomeData(data);
+							document.title = data.title.rendered || 'Brabo Home';
 							console.log('Failed to fetch data with updated language code, so en data');
 						}
 					} else {
 						console.log('No matching language found, using default data');
 						setHomeData(data);
+						document.title = data.title.rendered || 'Brabo Home';
 					}
 				} else {
 					console.log('default en data');
 					setHomeData(data);
+					document.title = data.title.rendered || 'Brabo Home';
 				}
 			} else {
 				throw new Error('Failed to fetch data');
@@ -158,18 +165,24 @@ function Home() {
 		} catch (error) {
 			console.error('Error fetching data:', error);
 		}
+
 	}, []);
 
-	useEffect(() => {
-		initHome(selectedLanguage);
-	}, [selectedLanguage, initHome]);
+
 
 	useEffect(() => {
 		// Call initHome only if selectedLanguage has changed
-		console.log('useEffect called with selectedLanguage:', selectedLanguage);
+
 		if (selectedLanguage !== prevLanguage.current) {
+
+			console.log('useEffect called with selectedLanguage:', selectedLanguage);
+			console.log('useEffect called with previoes Language:', prevLanguage.current);
 			initHome(selectedLanguage);
 			prevLanguage.current = selectedLanguage; // Update the previous language
+
+			// setTimeout(() => {
+			// 	stopLoading();
+			// }, 1000);
 		}
 	}, [selectedLanguage, initHome, prevLanguage]);
 

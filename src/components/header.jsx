@@ -3,11 +3,15 @@ import { Link } from "react-router-dom";
 import { BASE_URL } from '../api';
 import LanguageSelect from './language';
 
+
 function Header() {
   const [data, setData] = useState([]);
   const [logoData, setLogoData] = useState([]);
   const [logoLightData, setLogoLightData] = useState([]);
+  // eslint-disable-next-line no-unused-vars
   const [selectedLanguage, setSelectedLanguage] = useState('en');
+
+
   const handleLanguageChange = (lang) => {
     setSelectedLanguage(lang);
   };

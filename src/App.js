@@ -1,7 +1,8 @@
-import React ,{Suspense} from 'react';
+import React, { Suspense } from 'react';
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Layout from './components/layout';
+import { LoadingProvider } from './components/LoadingContext';
 const Home = React.lazy(() => import('./pages/home/home'));
 const AboutUs = React.lazy(() => import('./pages/about/about'));
 const NotFound = React.lazy(() => import('./pages/not-found'));
@@ -18,32 +19,32 @@ const Career = React.lazy(() => import('./pages/about/career'));
 
 function App() {
   return (
-    <div>
-        <Router>
-          <Routes>
-            <Route element={
-                <Suspense >
-                  <Layout />
-                </Suspense>
-              }
-            >
-              <Route index element={<Home />} />
-              <Route path="/company/company-page" element={<AboutUs />} />
-              <Route path="/service/:slug" element={<ServiceDetail />} />
-              <Route path="/schedule-demo" element={<ScheduleDemo />} />
-              <Route path="/become-partner" element={<BecomePartner />} />
-              <Route path="/company/our-people" element={<OurPeople />} />
-              <Route path="/company/get-in-touch" element={<GetinTouch />} />
-              <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-              <Route path="/terms-condition" element={<TermsConditions />} />
-              <Route path='/resources' element={<Blog />}  />
-              <Route path='/resources/:postId' element={<BlogDetail />}  />
-              <Route path='/company/careers' element={<Career />}  />
-              <Route path="*" element={<NotFound />} />
-            </Route>
-          </Routes>
-        </Router>
-    </div>
+    <LoadingProvider>
+      <Router>
+        <Routes>
+          <Route element={
+            <Suspense >
+              <Layout />
+            </Suspense>
+          }
+          >
+            <Route index element={<Home />} />
+            <Route path="/company/company-page" element={<AboutUs />} />
+            <Route path="/service/:slug" element={<ServiceDetail />} />
+            <Route path="/schedule-demo" element={<ScheduleDemo />} />
+            <Route path="/become-partner" element={<BecomePartner />} />
+            <Route path="/company/our-people" element={<OurPeople />} />
+            <Route path="/company/get-in-touch" element={<GetinTouch />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/terms-condition" element={<TermsConditions />} />
+            <Route path='/resources' element={<Blog />} />
+            <Route path='/resources/:postId' element={<BlogDetail />} />
+            <Route path='/company/careers' element={<Career />} />
+            <Route path="*" element={<NotFound />} />
+          </Route>
+        </Routes>
+      </Router>
+    </LoadingProvider>
   );
 }
 
