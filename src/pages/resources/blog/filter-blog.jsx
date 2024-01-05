@@ -16,7 +16,7 @@ function FilterBlog ({setSelectedCategory }) {
             setIndustry(dataIndustry);
             // get category
             const responseCategory = await fetch(`${BASE_URL}/post-categories`);
-            if (!responseIndustry.ok) {
+            if (!responseCategory.ok) {
               throw new Error('Network response was not ok');
             }
             const dataCategory = await responseCategory.json();
@@ -29,7 +29,7 @@ function FilterBlog ({setSelectedCategory }) {
       }, []);
       const handleCategoryChange = (event) => {
         setSelectedCategory(event.target.value);
-    };
+        };
     return (
     <>
     

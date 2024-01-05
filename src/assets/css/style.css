@@ -569,7 +569,7 @@ opacity: 1;z-index: 9;}
 
 /*recent post*/
 .our-Blog .recent{padding-right: 0; padding-left: 30px;}
-.our-Blog .recent-post { padding: 50px; }
+.our-Blog .recent-post { padding: 50px; justify-content: flex-start;}
 .our-Blog .recent-post h4 {font-size: 32px; font-weight: 600; }
 /* .our-Blog .recent-post p {font-size: 17px; font-weight: 400; line-height: 26px;} */
 .our-Blog .recent-post ul {margin: 0; padding: 0;}
@@ -636,7 +636,7 @@ opacity: 1;z-index: 9;}
 /*career Key-benefits*/
 
 /*Core Values*/
-.core-values .heading {color: #fff; font-size: 54px; font-weight: 600; position: relative; margin-bottom: 120px;} 
+.core-values .heading {font-size: 54px; font-weight: 600; position: relative; margin-bottom: 120px;} 
 .core-values .heading:before {content:"CORE"; left: 50%;transform: translateX(-50%) ;position: absolute; z-index: -1; color: rgba(173, 173, 173, 0.04); text-align: center; font-size: 125px; font-weight: 900; letter-spacing: 125px; -webkit-text-stroke-width: 1px; -webkit-text-stroke-color: #373737; }
 .core-values .text-hard { font-size: 27px; font-weight: 500;}
 /* .core-values .text-light {color: #E8E8E8 !important; font-size: 17px; font-weight: 400; line-height: 26px; width: 70%;} */
@@ -655,21 +655,45 @@ opacity: 1;z-index: 9;}
 .Career-opportunities .Career-box .main-heading {display: flex; justify-content: space-between;}
 .Career-opportunities .Career-box .main-heading p{font-size: 27px; font-weight: 500; margin-bottom: 5px;}
 .Career-opportunities .Career-box .main-heading .location p{font-size: 18px; font-weight: 500;}
-.Career-opportunities .Career-box .text-light {width: 70%; color: #E8E8E8; font-size: 18px; font-weight: 400;}
-.Career-opportunities .Career-box .main-heading {}
+.career-sidebar { flex: 0 400px; max-width: 400px;padding: 0;position: sticky;top:110px;height: 100vh;}
+
 .Career-opportunities .Career-box .main-heading a{text-decoration: none;}
 .Career-opportunities .Career-box .apply-button a{text-decoration: none;}
-.career-sidebar .accordion-item{border:none; background-color: transparent; color: #E8E8E8; font-size: 18px; font-weight: 400;}
-.career-sidebar .accordion-button:not(.collapsed) {color: #fff; background-color: transparent; border-bottom: 3px solid var(--bg-grey); box-shadow: none; font-size: 18px; font-weight: 700;}
-.career-sidebar .accordion-button {border-top: 3px solid var(--bg-grey); padding-left: 0; padding-right: 0; font-size: 18px; font-weight: 400; background-color: transparent; color: #fff;line-height: normal;padding: 0;}
+.career-sidebar .accordion-item{border:none; background-color: transparent;  font-size: 18px; font-weight: 400;}
+
+.career-sidebar .accordion-button:not(.collapsed) { background-color: transparent; border-bottom: 3px solid var(--bg-grey); box-shadow: none; font-size: 18px; font-weight: 700;}
+.career-sidebar .accordion-button {border-top: 3px solid var(--bg-grey); padding-left: 0; padding-right: 0; font-size: 18px; font-weight: 400; background-color: transparent; line-height: normal;padding: 0;}
 .career-sidebar .accordion-item:first-of-type .accordion-button {border-top-left-radius: 0; border-top-right-radius: 0;}
 .career-sidebar .accordion-item {border-top: 1px solid #282828;padding: 3rem;}
+.dark .career-sidebar .accordion-item{border-top: 1px solid #f9f9f96e;border-radius: 0;}
+.dark .career-sidebar .accordion-item, .dark .career-sidebar .accordion-button:not(.collapsed),
+.dark .career-sidebar .accordion-button{color: #fff;}
 .career-sidebar input {border: 1px solid #E8E8E8; padding: 0; background-color: transparent; z-index: 999; position: absolute;}
 .career-sidebar .accordion-item:last-of-type .accordion-button.collapsed {background-color: transparent; color: #fff;}
 .career-sidebar .accordion-button:focus { border-color: none; box-shadow: none; }
 /*Career opportunities*/
 /********************************************Career page css******************************************/
 
+
+/*platform*/
+.Platform-banner h1 {font-size: 64px; font-weight: 700;}
+.Platform-banner p {font-size: 18px; font-weight: 600;}
+.Platform-banner .slim-text {font-size: 18px; font-weight: 400;}
+.Platform-tabs .heading p {font-size: 24px; font-weight: 500;}
+.Platform-tabs .nav-tabs{border-bottom: none;}
+.Platform-tabs .nav-tabs .nav-link.active, .nav-tabs .show>.nav-link {background-color: transparent;border: none ;border-bottom: 2px solid #d9d9d9; border-radius: 0px;}
+.dark .Platform-tabs .nav-tabs .nav-link.active {color: var(--white);}
+.Platform-tabs .tab-pane { font-size: 18px; font-weight: 400; letter-spacing: 0.72px;}
+.Platform-tabs li.nav-item {flex: 1;}
+.Platform-tabs li.small-nav {flex: 0 25%; max-width: 25%;} 
+.Platform-tabs li+li{margin-left: 2rem;}
+.Platform-tabs .nav-link { width: 100% ; border: none;border-bottom: 2px solid #818181; border-radius: 0px; 
+    padding: 0; padding-bottom: 10px; font-size: 20px; font-weight: 400;text-align: left;color: #818181;}
+.Platform-tabs .nav-tabs .nav-link:hover { border: none;border-bottom: 2px solid #fff;}
+.Platform-tabs ul#pills-tab { gap:60px; }
+.Platform-works h2 {font-size: 64px; font-weight: 700;}
+.Platform-works p {font-size: 18px; font-weight: 400; letter-spacing: 0.72px;}
+/*platform*/
 
 .hide-button{ display: none;}
 

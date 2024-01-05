@@ -7,15 +7,18 @@ import { BASE_URL } from "../../../../api";
 
 
 function BlogDetail () { 
-    const { postId } = useParams();
+    const { slug } = useParams();
     const [postData, setPostData] = useState(null);
     useEffect(() => {
         const fetchPosts = async () => {
             try {
-                const response = await fetch(`${BASE_URL}/posts/${postId}`);
+                const response = await fetch(`${BASE_URL}/posts?slug=${slug}`);
                 if (response.ok) {
                   const data = await response.json();
-                  setPostData(data);
+                  if (data && data.length > 0) {
+                    setPostData(data[0]); 
+                    console.log(data.post_title);
+                }
                 } else {
                     throw new Error('Failed to fetch data');
                 }
@@ -23,8 +26,9 @@ function BlogDetail () {
                 console.error('Error fetching data:', error);
             }
         };
+        console.log('Slug:', slug);
         fetchPosts();
-    }, [postId]);
+    }, [slug]);
     const decodeHtmlEntities = (html) => {
         const txt = document.createElement('textarea');
         txt.innerHTML = html;
@@ -51,7 +55,7 @@ function BlogDetail () {
             <section className="Blog-view pt-0">
                 <div className="container">
                     <div className="row">
-                        <div className="col-md-7">
+                        <div className="article">
                             <div className="blog-view-img">
                                 <img className="img-fluid" src={postData.featured_image} alt="blog-view-img" width="1000" height="540"/>
                             </div>
@@ -95,7 +99,7 @@ function BlogDetail () {
                                 </ul>
                             </div>
                         </div>
-                        <div className="col-md-5">
+                        <div className="aside">
                             <div className="gradient-border">
                                 <div className="content stay-Connected">						
                                     <h2 className="mb-4 text-center">Stay Connected, Stay Informed, Stay Ahead!</h2>

@@ -4,13 +4,17 @@ import ExportIcon from '../../../assets/images/export-icon.png';
 import ShareIcon from '../../../assets/images/share-icon.png';
 import ShareIcon2 from '../../../assets/images/share-icon-2.png';
 import { BASE_URL } from "../../../api";
-//import { useParams } from "react-router-dom";
-import FilterBlog from "./filter-blog";
+import { useParams } from "react-router-dom";
+//import FilterBlog from "./filter-blog";
 
 function Blog () { 
-    //const { postId } = useParams();
+    const { slug } = useParams();
     const [postData, setPostData] = useState(null);
     const [selectedCategory, setSelectedCategory] = useState('');
+    const [selectedIndustry, setSelectedIndustry] = useState('');
+    const[industry, setIndustry] = useState([]);
+    const[category, setCategory] = useState([]);
+    const [searchQuery, setSearchQuery] = useState('');
     useEffect(() => {
         const fetchPosts = async () => {
             try {
@@ -18,6 +22,20 @@ function Blog () {
                 if (response.ok) {
                   const data = await response.json();
                   setPostData(data);
+                // get industry
+                const responseIndustry = await fetch(`${BASE_URL}/post-industry`);
+                if (!responseIndustry.ok) {
+                throw new Error('Network response was not ok');
+                }
+                const dataIndustry = await responseIndustry.json();
+                setIndustry(dataIndustry);
+                // get category
+                const responseCategory = await fetch(`${BASE_URL}/post-categories`);
+                if (!responseCategory.ok) {
+                throw new Error('Network response was not ok');
+                }
+                const dataCategory = await responseCategory.json();
+                setCategory(dataCategory);
                 } else {
                     throw new Error('Failed to fetch data');
                 }
@@ -26,12 +44,43 @@ function Blog () {
             }
         };
         fetchPosts();
-    }, [selectedCategory]);
+    }, [slug]);
     const decodeHtmlEntities = (html) => {
         const txt = document.createElement('textarea');
         txt.innerHTML = html;
         return txt.value;
     };
+    const handleIndustryChange = (event) => { // filter based on industry
+        setSelectedIndustry(event.target.value);
+    };
+    const handleSearchChange = (event) => {
+        setSearchQuery(event.target.value);
+    };
+    const handleCategoryChange = (event) => {
+        setSelectedCategory(event.target.value);
+    };
+    const filteredPosts = postData
+    ? postData.filter((post) => {
+            const categoryMatch =
+                selectedCategory === '' || // if no category is selected
+                post.categories.some(
+                    (category) => category.name === selectedCategory
+                );
+                
+
+        const titleMatch = post.title.rendered
+            .toLowerCase()
+            .includes(searchQuery.toLowerCase());
+        const industryMatch =
+            selectedIndustry === '' ||
+            post.industry === selectedIndustry;    
+
+            return categoryMatch && titleMatch && industryMatch;
+        })
+    : [];
+
+    const recentPosts = postData ? postData.slice(0, 5) : []; // latest post        
+    
     return (
         <>
         {/* <!--Knowledge Hub Banner --> */}
@@ -48,7 +97,52 @@ function Blog () {
         {/* <!--  Knowledge Hub banner --> */}
 
         {/* <!-- filter By --> */}
-        <FilterBlog setSelectedCategory={setSelectedCategory} />
+        {/* <FilterBlog setSelectedCategory={setSelectedCategory} /> */}
+        <section className="col-md-12 filter-by">
+        <div className="container">
+            <h2 className="mb-lg-5 mb-4">Filter by</h2>	
+            <div className="row justify-content-center">                    			
+                <div className="col-md-4">
+                    <div className="Email-field">
+                        <div className="gradient-border mb-4">                            
+                            <select className="content w-100" onChange={handleCategoryChange}>
+                                <option value="">Select Category</option>
+                                {category.map((item)  => (
+                                    <option key={item.id} value={item.name}>{item.name}</option>
+                                ))}                                
+                            </select>				
+                        </div>														
+                    </div>								  
+                </div>
+                <div className="col-md-4">
+                    <div className="Email-field">
+                        <div className="gradient-border mb-4">
+                            <input type="name" name="name" className="form-control" placeholder="Topics"
+                            value={searchQuery}
+                            onChange={handleSearchChange}
+                            />				
+                        </div>														
+                    </div>								  
+                </div>
+                <div className="col-md-4">
+                    <div className="Email-field">
+                        <div className="gradient-border mb-4">
+                            <select className="content w-100" onChange={handleIndustryChange}>
+                                {industry.map((item)  => (
+                                    <option key={item.id} value={item.name}>{item.name}</option>
+                                ))}
+                            </select>				
+                        </div>														
+                    </div>								  
+                </div>
+            </div>
+            <div className="sort-by">
+                <h4>Sort By:</h4>						
+                <div className="sort-by-button gradient-border"><span className="content">Feature</span></div>		
+                <div className="sort-by-button gradient-border"><span className="content">Most recent</span></div>		
+            </div>
+        </div>
+    </section>
         {/* <!-- filter By --> */}
 
         {/* <!-- Our Blog --> */}
@@ -57,12 +151,10 @@ function Blog () {
                 <div className="blog-post">
                     <div className="article">
                         <div className="blog">
-                            {postData === null ? (
-                                <p>Loading...</p> 
-                            )  : (
-                            postData.map((item, id) => (
+                        {filteredPosts && filteredPosts.length > 0 ? (
+                                    filteredPosts.map((item, id) => (
                             <div className="blog-item" key={id}>
-                                <Link to={`/resources/${item.id}`} className="Blog-box">
+                                <Link to={`/resources/${item.slug}`} className="Blog-box">
                                     <div className="Blog-img text-center p-3">
                                         <img className="img-fluid" src={item.featured_image} alt="Dashboard-img" width="560" height="435"/>
                                     </div>
@@ -74,12 +166,12 @@ function Blog () {
                                                         <img className="img-fluid" src={ExportIcon} alt="export-icon" width="30" height="30"/>
                                                     </figure>
                                                     <figcaption>
-                                                    {item.categories.map((category, index) => (
-                                                        <h3 key={index}>{decodeHtmlEntities(category.name)}</h3>
-                                                    ))}
+                                                        <h3>{decodeHtmlEntities(item.title.rendered)}</h3>                                                    
                                                     </figcaption>                                                    
                                                 </div>
-                                                <p className="sub-heading">{decodeHtmlEntities(item.title.rendered)}</p>
+                                                {item.categories.map((category, index) => (
+                                                    <p className="sub-heading" key={index}>{decodeHtmlEntities(category.name)}</p>
+                                                ))}
                                                 <div className="" dangerouslySetInnerHTML={{__html: item.excerpt.rendered}}></div>
                                                 
                                                 <div className="share-time d-flex mb-4 align-item-center">
@@ -109,29 +201,27 @@ function Blog () {
                                 </Link>
                             </div>
                             ))
-                            )}
+                           ) : (
+                            <p>No posts found.</p>
+                        )}
                         </div>
                     </div>
                     <div className="aside recent">                        
                         <div className="recent-post gradient-border">
                             <div className="content">
                                 <h4 className="mb-3">Recents Post</h4>
-                                <p className="mb-3">take us whenever you go so that you know what’s gemipsum doloecommando dolor anean massa.</p>
-                                <p className="mb-3">take us whenever you go so that you know what’s gemipsum doloecommando dolor anean massa.</p>
-                                <p className="mb-3">take us whenever you go so that you know what’s gemipsum doloecommando dolor anean massa.</p>
-                                <p className="mb-3">take us whenever you go so that you know what’s gemipsum doloecommando dolor anean massa.</p>
-                                <p className="mb-3">take us whenever you go so that you know what’s gemipsum doloecommando dolor anean massa.</p>
+                                <ul>
+                                    {recentPosts.map((recentItem, index) => (
+                                        <li className="mb-2"  key={index}><Link to="#">{decodeHtmlEntities(recentItem.title.rendered)}</Link></li>
+                                    ))}
+                                </ul>
                                 
-                                <div className="">
-                                    <ul className="mb-5">
-                                        <h4 className="mb-3">Categories</h4>
-                                        <li className="mb-3"><Link to="#">Sustainability App</Link></li>
-                                        <li className="mb-3"><Link to="#">Sustainability App</Link></li>
-                                        <li className="mb-3"><Link to="#">Sustainability App</Link></li>
-                                        <li className="mb-3"><Link to="#">Sustainability App</Link></li>
-                                        <li className="mb-3"><Link to="#">Sustainability App</Link></li>
-                                        <li className="mb-3"><Link to="#">Sustainability App</Link></li>
-                                        <li className="mb-3"><Link to="#">Sustainability App</Link></li>
+                                <div className="mt-5">
+                                    <h4 className="mb-3">Categories</h4>
+                                    <ul>                                        
+                                        {category.map((item, index) => (
+                                            <li className="mb-2" key={index}><Link to="#">{decodeHtmlEntities(item.name)}</Link></li>
+                                        ))}
                                     </ul>
                                 </div>							
                             </div>
