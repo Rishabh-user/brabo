@@ -172,9 +172,7 @@ function Home() {
 
 	useEffect(() => {
 		// Call initHome only if selectedLanguage has changed
-
 		if (selectedLanguage !== prevLanguage.current) {
-
 			console.log('useEffect called with selectedLanguage:', selectedLanguage);
 			console.log('useEffect called with previoes Language:', prevLanguage.current);
 			initHome(selectedLanguage);

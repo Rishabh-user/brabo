@@ -681,18 +681,25 @@ opacity: 1;z-index: 9;}
 .Platform-banner .slim-text {font-size: 18px; font-weight: 400;}
 .Platform-tabs .heading p {font-size: 24px; font-weight: 500;}
 .Platform-tabs .nav-tabs{border-bottom: none;}
-.Platform-tabs .nav-tabs .nav-link.active, .nav-tabs .show>.nav-link {background-color: transparent;border: none ;border-bottom: 2px solid #d9d9d9; border-radius: 0px;}
+.Platform-tabs .nav-tabs .nav-link.active, .nav-tabs .show>.nav-link {background-color: transparent;border: none ;border-bottom: 2px solid #000; border-radius: 0px;}
+.dark .Platform-tabs .nav-tabs .nav-link.active, .nav-tabs .show>.nav-link{border-bottom: 2px solid #d9d9d9;}
 .dark .Platform-tabs .nav-tabs .nav-link.active {color: var(--white);}
 .Platform-tabs .tab-pane { font-size: 18px; font-weight: 400; letter-spacing: 0.72px;}
 .Platform-tabs li.nav-item {flex: 1;}
 .Platform-tabs li.small-nav {flex: 0 25%; max-width: 25%;} 
 .Platform-tabs li+li{margin-left: 2rem;}
-.Platform-tabs .nav-link { width: 100% ; border: none;border-bottom: 2px solid #818181; border-radius: 0px; 
+.Platform-tabs .nav-link { width: 100% ; border: none;border-bottom: 2px solid #d0cfcf; border-radius: 0px; 
     padding: 0; padding-bottom: 10px; font-size: 20px; font-weight: 400;text-align: left;color: #818181;}
-.Platform-tabs .nav-tabs .nav-link:hover { border: none;border-bottom: 2px solid #fff;}
+.dark .Platform-tabs .nav-link{border-bottom: 2px solid #818181}
+.Platform-tabs .nav-tabs .nav-link:hover { border: none;border-bottom: 2px solid #000;}
+.dark .Platform-tabs .nav-tabs .nav-link:hover {border-bottom: 2px solid #fff;}
 .Platform-tabs ul#pills-tab { gap:60px; }
 .Platform-works h2 {font-size: 64px; font-weight: 700;}
 .Platform-works p {font-size: 18px; font-weight: 400; letter-spacing: 0.72px;}
+.dark-platform-img{display: none !important;}
+.light-platform-img{display: block !important;}
+.dark .dark-platform-img{display: block !important;}
+.dark .light-platform-img{display: none !important;}
 /*platform*/
 
 .hide-button{ display: none;}

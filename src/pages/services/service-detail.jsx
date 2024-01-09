@@ -1,33 +1,104 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useState, useCallback, useRef} from "react";
 import { Link } from "react-router-dom";
 import { BASE_URL } from "../../api";
 import { useParams } from 'react-router-dom';
+import { useLanguage } from "../../components/LanguageContext";
+
+
 
 function ServiceDetail () {
+    const { selectedLanguage } = useLanguage();
+    const prevLanguage = useRef(null);
     const { slug } = useParams();
     const [serviceData, setServiceData] = useState(null);
-    useEffect(() => {
-        const fetchServiceBySlug = async () => {
-            try {
-                const response = await fetch(`${BASE_URL}/services?slug=${slug}`);
-                if (response.ok) {
-                    const data = await response.json();
-                    if (data && data.length > 0) {
-                        setServiceData(data[0]); 
+
+    const initService = useCallback(async (langCode) => {
+        console.log('initService called with langCode:', langCode);
+        try {
+          const slugResponse = await fetch(`${BASE_URL}/services?slug=${slug}`);
+          if (slugResponse.ok) {
+            const slugData = await slugResponse.json();
+            if (slugData && slugData.length > 0) {
+              const id = slugData[0].id; // Assuming the ID is present in the first item
+              const response = await fetch(`${BASE_URL}/services/${id}`);
+    
+              if (response.ok) {
+                const data = await response.json();
+    
+                if (langCode !== 'en') {
+                  const matchingLang = data.lang.find(lang => lang.code === langCode) || data.lang.find(lang => lang.id === parseInt(langCode, 10)) || data.lang.find(lang => lang.code === 'en');
+    
+                  if (matchingLang) {
+                    const idToUse = matchingLang.id;
+                    const updatedResponse = await fetch(`${BASE_URL}/services/${idToUse}`);
+                    if (updatedResponse.ok) {
+                      const updatedData = await updatedResponse.json();
+                      console.log('other lang data', updatedData);
+                      setServiceData(updatedData);
+                      document.title = updatedData.title.rendered || 'Brabo About';
+                    } else {
+                      setServiceData(data);
+                      document.title = data.title.rendered || 'Brabo Home';
+                      console.log('Failed to fetch data with updated language code, so en data');
                     }
+                  } else {
+                    console.log('No matching language found, using default data');
+                    setServiceData(data);
+                    document.title = data.title.rendered || 'Brabo About';
+                  }
                 } else {
-                    throw new Error('Failed to fetch data');
+                  console.log('default en data');
+                  setServiceData(data);
+                  document.title = data.title.rendered || 'Brabo About';
                 }
-            } catch (error) {
-                console.error('Error fetching data:', error);
+              } else {
+                throw new Error('Failed to fetch data');
+              }
+            } else {
+              console.log('No data found for the slug');
             }
-        };
-        fetchServiceBySlug();
-    }, [slug]);
+          } else {
+            throw new Error('Failed to fetch slug data');
+          }
+        } catch (error) {
+          console.error('Error fetching data:', error);
+        }
+    
+      }, []);
+    // useEffect(() => {
+    //     const fetchServiceBySlug = async () => {
+    //         try {
+    //             const response = await fetch(`${BASE_URL}/services?slug=${slug}`);
+    //             if (response.ok) {
+    //                 const data = await response.json();
+    //                 if (data && data.length > 0) {
+    //                     setServiceData(data[0]); 
+    //                 }
+    //             } else {
+    //                 throw new Error('Failed to fetch data');
+    //             }
+    //         } catch (error) {
+    //             console.error('Error fetching data:', error);
+    //         }
+    //     };
+    //     fetchServiceBySlug();
+    // }, [slug]);
+
+    useEffect(() => {
+		// Call initAbout only if selectedLanguage has changed
+		if (selectedLanguage !== prevLanguage.current) {
+			console.log('useEffect called with selectedLanguage:', selectedLanguage);
+			console.log('useEffect called with previoes Language:', prevLanguage.current);
+			initService(selectedLanguage);
+			prevLanguage.current = selectedLanguage; // Update the previous language
+			
+		}
+	}, [selectedLanguage, initService, prevLanguage]);
+
     return (
         <>
             {/* <!-- Banner --> */}
-            {serviceData && (
+            {serviceData ? (
             <section className="col-md-12 business-value sustainabilit-application-banner text-center" 
             style={{
                 backgroundImage: `url(${serviceData.acf.servicebanner.url})`,
@@ -50,7 +121,9 @@ function ServiceDetail () {
                 
                 </div>
             </section>
-            )}
+            ) : (
+                <p>Loading...</p>
+              )}
             {/* <!-- banner --> */}
 
             {/* <!-- Powerful-Allies --> */}
@@ -127,7 +200,8 @@ function ServiceDetail () {
                         <h2 className="mb-5">{serviceData.acf?.benefits_title}</h2>
                     </div>                    
                     <div className="row justify-content-center">
-                        {serviceData.acf.benefit_list.map((benefit, index) => (				
+                    {serviceData.acf && serviceData.acf.benefit_list ? (
+                    serviceData.acf.benefit_list.map((benefit, index) => (				
                         <div className="col-lg-3 col-md-6 mb-lg-5 mb-3" key={index}>
                             <div className="gradient-border benefits-box">                            
                                 <div className="content text-center">
@@ -139,7 +213,12 @@ function ServiceDetail () {
                                 </div>                                
                             </div>
                         </div>   
-                        ))}                     
+                        ))
+                        ) : (
+                          <div class="alert alert-success text-center" role="alert">
+                            No key Benefits are available in this language !
+                          </div>
+                        )}                    
                     </div>
                     <div className="text-center mt-5 mb-5">
                         <Link to="#" className="btn btn-primary">Sign up for a Demo</Link>

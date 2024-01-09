@@ -1,19 +1,38 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { Tabs } from "react-bootstrap";
 import { Tab } from "react-bootstrap";
-import creativePeople from '../../assets/images/creavite-people.jpg'
+import creativePeople_dark from '../../assets/images/creavite-people-dark.png';
+import creativePeople_light from '../../assets/images/creavite-people-light.png';
+
+import 'react-inner-image-zoom/lib/InnerImageZoom/styles.css'
+import InnerImageZoom from "react-inner-image-zoom";
 
 function ThePlateform() {
+    useEffect(() => {
+        // Smooth scrolling functionality
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+          anchor.addEventListener("click", function(e) {
+            e.preventDefault();
+    
+            const target = document.querySelector(this.getAttribute("href"));
+            if (target) {
+              target.scrollIntoView({
+                behavior: "smooth"
+              });
+            }
+          });
+        });
+      }, []);
     return(
         <>
             {/* <!-- Platform-Banner --> */}
-            <section class="col-md-12 Platform-banner mb-5 mt-5">
-                <div class="container">
-                    <div class="row justify-content-center">
-                        <div class="col-md-10">
-                            <h1 class="mb-4 text-center">The Platform</h1>	
-                            <p class="mb-2 text-center">Starting with the 5 pillars of- connect, context, analyse, react and Historize.</p>	
-                            <p class="slim-text text-center">Define Architecture in a simplified fashion with a diagram and little text mentioned below-</p>
+            <section className="col-md-12 Platform-banner mb-5 mt-5">
+                <div className="container">
+                    <div className="row justify-content-center">
+                        <div className="col-md-10">
+                            <h1 className="mb-4 text-center">The Platform</h1>	
+                            <p className="mb-2 text-center">Starting with the 5 pillars of- connect, context, analyse, react and Historize.</p>	
+                            <p className="slim-text text-center">Define Architecture in a simplified fashion with a diagram and little text mentioned below-</p>
                         </div>
                     </div>
                 </div>
@@ -21,12 +40,12 @@ function ThePlateform() {
             {/* <!-- Platform-Banner --> */}
 
             {/* <!-- Platform-tabs-one --> */}
-            <section class="col-md-12 Platform-tabs mb-5">
-                <div class="container">
-                    <div class="row justify-content-center">
+            <section className="col-md-12 Platform-tabs mb-5">
+                <div className="container">
+                    <div className="row justify-content-center">
                         <div className="col-md-12">
-                            <div class="heading mb-5">
-                                <p class="mb-4">Simplified Implementation</p>
+                            <div className="heading mb-5">
+                                <p className="mb-4">Simplified Implementation</p>
                             </div>                        
                             <Tabs
                                 defaultActiveKey="dashboard-builder"
@@ -61,12 +80,12 @@ function ThePlateform() {
             {/* <!-- Platform-tabs-one --> */}
 
             {/* <!-- Platform-tabs-two --> */}
-            <section class="col-md-12 Platform-tabs mb-5">
-                <div class="container">
-                    <div class="row justify-content-center">
+            <section className="col-md-12 Platform-tabs mb-5">
+                <div className="container">
+                    <div className="row justify-content-center">
                         <div className="col-md-12">
-                            <div class="heading mb-5">
-                                <p class="mb-4">Build your own</p>
+                            <div className="heading mb-5">
+                                <p className="mb-4">Build your own</p>
                             </div>
                             <Tabs
                                 defaultActiveKey="apps"
@@ -106,12 +125,12 @@ function ThePlateform() {
             {/* <!-- Platform-tabs-two --> */}
 
             {/* <!-- Platform-tabs-three --> */}
-            <section class="col-md-12 Platform-tabs mb-5">
-                <div class="container">
-                    <div class="row justify-content-center">
+            <section className="col-md-12 Platform-tabs mb-5">
+                <div className="container">
+                    <div className="row justify-content-center">
                         <div className="col-md-12">
-                            <div class="heading mb-5">
-                                <p class="mb-4">Comprehensive integration (Plug & play )</p>
+                            <div className="heading mb-5">
+                                <p className="mb-4">Comprehensive integration (Plug & play )</p>
                             </div>
                             <Tabs
                                 defaultActiveKey="drivers"
@@ -136,12 +155,12 @@ function ThePlateform() {
             {/* <!-- Platform-tabs-three --> */}
 
             {/* <!-- Platform-tabs-four --> */}
-            <section class="col-md-12 Platform-tabs mb-5">
-                <div class="container">
-                    <div class="row justify-content-center">
+            <section className="col-md-12 Platform-tabs mb-5">
+                <div className="container">
+                    <div className="row justify-content-center">
                         <div className="col-md-12">
-                            <div class="heading mb-5">
-                                <p class="mb-4">Cloud Ecosystem</p>
+                            <div className="heading mb-5">
+                                <p className="mb-4">Cloud Ecosystem</p>
                             </div>                       
                             <Tabs
                                 defaultActiveKey="aws"
@@ -171,11 +190,11 @@ function ThePlateform() {
             {/* <!-- Platform-tabs-four --> */}
 
             {/* <!-- Platform-center-button --> */}
-            <section class="col-md-12">
-                <div class="container">
-                    <div class="row justify-content-center">
-                        <div class="submit-button text-center">
-                            <button class="btn btn-primary">Sign up for a Demo</button>
+            <section className="col-md-12">
+                <div className="container">
+                    <div className="row justify-content-center">
+                        <div className="submit-button text-center">
+                            <button className="btn btn-primary">Sign up for a Demo</button>
                         </div>
                     </div>
                 </div>
@@ -183,18 +202,20 @@ function ThePlateform() {
             {/* <!-- Platform-center-button --> */}
 
             {/* <!-- How it works --> */}
-            <section class="col-md-12 Platform-works text-center">
-                <div class="container">
-                    <div class="row justify-content-center">
-                        <div class="content p-5">
-                            <h2 class="mb-5">How it works?</h2>
-                            <p class="mb-4">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu.</p>
+            <section className="col-md-12 Platform-works text-center">
+                <div className="container">
+                    <div className="row justify-content-center">
+                        <div className="content p-5">
+                            <h2 className="mb-5">How it works?</h2>
+                            <p className="mb-4">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu.</p>
                         </div>
-                        <div class="Dashboard-img text-center mb-5">
-                            <img class="img-fluid" src={creativePeople} alt="creavite-people" width="1366" height="760"/>
+                        <div className="Dashboard-img text-center mb-5">
+                            <InnerImageZoom className="img-fluid dark-platform-img" width={1366} height={760} src={creativePeople_dark} alt="creavite-people" />
+                            <InnerImageZoom className="img-fluid light-platform-img" width={1366} height={760} src={creativePeople_light} alt="creavite-people" />
+                            
                         </div>
-                        <div class="submit-button text-center">
-                            <button class="btn btn-primary">Get in touch</button>
+                        <div className="submit-button text-center">
+                            <button className="btn btn-primary">Get in touch</button>
                         </div>
                     </div>
                 </div>
@@ -202,11 +223,11 @@ function ThePlateform() {
             {/* <!-- How it works --> */}
 
             {/* <!-- Platform-center-heading --> */}
-            <section class="col-md-12 Platform-banner">
-                <div class="container">
-                    <div class="row justify-content-center">
-                        <div class="text-center">
-                            <h1 class="mb-4 text-center">The Edge</h1>
+            <section className="col-md-12 Platform-banner" id="theedge">
+                <div className="container">
+                    <div className="row justify-content-center">
+                        <div className="text-center">
+                            <h1 className="mb-4 text-center">The Edge</h1>
                         </div>
                     </div>
                 </div>
@@ -214,12 +235,12 @@ function ThePlateform() {
             {/* <!-- Platform-center-heading --> */}
 
             {/* <!-- Platform-tabs-five --> */}
-            <section class="col-md-12 Platform-tabs mb-5">
-                <div class="container">
-                    <div class="row justify-content-center">
+            <section className="col-md-12 Platform-tabs mb-5">
+                <div className="container">
+                    <div className="row justify-content-center">
                         <div className="col-md-12">
-                            <div class="heading mb-5">
-                                <p class="mb-4">BLA</p>
+                            <div className="heading mb-5">
+                                <p className="mb-4">BLA</p>
                             </div>
                             <Tabs
                                 defaultActiveKey="what-does"
@@ -249,12 +270,12 @@ function ThePlateform() {
             {/* <!-- Platform-tabs-five --> */}
 
             {/* <!-- Platform-tabs-five --> */}
-            <section class="col-md-12 Platform-tabs">
-                <div class="container">
-                    <div class="row justify-content-center">
+            <section className="col-md-12 Platform-tabs">
+                <div className="container">
+                    <div className="row justify-content-center">
                         <div className="col-md-12">
-                            <div class="heading mb-5">
-                                <p class="mb-4">Power of cloud at the edge</p>
+                            <div className="heading mb-5">
+                                <p className="mb-4">Power of cloud at the edge</p>
                             </div>
                             <Tabs
                                 defaultActiveKey="large-data"
@@ -284,12 +305,12 @@ function ThePlateform() {
             {/* <!-- Platform-tabs-five --> */}
 
             {/* <!-- BEA --> */}
-            <section class="col-md-12 Platform-tabs">
-                <div class="container">
-                    <div class="row justify-content-center">
+            <section className="col-md-12 Platform-tabs">
+                <div className="container">
+                    <div className="row justify-content-center">
                         <div className="col-md-12">
-                            <div class="heading mb-5">
-                                <p class="mb-4">BEA</p>
+                            <div className="heading mb-5">
+                                <p className="mb-4">BEA</p>
                             </div>
                             <Tabs
                                 defaultActiveKey="bea"

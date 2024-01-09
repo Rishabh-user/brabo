@@ -1,30 +1,89 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useCallback, useRef} from "react";
 import { Link } from "react-router-dom";
 //import Map from '../../assets/images/map.png';
 import VideoImg from '../../assets/images/video-img.png'
 import { useParams } from "react-router-dom";
 import { BASE_URL } from "../../api";
+import { useLanguage } from "../../components/LanguageContext";
 
 function AboutUs() {
+  const { selectedLanguage } = useLanguage();
+	const prevLanguage = useRef(null);
   const { slug } = useParams();
   const [aboutData, setAboutData] = useState(null);
+
+  const initAbout = useCallback(async (langCode) => {
+		console.log('initAbout called with langCode:', langCode);
+		try {
+
+			const id = '219';
+			const response = await fetch(`${BASE_URL}/pages/${id}`);
+
+			if (response.ok) {
+				const data = await response.json();
+
+				if (langCode !== 'en') {
+					const matchingLang = data.lang.find(lang => lang.code === langCode) || data.lang.find(lang => lang.id === parseInt(langCode, 10)) || data.lang.find(lang => lang.code === 'en');
+
+					if (matchingLang) {
+						const idToUse = matchingLang.id;
+						const updatedResponse = await fetch(`${BASE_URL}/pages/${idToUse}`);
+						if (updatedResponse.ok) {
+							const updatedData = await updatedResponse.json();
+							console.log('other lang data', updatedData);
+							setAboutData(updatedData);
+							document.title = updatedData.title.rendered || 'Brabo About';
+						} else {
+							setAboutData(data);
+							document.title = data.title.rendered || 'Brabo Home';
+							console.log('Failed to fetch data with updated language code, so en data');
+						}
+					} else {
+						console.log('No matching language found, using default data');
+						setAboutData(data);
+						document.title = data.title.rendered || 'Brabo About';
+					}
+				} else {
+					console.log('default en data');
+					setAboutData(data);
+					document.title = data.title.rendered || 'Brabo About';
+				}
+			} else {
+				throw new Error('Failed to fetch data');
+			}
+		} catch (error) {
+			console.error('Error fetching data:', error);
+		}
+
+	}, []);
   useEffect(() => {
-      const fetchAbout = async () => {
-          try {
-            const id = '219';
-              const response = await fetch(`${BASE_URL}/pages/${id}`);
-              if (response.ok) {
-                const data = await response.json();
-                setAboutData(data);
-              } else {
-                  throw new Error('Failed to fetch data');
-              }
-          } catch (error) {
-              console.error('Error fetching data:', error);
-          }
-      };
-      fetchAbout();
-  }, [slug]);
+		// Call initAbout only if selectedLanguage has changed
+		if (selectedLanguage !== prevLanguage.current) {
+			console.log('useEffect called with selectedLanguage:', selectedLanguage);
+			console.log('useEffect called with previoes Language:', prevLanguage.current);
+			initAbout(selectedLanguage);
+			prevLanguage.current = selectedLanguage; // Update the previous language
+			
+		}
+	}, [selectedLanguage, initAbout, prevLanguage]);
+
+  // useEffect(() => {
+  //     const fetchAbout = async () => {
+  //         try {
+  //           const id = '219';
+  //             const response = await fetch(`${BASE_URL}/pages/${id}`);
+  //             if (response.ok) {
+  //               const data = await response.json();
+  //               setAboutData(data);
+  //             } else {
+  //                 throw new Error('Failed to fetch data');
+  //             }
+  //         } catch (error) {
+  //             console.error('Error fetching data:', error);
+  //         }
+  //     };
+  //     fetchAbout();
+  // }, [slug]);
 
   // change background image on dark and light mode
   const [isDarkMode, setIsDarkMode] = useState(false);
