@@ -3,11 +3,15 @@ import { Link } from "react-router-dom";
 import { BASE_URL } from '../api';
 import LanguageSelect from './language';
 
+
 function Header() {
   const [data, setData] = useState([]);
   const [logoData, setLogoData] = useState([]);
   const [logoLightData, setLogoLightData] = useState([]);
+  // eslint-disable-next-line no-unused-vars
   const [selectedLanguage, setSelectedLanguage] = useState('en');
+
+
   const handleLanguageChange = (lang) => {
     setSelectedLanguage(lang);
   };
@@ -34,6 +38,7 @@ function Header() {
 
     fetchData();
   }, []);
+  
 
   // Toggle body classes based on darkMode state
   const [darkMode, setDarkMode] = useState(true);
@@ -117,9 +122,15 @@ function Header() {
               <ul className="main-navigation">
                 {data.filter((menu) => menu.menu_item_parent === '0').map((menu, index) => (
                   <li key={index}>
-                    <div onClick={() => toggleSubNav(menu.post_name)}>
-                      <Link to={menu.url}>{decodeHtmlEntities(menu.title)}</Link>
-                    </div>
+                    {menu.title === 'Resources' ? (
+                      <div onClick={() => toggleSubNav(menu.post_name)}>
+                        <Link to={menu.url}>{decodeHtmlEntities(menu.title)}</Link>
+                      </div>
+                    ) : (
+                      <div onClick={() => toggleSubNav(menu.post_name)}>                        
+                        <Link to={menu}>{decodeHtmlEntities(menu.title)}</Link>
+                      </div>
+                    )}
                     {menu.menu_item_parent && renderSubMenu(menu.post_name)}
                   </li>
                 ))}

@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { BASE_URL } from '../api';
 import { useLanguage } from './LanguageContext';
+import Loader from './Loader';
+import { LoadingProvider, useLoading } from './LoadingContext';
 
 function LanguageSelect() {
 
   const { selectedLanguage, changeLanguage } = useLanguage();
-
+  const { isLoading, startLoading, stopLoading } = useLoading();
 
 
   const [languages, setLanguages] = useState({});
@@ -24,11 +26,18 @@ function LanguageSelect() {
       }
     }
     fetchData();
-  }, []);
+    setTimeout(() => {
+      stopLoading();
+    }, 1000);
+  }, [stopLoading]);
 
   const handleLanguageChange = (event) => {
     const newLanguage = event.target.value;
+    startLoading();
     changeLanguage(newLanguage);
+    setTimeout(() => {
+      stopLoading();
+    }, 1000);
   };
 
   if (Object.keys(languages).length === 0) {
@@ -41,8 +50,10 @@ function LanguageSelect() {
   ));
 
   return (
-
-    <select id="languages" value={selectedLanguage} onChange={handleLanguageChange}>{options}</select>
+    <LoadingProvider>
+      {isLoading && <Loader />}
+      <select id="languages" value={selectedLanguage} onChange={handleLanguageChange}>{options}</select>
+    </LoadingProvider>
 
   );
 }

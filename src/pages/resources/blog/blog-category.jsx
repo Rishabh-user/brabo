@@ -7,7 +7,7 @@ import { BASE_URL } from "../../../api";
 import { useParams } from "react-router-dom";
 //import FilterBlog from "./filter-blog";
 
-function Blog () { 
+function BlogCategory () { 
     const { slug } = useParams();
     const [postData, setPostData] = useState(null);
     const [selectedCategory, setSelectedCategory] = useState('');
@@ -62,24 +62,20 @@ function Blog () {
     };
     const filteredPosts = postData
     ? postData.filter((post) => {
-        const categoryMatch =
-            selectedCategory === '' || // if no category is selected
-            post.categories.some(
-                (category) => category.name === selectedCategory
-            );
-                
+        const postSlugMatch = post.slug === slug; // Match post slug
+
+        const categorySlugMatch = post.categories.some(
+          (category) => category.slug === slug
+        );                
 
         const titleMatch = post.title.rendered
-        .toLowerCase()
-        .includes(searchQuery.toLowerCase());
-
+            .toLowerCase()
+            .includes(searchQuery.toLowerCase());
         const industryMatch =
-        selectedIndustry === '' ||
-        post.industry_categories.some(
-            (industry) => industry.parent === selectedIndustry
-        );    
+            selectedIndustry === '' ||
+            post.industry === selectedIndustry;    
 
-            return categoryMatch && titleMatch && industryMatch;
+            return (postSlugMatch || categorySlugMatch) && titleMatch && industryMatch;
         })
     : [];
 
@@ -233,7 +229,7 @@ function Blog () {
                     </div>
                 </div>
                 <div className="text-center View-all-button banner-gap">
-                    <button type="button" className="btn btn-primary view-button mt-5" disabled>View All</button>
+                    <Link to="#" className="btn btn-primary view-button">View All</Link>
                 </div>
             </div>
         </section>
@@ -278,4 +274,4 @@ function Blog () {
     );
 }
 
-export default Blog;
+export default BlogCategory;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import CaseStudy from '../../assets/images/video-img.png';
 import CohesiveIcon from '../../assets/images/Cohesive-icon.png';
 import InclusiveIcon from '../../assets/images/Inclusive-icon.png';
@@ -6,8 +6,38 @@ import FreedomIcon from '../../assets/images/Freedom-icon.png';
 import CourageIcon from '../../assets/images/Courage-icon.png';
 import { Link } from "react-router-dom";
 import { Accordion } from "react-bootstrap";
+import { BASE_URL } from "../../api";
+import { Modal } from "react-bootstrap";
+import Button from "react-bootstrap";
 
 function Career() {
+    const[careerData, setCareerData] = useState([]);
+    const[LocationData, setLoactionData] = useState([]);
+    useEffect(() => {
+        const fetchCareerData = async () => {
+            try {
+                const response = await fetch(`${BASE_URL}/career`);
+                if (response.ok) {
+                  const data = await response.json();
+                  setCareerData(data); 
+                }
+                  const responseLocation = await fetch(`${BASE_URL}/career_categories`);
+                if (response.ok) {
+                  const data = await responseLocation.json();
+                  console.log(data);
+                  setLoactionData(data);                
+                              
+                } else {
+                    throw new Error('Failed to fetch data');
+                }
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        };
+        fetchCareerData();
+    }, []);
+    const [modalShow, setModalShow] = React.useState(false);
+
     return (
         <>
             {/* Banner */} 
@@ -20,18 +50,43 @@ function Career() {
                             <div className="contant">
                                 <p className="mb-3 sub-heading">CAREERS AT SOLULEVER</p>
                                 <h2 className="mb-4">Work with us</h2>
-                                <p className="mb-3 text-light">
+                                <p className="mb-3">
                                 Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
                                 Aenean commodo ligula eget dolor. Aenean massa.
                                 </p>
-                                <p className="mb-5 text-light">
+                                <p className="mb-5">
                                 Cum sociis natoque penatibus et magnis dis parturient montes,
                                 nascetur ridiculus mus. Donec quam felis,
                                 </p>
                                 <div className="submit-button mb-4">
                                 <button className="btn btn-primary">View Career</button>
                                 </div>
-                                <p className="internship-text">Looking for internship?</p>
+                                <a className="internship-text" variant="primary" onClick={() => setModalShow(true)}>Looking for internship?</a>
+                                <Modal
+                                
+                                size="lg"
+                                aria-labelledby="contained-modal-title-vcenter"
+                                centered
+                                show={modalShow}
+                                onHide={() => setModalShow(false)}
+                                >
+                                <Modal.Header closeButton>
+                                    <Modal.Title id="contained-modal-title-vcenter">
+                                    Modal heading
+                                    </Modal.Title>
+                                </Modal.Header>
+                                <Modal.Body>
+                                    <h4>Centered Modal</h4>
+                                    <p>
+                                    Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
+                                    dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
+                                    consectetur ac, vestibulum at eros.
+                                    </p>
+                                </Modal.Body>
+                                <Modal.Footer>
+                                    {/* <Button >Close</Button> */}
+                                </Modal.Footer>
+                                </Modal>
                             </div>
                             </div>
                             <div className="col-lg-6">
@@ -250,373 +305,251 @@ function Career() {
              {/* Career opportunities */} 
             <section className="Career-opportunities col-md-12">
                 <div className="container-fluid">
-                <div className="career-heading text-center">
-                    <h3 className="mb-3">Career opportunities</h3>
-                    <p className="mb-5 career-sub-heading">Explore our open roles</p>
-                </div>
-                <div className="row">
-                    <div className="col-md-4 career-sidebar">
-                        <div className="gradient-border  justify-content-start">
-                            <div className="recent-post w-100">
-                            <div className="sidebar-heading ">
-                            <p className="mb-0">12 open positions</p>
-                            </div>
-                            <div className="faq-section content">
-                            {/* <div className="accordion" id="accordionExample">
-                                <div className="accordion-item">
-                                <p className="accordion-header" id="headingOne">
-                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                        Location
-                                    </button>
-                                </p>
-                                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                                    <div className="accordion-body">
-                                    <div className="form-check mb-3">
-                                        <input className="form-check-input" type="checkbox" defaultValue="" id="flexCheckDefault" />
-                                        <label className="form-check-label" htmlFor="flexCheckChecked">
-                                            Noida (2)
-                                        </label>
-                                    </div>
-                                    <div className="form-check mb-3">
-                                        <input className="form-check-input" type="checkbox" defaultValue="" id="flexCheckDefault" />
-                                        <label className="form-check-label" htmlFor="flexCheckChecked">
-                                            Noida (2)
-                                        </label>
-                                    </div>
-                                    <div className="form-check mb-3">
-                                        <input className="form-check-input" type="checkbox" defaultValue="" id="flexCheckDefault" />
-                                        <label className="form-check-label" htmlFor="flexCheckChecked">
-                                            Noida (2)
-                                        </label>
-                                    </div>
-                                    <div className="form-check mb-3">
-                                        <input className="form-check-input" type="checkbox" defaultValue="" id="flexCheckDefault" />
-                                        <label className="form-check-label" htmlFor="flexCheckChecked">
-                                            Noida (2)
-                                        </label>
-                                    </div>
-                                </div>
-                                </div>
-                                </div>
-                                <div className="accordion-item">
-                                <p className="accordion-header" id="headingtwo">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                        Department
-                                    </button>
-                                </p>
-                                <div  id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                                    <div className="accordion-body">
-                                    <div className="form-check mb-3">
-                                        <input className="form-check-input" type="checkbox" defaultValue="" id="flexCheckDefault"  />
-                                        <label className="form-check-label" htmlFor="flexCheckChecked">
-                                           Noida (2)
-                                        </label>
-                                    </div>
-                                    <div className="form-check mb-3">
-                                        <input className="form-check-input" type="checkbox" defaultValue="" id="flexCheckDefault"  />
-                                        <label className="form-check-label" htmlFor="flexCheckChecked">
-                                           Noida (2)
-                                        </label>
-                                    </div>
-                                    <div className="form-check mb-3">
-                                        <input className="form-check-input" type="checkbox" defaultValue="" id="flexCheckDefault"  />
-                                        <label className="form-check-label" htmlFor="flexCheckChecked">
-                                           Noida (2)
-                                        </label>
-                                    </div>
-                                    <div className="form-check mb-3">
-                                        <input className="form-check-input" type="checkbox" defaultValue="" id="flexCheckDefault"  />
-                                        <label className="form-check-label" htmlFor="flexCheckChecked">
-                                           Noida (2)
-                                        </label>
-                                    </div>
-                                    </div>
-                                </div>
-                                </div>
-                                <div className="accordion-item">
-                                <p className="accordion-header" id="headingThree">
-                                    <button className="accordion-button collapsed"  type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree"
-                                    >Job Type</button>
-                                </p>
-                                <div id="collapseThree" className="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                                    <div className="accordion-body">
-                                    <div className="form-check mb-3">
-                                        <input className="form-check-input" type="checkbox" defaultValue="" id="flexCheckDefault"  />
-                                        <label className="form-check-label" htmlFor="flexCheckChecked">
-                                           Noida (2)
-                                        </label>
-                                    </div>
-                                    <div className="form-check mb-3">
-                                        <input className="form-check-input" type="checkbox" defaultValue="" id="flexCheckDefault"  />
-                                        <label className="form-check-label" htmlFor="flexCheckChecked">
-                                           Noida (2)
-                                        </label>
-                                    </div>
-                                    <div className="form-check mb-3">
-                                        <input className="form-check-input" type="checkbox" defaultValue="" id="flexCheckDefault"  />
-                                        <label className="form-check-label" htmlFor="flexCheckChecked">
-                                           Noida (2)
-                                        </label>
-                                    </div>
-                                    <div className="form-check mb-3">
-                                        <input className="form-check-input" type="checkbox" defaultValue="" id="flexCheckDefault"  />
-                                        <label className="form-check-label" htmlFor="flexCheckChecked">
-                                           Noida (2)
-                                        </label>
-                                    </div>
-                                    </div>
-                                </div>
-                                </div>
-                            </div> */}
-                            <Accordion defaultActiveKey="0">
-                                <Accordion.Item eventKey="0">
-                                    <Accordion.Header>Location</Accordion.Header>
-                                    <Accordion.Body>
-                                        <div className="form-check mb-3">
-                                            <input className="form-check-input" type="checkbox" defaultValue="" id="flexCheckDefault" />
-                                            <label className="form-check-label" htmlFor="flexCheckChecked">
-                                                Noida (2)
-                                            </label>
-                                        </div>
-                                        <div className="form-check mb-3">
-                                            <input className="form-check-input" type="checkbox" defaultValue="" id="flexCheckDefault" />
-                                            <label className="form-check-label" htmlFor="flexCheckChecked">
-                                                Noida (2)
-                                            </label>
-                                        </div>
-                                        <div className="form-check mb-3">
-                                            <input className="form-check-input" type="checkbox" defaultValue="" id="flexCheckDefault" />
-                                            <label className="form-check-label" htmlFor="flexCheckChecked">
-                                                Noida (2)
-                                            </label>
-                                        </div>
-                                    </Accordion.Body>
-                                </Accordion.Item>
-                                <Accordion.Item eventKey="1">
-                                    <Accordion.Header>Department</Accordion.Header>
-                                    <Accordion.Body>
-                                        <div className="form-check mb-3">
-                                            <input className="form-check-input" type="checkbox" defaultValue="" id="flexCheckDefault" />
-                                            <label className="form-check-label" htmlFor="flexCheckChecked">
-                                                Noida (2)
-                                            </label>
-                                        </div>
-                                        <div className="form-check mb-3">
-                                            <input className="form-check-input" type="checkbox" defaultValue="" id="flexCheckDefault" />
-                                            <label className="form-check-label" htmlFor="flexCheckChecked">
-                                                Noida (2)
-                                            </label>
-                                        </div>
-                                    </Accordion.Body>
-                                </Accordion.Item>                                
-                                <Accordion.Item eventKey="2">
-                                    <Accordion.Header>Job Type</Accordion.Header>
-                                    <Accordion.Body>
-                                        <div className="form-check mb-3">
-                                            <input className="form-check-input" type="checkbox" defaultValue="" id="flexCheckDefault" />
-                                            <label className="form-check-label" htmlFor="flexCheckChecked">
-                                                Noida (2)
-                                            </label>
-                                        </div>
-                                        <div className="form-check mb-3">
-                                            <input className="form-check-input" type="checkbox" defaultValue="" id="flexCheckDefault" />
-                                            <label className="form-check-label" htmlFor="flexCheckChecked">
-                                                Noida (2)
-                                            </label>
-                                        </div>
-                                    </Accordion.Body>
-                                </Accordion.Item>
-                            </Accordion>
-                            </div>
-                        </div>
-                        </div>
+                    <div className="career-heading text-center">
+                        <h3 className="mb-3">Career opportunities</h3>
+                        <p className="mb-5 career-sub-heading">Explore our open roles</p>
                     </div>
-                    <div className="col-md-7">
                     <div className="row">
-                        <div className="col-md-12">
-                        <div className="search-field">
-                            <div className="gradient-border mb-4">
-                            <input
-                                type="search"
-                                name="search"
-                                className="form-control"
-                                placeholder="Search from below list"
-                            />
-                            </div>
-                        </div>
-                        <div className="Career-box mb-4">
-                            <div className="gradient-border">
-                            <div className="content">
-                                <div className="mt-3">
-                                <div className="main-heading mb-4">
-                                    <figure>
-                                    <p>Software engineer</p>
-                                    <Link to="#">Realtime Services</Link>
-                                    </figure>
-                                    <figcaption className="text-center location">
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width={38}
-                                        height={38}
-                                        viewBox="0 0 38 38"
-                                        fill="none"
-                                    >
-                                        <g opacity="0.75">
-                                        <path
-                                            d="M19.0003 0C11.2599 0 4.96289 6.297 4.96289 14.0374C4.96289 16.5856 6.1057 19.3262 6.15359 19.4418C6.52269 20.3179 7.25098 21.6787 7.77614 22.4763L17.4008 37.0595C17.7947 37.6573 18.3777 38 19.0003 38C19.6229 38 20.2058 37.6573 20.5997 37.0603L30.2252 22.4763C30.7512 21.6787 31.4787 20.3179 31.8478 19.4418C31.8957 19.327 33.0376 16.5864 33.0376 14.0374C33.0376 6.297 26.7406 0 19.0003 0ZM30.3251 18.801C29.9957 19.5863 29.3177 20.8521 28.8462 21.5672L19.2207 36.1512C19.0308 36.4394 18.9705 36.4394 18.7806 36.1512L9.15511 21.5672C8.68362 20.8521 8.0057 19.5854 7.67623 18.8002C7.66219 18.7663 6.61435 16.2437 6.61435 14.0374C6.61435 7.20778 12.1707 1.65146 19.0003 1.65146C25.8299 1.65146 31.3862 7.20778 31.3862 14.0374C31.3862 16.247 30.3359 18.7762 30.3251 18.801Z"
-                                            fill="#E8E8E8"
-                                        />
-                                        <path
-                                            d="M18.9999 6.60669C14.9018 6.60669 11.5684 9.94098 11.5684 14.0382C11.5684 18.1355 14.9018 21.4698 18.9999 21.4698C23.098 21.4698 26.4315 18.1355 26.4315 14.0382C26.4315 9.94098 23.098 6.60669 18.9999 6.60669ZM18.9999 19.8183C15.8134 19.8183 13.2198 17.2255 13.2198 14.0382C13.2198 10.8509 15.8134 8.25815 18.9999 8.25815C22.1864 8.25815 24.78 10.8509 24.78 14.0382C24.78 17.2255 22.1864 19.8183 18.9999 19.8183Z"
-                                            fill="#E8E8E8"
-                                        />
-                                        </g>
-                                    </svg>
-                                    <p className="mt-2">Noida</p>
-                                    </figcaption>
+                        <div className="career-sidebar">
+                            <div className="gradient-border  justify-content-start">
+                                <div className="recent-post w-100">
+                                <div className="sidebar-heading ">
+                                <p className="mb-0">12 open positions</p>
                                 </div>
-                                <p className="text-light">
-                                    We come together wherever we are across time zones,
-                                    regions, offices and screens.
-                                </p>
-                                <div className="apply-button text-end">
-                                    <Link to="#">
-                                    Apply{" "}
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width={24}
-                                        height={24}
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                    >
-                                        <path
-                                        d="M18 11.9999C17.9951 11.4738 17.7832 10.9708 17.41 10.5999L13.12 6.29995C12.9326 6.1137 12.6792 6.00916 12.415 6.00916C12.1508 6.00916 11.8974 6.1137 11.71 6.29995C11.6163 6.39291 11.5419 6.50351 11.4911 6.62537C11.4403 6.74723 11.4142 6.87794 11.4142 7.00995C11.4142 7.14196 11.4403 7.27266 11.4911 7.39452C11.5419 7.51638 11.6163 7.62698 11.71 7.71995L15 10.9999H5C4.73478 10.9999 4.48043 11.1053 4.29289 11.2928C4.10536 11.4804 4 11.7347 4 11.9999C4 12.2652 4.10536 12.5195 4.29289 12.707C4.48043 12.8946 4.73478 12.9999 5 12.9999H15L11.71 16.2899C11.5217 16.4769 11.4154 16.731 11.4144 16.9964C11.4135 17.2618 11.518 17.5166 11.705 17.7049C11.892 17.8932 12.1461 17.9996 12.4115 18.0005C12.6768 18.0014 12.9317 17.8969 13.12 17.7099L17.41 13.4099C17.7856 13.0366 17.9978 12.5295 18 11.9999Z"
-                                        fill="#2F54EB"
-                                        />
-                                    </svg>
-                                    </Link>
-                                </div>
-                                </div>
-                            </div>
-                            </div>
-                        </div>
-                        <div className="Career-box mb-4">
-                            <div className="gradient-border">
-                            <div className="content">
-                                <div className="mt-3">
-                                <div className="main-heading mb-4">
-                                    <figure>
-                                    <p>Software engineer</p>
-                                    <Link to="#">Realtime Services</Link>
-                                    </figure>
-                                    <figcaption className="text-center location">
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width={38}
-                                        height={38}
-                                        viewBox="0 0 38 38"
-                                        fill="none"
-                                    >
-                                        <g opacity="0.75">
-                                        <path
-                                            d="M19.0003 0C11.2599 0 4.96289 6.297 4.96289 14.0374C4.96289 16.5856 6.1057 19.3262 6.15359 19.4418C6.52269 20.3179 7.25098 21.6787 7.77614 22.4763L17.4008 37.0595C17.7947 37.6573 18.3777 38 19.0003 38C19.6229 38 20.2058 37.6573 20.5997 37.0603L30.2252 22.4763C30.7512 21.6787 31.4787 20.3179 31.8478 19.4418C31.8957 19.327 33.0376 16.5864 33.0376 14.0374C33.0376 6.297 26.7406 0 19.0003 0ZM30.3251 18.801C29.9957 19.5863 29.3177 20.8521 28.8462 21.5672L19.2207 36.1512C19.0308 36.4394 18.9705 36.4394 18.7806 36.1512L9.15511 21.5672C8.68362 20.8521 8.0057 19.5854 7.67623 18.8002C7.66219 18.7663 6.61435 16.2437 6.61435 14.0374C6.61435 7.20778 12.1707 1.65146 19.0003 1.65146C25.8299 1.65146 31.3862 7.20778 31.3862 14.0374C31.3862 16.247 30.3359 18.7762 30.3251 18.801Z"
-                                            fill="#E8E8E8"
-                                        />
-                                        <path
-                                            d="M18.9999 6.60669C14.9018 6.60669 11.5684 9.94098 11.5684 14.0382C11.5684 18.1355 14.9018 21.4698 18.9999 21.4698C23.098 21.4698 26.4315 18.1355 26.4315 14.0382C26.4315 9.94098 23.098 6.60669 18.9999 6.60669ZM18.9999 19.8183C15.8134 19.8183 13.2198 17.2255 13.2198 14.0382C13.2198 10.8509 15.8134 8.25815 18.9999 8.25815C22.1864 8.25815 24.78 10.8509 24.78 14.0382C24.78 17.2255 22.1864 19.8183 18.9999 19.8183Z"
-                                            fill="#E8E8E8"
-                                        />
-                                        </g>
-                                    </svg>
-                                    <p className="mt-2">Noida</p>
-                                    </figcaption>
-                                </div>
-                                <p className="text-light">
-                                    We come together wherever we are across time zones,
-                                    regions, offices and screens.
-                                </p>
-                                <div className="apply-button text-end">
-                                    <Link to="#">
-                                    Apply{" "}
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width={24}
-                                        height={24}
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                    >
-                                        <path
-                                        d="M18 11.9999C17.9951 11.4738 17.7832 10.9708 17.41 10.5999L13.12 6.29995C12.9326 6.1137 12.6792 6.00916 12.415 6.00916C12.1508 6.00916 11.8974 6.1137 11.71 6.29995C11.6163 6.39291 11.5419 6.50351 11.4911 6.62537C11.4403 6.74723 11.4142 6.87794 11.4142 7.00995C11.4142 7.14196 11.4403 7.27266 11.4911 7.39452C11.5419 7.51638 11.6163 7.62698 11.71 7.71995L15 10.9999H5C4.73478 10.9999 4.48043 11.1053 4.29289 11.2928C4.10536 11.4804 4 11.7347 4 11.9999C4 12.2652 4.10536 12.5195 4.29289 12.707C4.48043 12.8946 4.73478 12.9999 5 12.9999H15L11.71 16.2899C11.5217 16.4769 11.4154 16.731 11.4144 16.9964C11.4135 17.2618 11.518 17.5166 11.705 17.7049C11.892 17.8932 12.1461 17.9996 12.4115 18.0005C12.6768 18.0014 12.9317 17.8969 13.12 17.7099L17.41 13.4099C17.7856 13.0366 17.9978 12.5295 18 11.9999Z"
-                                        fill="#2F54EB"
-                                        />
-                                    </svg>
-                                    </Link>
-                                </div>
-                                </div>
-                            </div>
-                            </div>
-                        </div>
-                        <div className="Career-box mb-4">
-                            <div className="gradient-border">
-                            <div className="content">
-                                <div className="mt-3">
-                                <div className="main-heading mb-4">
-                                    <figure>
-                                    <p>Software engineer</p>
-                                    <Link to="#">Realtime Services</Link>
-                                    </figure>
-                                    <figcaption className="text-center location">
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width={38}
-                                        height={38}
-                                        viewBox="0 0 38 38"
-                                        fill="none"
-                                    >
-                                        <g opacity="0.75">
-                                        <path
-                                            d="M19.0003 0C11.2599 0 4.96289 6.297 4.96289 14.0374C4.96289 16.5856 6.1057 19.3262 6.15359 19.4418C6.52269 20.3179 7.25098 21.6787 7.77614 22.4763L17.4008 37.0595C17.7947 37.6573 18.3777 38 19.0003 38C19.6229 38 20.2058 37.6573 20.5997 37.0603L30.2252 22.4763C30.7512 21.6787 31.4787 20.3179 31.8478 19.4418C31.8957 19.327 33.0376 16.5864 33.0376 14.0374C33.0376 6.297 26.7406 0 19.0003 0ZM30.3251 18.801C29.9957 19.5863 29.3177 20.8521 28.8462 21.5672L19.2207 36.1512C19.0308 36.4394 18.9705 36.4394 18.7806 36.1512L9.15511 21.5672C8.68362 20.8521 8.0057 19.5854 7.67623 18.8002C7.66219 18.7663 6.61435 16.2437 6.61435 14.0374C6.61435 7.20778 12.1707 1.65146 19.0003 1.65146C25.8299 1.65146 31.3862 7.20778 31.3862 14.0374C31.3862 16.247 30.3359 18.7762 30.3251 18.801Z"
-                                            fill="#E8E8E8"
-                                        />
-                                        <path
-                                            d="M18.9999 6.60669C14.9018 6.60669 11.5684 9.94098 11.5684 14.0382C11.5684 18.1355 14.9018 21.4698 18.9999 21.4698C23.098 21.4698 26.4315 18.1355 26.4315 14.0382C26.4315 9.94098 23.098 6.60669 18.9999 6.60669ZM18.9999 19.8183C15.8134 19.8183 13.2198 17.2255 13.2198 14.0382C13.2198 10.8509 15.8134 8.25815 18.9999 8.25815C22.1864 8.25815 24.78 10.8509 24.78 14.0382C24.78 17.2255 22.1864 19.8183 18.9999 19.8183Z"
-                                            fill="#E8E8E8"
-                                        />
-                                        </g>
-                                    </svg>
-                                    <p className="mt-2">Noida</p>
-                                    </figcaption>
-                                </div>
-                                <p className="text-light">
-                                    We come together wherever we are across time zones,
-                                    regions, offices and screens.
-                                </p>
-                                <div className="apply-button text-end">
-                                    <Link to="#">
-                                    Apply{" "}
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width={24}
-                                        height={24}
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                    >
-                                        <path
-                                        d="M18 11.9999C17.9951 11.4738 17.7832 10.9708 17.41 10.5999L13.12 6.29995C12.9326 6.1137 12.6792 6.00916 12.415 6.00916C12.1508 6.00916 11.8974 6.1137 11.71 6.29995C11.6163 6.39291 11.5419 6.50351 11.4911 6.62537C11.4403 6.74723 11.4142 6.87794 11.4142 7.00995C11.4142 7.14196 11.4403 7.27266 11.4911 7.39452C11.5419 7.51638 11.6163 7.62698 11.71 7.71995L15 10.9999H5C4.73478 10.9999 4.48043 11.1053 4.29289 11.2928C4.10536 11.4804 4 11.7347 4 11.9999C4 12.2652 4.10536 12.5195 4.29289 12.707C4.48043 12.8946 4.73478 12.9999 5 12.9999H15L11.71 16.2899C11.5217 16.4769 11.4154 16.731 11.4144 16.9964C11.4135 17.2618 11.518 17.5166 11.705 17.7049C11.892 17.8932 12.1461 17.9996 12.4115 18.0005C12.6768 18.0014 12.9317 17.8969 13.12 17.7099L17.41 13.4099C17.7856 13.0366 17.9978 12.5295 18 11.9999Z"
-                                        fill="#2F54EB"
-                                        />
-                                    </svg>
-                                    </Link>
-                                </div>
+                                <div className="faq-section content">
+                                {/* <div className="accordion" id="accordionExample">
+                                    <div className="accordion-item">
+                                    <p className="accordion-header" id="headingOne">
+                                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                            Location
+                                        </button>
+                                    </p>
+                                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                        <div className="accordion-body">
+                                        <div className="form-check mb-3">
+                                            <input className="form-check-input" type="checkbox" defaultValue="" id="flexCheckDefault" />
+                                            <label className="form-check-label" htmlFor="flexCheckChecked">
+                                                Noida (2)
+                                            </label>
+                                        </div>
+                                        <div className="form-check mb-3">
+                                            <input className="form-check-input" type="checkbox" defaultValue="" id="flexCheckDefault" />
+                                            <label className="form-check-label" htmlFor="flexCheckChecked">
+                                                Noida (2)
+                                            </label>
+                                        </div>
+                                        <div className="form-check mb-3">
+                                            <input className="form-check-input" type="checkbox" defaultValue="" id="flexCheckDefault" />
+                                            <label className="form-check-label" htmlFor="flexCheckChecked">
+                                                Noida (2)
+                                            </label>
+                                        </div>
+                                        <div className="form-check mb-3">
+                                            <input className="form-check-input" type="checkbox" defaultValue="" id="flexCheckDefault" />
+                                            <label className="form-check-label" htmlFor="flexCheckChecked">
+                                                Noida (2)
+                                            </label>
+                                        </div>
+                                    </div>
+                                    </div>
+                                    </div>
+                                    <div className="accordion-item">
+                                    <p className="accordion-header" id="headingtwo">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                            Department
+                                        </button>
+                                    </p>
+                                    <div  id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                                        <div className="accordion-body">
+                                        <div className="form-check mb-3">
+                                            <input className="form-check-input" type="checkbox" defaultValue="" id="flexCheckDefault"  />
+                                            <label className="form-check-label" htmlFor="flexCheckChecked">
+                                            Noida (2)
+                                            </label>
+                                        </div>
+                                        <div className="form-check mb-3">
+                                            <input className="form-check-input" type="checkbox" defaultValue="" id="flexCheckDefault"  />
+                                            <label className="form-check-label" htmlFor="flexCheckChecked">
+                                            Noida (2)
+                                            </label>
+                                        </div>
+                                        <div className="form-check mb-3">
+                                            <input className="form-check-input" type="checkbox" defaultValue="" id="flexCheckDefault"  />
+                                            <label className="form-check-label" htmlFor="flexCheckChecked">
+                                            Noida (2)
+                                            </label>
+                                        </div>
+                                        <div className="form-check mb-3">
+                                            <input className="form-check-input" type="checkbox" defaultValue="" id="flexCheckDefault"  />
+                                            <label className="form-check-label" htmlFor="flexCheckChecked">
+                                            Noida (2)
+                                            </label>
+                                        </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                    <div className="accordion-item">
+                                    <p className="accordion-header" id="headingThree">
+                                        <button className="accordion-button collapsed"  type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree"
+                                        >Job Type</button>
+                                    </p>
+                                    <div id="collapseThree" className="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                                        <div className="accordion-body">
+                                        <div className="form-check mb-3">
+                                            <input className="form-check-input" type="checkbox" defaultValue="" id="flexCheckDefault"  />
+                                            <label className="form-check-label" htmlFor="flexCheckChecked">
+                                            Noida (2)
+                                            </label>
+                                        </div>
+                                        <div className="form-check mb-3">
+                                            <input className="form-check-input" type="checkbox" defaultValue="" id="flexCheckDefault"  />
+                                            <label className="form-check-label" htmlFor="flexCheckChecked">
+                                            Noida (2)
+                                            </label>
+                                        </div>
+                                        <div className="form-check mb-3">
+                                            <input className="form-check-input" type="checkbox" defaultValue="" id="flexCheckDefault"  />
+                                            <label className="form-check-label" htmlFor="flexCheckChecked">
+                                            Noida (2)
+                                            </label>
+                                        </div>
+                                        <div className="form-check mb-3">
+                                            <input className="form-check-input" type="checkbox" defaultValue="" id="flexCheckDefault"  />
+                                            <label className="form-check-label" htmlFor="flexCheckChecked">
+                                            Noida (2)
+                                            </label>
+                                        </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div> */}
+                                <Accordion defaultActiveKey="0">
+                                    <Accordion.Item eventKey="0">
+                                        <Accordion.Header>Location</Accordion.Header>
+                                        <Accordion.Body>
+                                            {LocationData.map((loaction, index) => (
+                                                <div className="form-check mb-3">
+                                                    <input className="form-check-input" type="checkbox" defaultValue="" id={loaction.id} />
+                                                    <label className="form-check-label" htmlFor={loaction.id}>
+                                                        {loaction.name}
+                                                    </label>
+                                                </div>
+                                            ))}                                            
+                                        </Accordion.Body>
+                                    </Accordion.Item>
+                                    <Accordion.Item eventKey="1">
+                                        <Accordion.Header>Department</Accordion.Header>
+                                        <Accordion.Body>
+                                            <div className="form-check mb-3">
+                                                <input className="form-check-input" type="checkbox" defaultValue="" id="flexCheckDefault" />
+                                                <label className="form-check-label" htmlFor="flexCheckChecked">
+                                                    Noida (2)
+                                                </label>
+                                            </div>
+                                            <div className="form-check mb-3">
+                                                <input className="form-check-input" type="checkbox" defaultValue="" id="flexCheckDefault" />
+                                                <label className="form-check-label" htmlFor="flexCheckChecked">
+                                                    Noida (2)
+                                                </label>
+                                            </div>
+                                        </Accordion.Body>
+                                    </Accordion.Item>                                
+                                    <Accordion.Item eventKey="2">
+                                        <Accordion.Header>Job Type</Accordion.Header>
+                                        <Accordion.Body>
+                                            <div className="form-check mb-3">
+                                                <input className="form-check-input" type="checkbox" defaultValue="" id="flexCheckDefault" />
+                                                <label className="form-check-label" htmlFor="flexCheckChecked">
+                                                    Noida (2)
+                                                </label>
+                                            </div>
+                                            <div className="form-check mb-3">
+                                                <input className="form-check-input" type="checkbox" defaultValue="" id="flexCheckDefault" />
+                                                <label className="form-check-label" htmlFor="flexCheckChecked">
+                                                    Noida (2)
+                                                </label>
+                                            </div>
+                                        </Accordion.Body>
+                                    </Accordion.Item>
+                                </Accordion>
                                 </div>
                             </div>
                             </div>
                         </div>
+                        <div className="col-md-7 ms-md-5">
+                            <div className="search-field">
+                                <div className="gradient-border mb-4">
+                                    <input
+                                        type="search"
+                                        name="search"
+                                        className="form-control"
+                                        placeholder="Search from below list"
+                                    />
+                                </div>
+                            </div>
+                            {careerData.map((item, index) => {
+                                const location = LocationData.find(loc => loc.id == item.career_categories)
+                                return(
+                                <div className="Career-box mb-4" key={index}>
+                                    <div className="gradient-border">
+                                        <div className="content">
+                                            <div className="mt-3">
+                                            <div className="main-heading mb-4">
+                                                <figure>
+                                                <p>{item.title.rendered}</p>
+                                                <Link to="#">Realtime Services</Link>
+                                                </figure>
+                                                <figcaption className="text-center location">                                                
+                                                    <svg
+                                                        xmlns="http://www.w3.org/2000/svg"
+                                                        width={38}
+                                                        height={38}
+                                                        viewBox="0 0 38 38"
+                                                        fill="none"
+                                                    >
+                                                    <g opacity="0.75">
+                                                    <path
+                                                        d="M19.0003 0C11.2599 0 4.96289 6.297 4.96289 14.0374C4.96289 16.5856 6.1057 19.3262 6.15359 19.4418C6.52269 20.3179 7.25098 21.6787 7.77614 22.4763L17.4008 37.0595C17.7947 37.6573 18.3777 38 19.0003 38C19.6229 38 20.2058 37.6573 20.5997 37.0603L30.2252 22.4763C30.7512 21.6787 31.4787 20.3179 31.8478 19.4418C31.8957 19.327 33.0376 16.5864 33.0376 14.0374C33.0376 6.297 26.7406 0 19.0003 0ZM30.3251 18.801C29.9957 19.5863 29.3177 20.8521 28.8462 21.5672L19.2207 36.1512C19.0308 36.4394 18.9705 36.4394 18.7806 36.1512L9.15511 21.5672C8.68362 20.8521 8.0057 19.5854 7.67623 18.8002C7.66219 18.7663 6.61435 16.2437 6.61435 14.0374C6.61435 7.20778 12.1707 1.65146 19.0003 1.65146C25.8299 1.65146 31.3862 7.20778 31.3862 14.0374C31.3862 16.247 30.3359 18.7762 30.3251 18.801Z"
+                                                        fill="#E8E8E8"
+                                                    />
+                                                    <path
+                                                        d="M18.9999 6.60669C14.9018 6.60669 11.5684 9.94098 11.5684 14.0382C11.5684 18.1355 14.9018 21.4698 18.9999 21.4698C23.098 21.4698 26.4315 18.1355 26.4315 14.0382C26.4315 9.94098 23.098 6.60669 18.9999 6.60669ZM18.9999 19.8183C15.8134 19.8183 13.2198 17.2255 13.2198 14.0382C13.2198 10.8509 15.8134 8.25815 18.9999 8.25815C22.1864 8.25815 24.78 10.8509 24.78 14.0382C24.78 17.2255 22.1864 19.8183 18.9999 19.8183Z"
+                                                        fill="#E8E8E8"
+                                                    />
+                                                    </g>
+                                                    </svg>
+                                                    {location && (
+                                                        <p className="mt-2">{location.name}</p>
+                                                    )}                                                   
+                                                </figcaption>
+                                            </div>
+                                            <div className="" dangerouslySetInnerHTML={{__html: item.excerpt.rendered}}></div>
+                                            <div className="apply-button text-end">
+                                                <Link to="#">
+                                                Apply{" "}
+                                                <svg
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    width={24}
+                                                    height={24}
+                                                    viewBox="0 0 24 24"
+                                                    fill="none"
+                                                >
+                                                    <path
+                                                    d="M18 11.9999C17.9951 11.4738 17.7832 10.9708 17.41 10.5999L13.12 6.29995C12.9326 6.1137 12.6792 6.00916 12.415 6.00916C12.1508 6.00916 11.8974 6.1137 11.71 6.29995C11.6163 6.39291 11.5419 6.50351 11.4911 6.62537C11.4403 6.74723 11.4142 6.87794 11.4142 7.00995C11.4142 7.14196 11.4403 7.27266 11.4911 7.39452C11.5419 7.51638 11.6163 7.62698 11.71 7.71995L15 10.9999H5C4.73478 10.9999 4.48043 11.1053 4.29289 11.2928C4.10536 11.4804 4 11.7347 4 11.9999C4 12.2652 4.10536 12.5195 4.29289 12.707C4.48043 12.8946 4.73478 12.9999 5 12.9999H15L11.71 16.2899C11.5217 16.4769 11.4154 16.731 11.4144 16.9964C11.4135 17.2618 11.518 17.5166 11.705 17.7049C11.892 17.8932 12.1461 17.9996 12.4115 18.0005C12.6768 18.0014 12.9317 17.8969 13.12 17.7099L17.41 13.4099C17.7856 13.0366 17.9978 12.5295 18 11.9999Z"
+                                                    fill="#2F54EB"
+                                                    />
+                                                </svg>
+                                                </Link>
+                                            </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                );
+                            })}                            
                         </div>
                     </div>
-                    </div>
-                </div>
                 </div>
             </section>
             
