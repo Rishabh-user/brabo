@@ -139,7 +139,7 @@ header{background-color: var(--white); position: relative; padding-top: 20px;pad
 /* Service Slider */
 
 /*business-value*/
-.business-value{ background: url('../images/gredient.png') top center no-repeat;background-blend-mode: luminosity; ;background-size:contain; padding-top: calc(1 * var(--section-gap)); padding-bottom: calc(1 * var(--section-gap)); }
+.business-value{ background-blend-mode: luminosity; ;background-size:cover; padding-top: calc(1 * var(--section-gap)); padding-bottom: calc(1 * var(--section-gap)); }
 .business-value h2{font-size: 72px; line-height: 80px; font-weight: 700; margin-bottom: 20px; color: var(--primary);}
 .dark .business-value h2{ color: var(--white); }
 .business-value .container{ position:relative; }
@@ -356,14 +356,20 @@ footer .links ul li a{ text-decoration: none; color: #535353; font-size: 14px; f
     -o-transition: all 10s ease;
     transition: all 10s ease;
 }
-.banner-2:hover {
-    /* img zoom in on hover (x, y): */
-    -ms-transform: scale(1.1, 1.1);
-    -webkit-transform: scale(1.1, 1.1);
-    -moz-transform: scale(1.1, 1.1);
-    -o-transform: scale(1.1, 1.1); 
-    transform: scale(1.1, 1.1);
-  }
+.banner-2{animation: zoom 30s infinite; -webkit-animation: zoom 30s infinite;}
+@keyframes zoom {
+    0% {
+        background-size: 100%;
+    }
+    50% {
+        background-size: 150%;
+        background-position:center;
+    }
+    100% {
+        background-size: 100%;
+        background-position:center;
+    }
+}
 .banner-2:after {content:""; width: 100%; height: 100%; top:0; left:0; position: absolute; background-color: #131313; opacity: 50%;}
 .banner-2 .content { z-index: 9; }
 .banner-2 p{color: #E8E8E8;}

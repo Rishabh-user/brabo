@@ -66,10 +66,8 @@ function AboutUs() {
           <section className="col-md-12 business-value banner-2 text-center about-us-banner" 
           style={{
               backgroundImage: `url(${aboutData.featured_image})`,
-              backgroundSize: 'cover',
               backgroundPosition: 'center',
               position: 'relative',
-              backgroundBlendMode: 'luminosity',
           }}
           >
             <div className="container">
